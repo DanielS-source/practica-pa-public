@@ -3,6 +3,7 @@ package es.udc.paproject.backend.model.entities;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class SportTest {
 
     private Long id;

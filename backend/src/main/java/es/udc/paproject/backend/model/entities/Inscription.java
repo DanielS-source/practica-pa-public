@@ -2,6 +2,7 @@ package es.udc.paproject.backend.model.entities;
 
 import javax.persistence.*;
 
+@Entity
 public class Inscription {
 
     private Long id;
