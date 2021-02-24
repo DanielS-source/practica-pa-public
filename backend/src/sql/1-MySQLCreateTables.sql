@@ -13,3 +13,48 @@ CREATE TABLE User (
 ) ENGINE = InnoDB;
 
 CREATE INDEX UserIndexByUserName ON User (userName);
+
+CREATE TABLE SportTest (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(60) NOT NULL,
+    description VARCHAR(256) NOT NULL,
+    testStart DATETIME NOT NULL,
+    price DECIMAL(11, 2) NOT NULL,
+    maxParticipants SMALLINT NOT NULL,
+    location VARCHAR(60) NOT NULL,
+    provinceId BIGINT NOT NULL,
+    sportTestTypeId BIGINT NOT NULL,
+    CONSTRAINT UserPK PRIMARY KEY (id),
+    CONSTRAINT nameUniqueKey UNIQUE (name),
+    CONSTRAINT ProvinceFK FOREIGN KEY (provinceId)
+        REFERENCES Province (id),
+    CONSTRAINT SportTestTypeFK FOREIGN KEY (sportTestTypeId)
+        REFERENCES SportTestType (id)
+) ENGINE = InnoDB;
+
+CREATE TABLE Province (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(60) NOT NULL,
+    CONSTRAINT UserPK PRIMARY KEY (id),
+    CONSTRAINT UserNameUniqueKey UNIQUE (name)
+) ENGINE = InnoDB;
+
+CREATE TABLE SportTestType (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(60)  NOT NULL,
+    CONSTRAINT UserPK PRIMARY KEY (id),
+    CONSTRAINT UserNameUniqueKey UNIQUE (name)
+) ENGINE = InnoDB;
+
+CREATE TABLE Inscription (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    creditCardNumber VARCHAR(60) NOT NULL,
+    dorsal SMALLINT NOT NULL,
+    sportTestId VARCHAR(60) NOT NULL,
+    userId VARCHAR(60) NOT NULL,
+    CONSTRAINT UserPK PRIMARY KEY (id),
+    CONSTRAINT SportTestFK FOREIGN KEY (sportTestId)
+        REFERENCES SportTest (id),
+    CONSTRAINT UserFK FOREIGN KEY (userId)
+        REFERENCES User (id)
+) ENGINE = InnoDB;

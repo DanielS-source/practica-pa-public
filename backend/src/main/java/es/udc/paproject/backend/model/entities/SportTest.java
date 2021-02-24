@@ -1,6 +1,7 @@
 package es.udc.paproject.backend.model.entities;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,7 +11,7 @@ public class SportTest {
     private String name;
     private String description;
     private LocalDateTime testStart;
-    private float price;
+    private BigDecimal price;
     private int maxParticipants;
     private String location;
     private Province province;
@@ -19,7 +20,7 @@ public class SportTest {
     public SportTest() {}
 
     public SportTest(String name, String description, LocalDateTime testStart,
-                     float price, int maxParticipants, String location,
+                     BigDecimal price, int maxParticipants, String location,
                      Province province, SportTestType sportTestType) {
         this.name = name;
         this.description = description;
@@ -49,9 +50,9 @@ public class SportTest {
 
     public void setTestStart(LocalDateTime testStart) { this.testStart = testStart; }
 
-    public float getPrice() { return price; }
+    public BigDecimal getPrice() { return price; }
 
-    public void setPrice(float price) { this.price = price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
 
     public int getMaxParticipants() { return maxParticipants; }
 
