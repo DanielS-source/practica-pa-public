@@ -8,14 +8,18 @@ public class Inscription {
     private Long id;
     private String creditCardNumber;
     private int dorsal;
+    private boolean dorsalPicked;
     private SportTest sportTest;
     private User user;
+    private int score;
+    private long version;
 
     public Inscription() {}
 
-    public Inscription(String creditCardNumber, int dorsal, SportTest sportTest, User user) {
+    public Inscription(String creditCardNumber, int dorsal, boolean dorsalPicked, SportTest sportTest, User user) {
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
+        this.dorsalPicked = dorsalPicked;
         this.sportTest = sportTest;
         this.user = user;
     }
@@ -46,4 +50,16 @@ public class Inscription {
 
     public void setUser(User user) { this.user = user; }
 
+    public boolean isDorsalPicked() { return dorsalPicked;}
+
+    public void setDorsalPicked(boolean dorsalPicked) { this.dorsalPicked = dorsalPicked;}
+
+    public int getScore() { return score; }
+
+    public void setScore(int score) { this.score = score; }
+
+    @Version
+    public long getVersion() { return version; }
+
+    public void setVersion(long version) { this.version = version; }
 }

@@ -16,12 +16,17 @@ public class SportTest {
     private String location;
     private Province province;
     private SportTestType sportTestType;
+    private int participants;
+    private int timesRated;
+    private long averageRating;
+    private long version;
 
     public SportTest() {}
 
     public SportTest(String name, String description, LocalDateTime testStart,
                      BigDecimal price, int maxParticipants, String location,
-                     Province province, SportTestType sportTestType) {
+                     Province province, SportTestType sportTestType, int participants,
+                     int timesRated, long averageRating) {
         this.name = name;
         this.description = description;
         this.testStart = testStart;
@@ -30,6 +35,9 @@ public class SportTest {
         this.location = location;
         this.province = province;
         this.sportTestType = sportTestType;
+        this.participants = participants;
+        this.timesRated = timesRated;
+        this.averageRating = averageRating;
     }
 
     @Id
@@ -74,4 +82,20 @@ public class SportTest {
 
     public void setSportTestType(SportTestType sportTestType) { this.sportTestType = sportTestType; }
 
+    public int getParticipants() { return participants; }
+
+    public void setParticipants(int participants) { this.participants = participants; }
+
+    public int getTimesRated() { return timesRated; }
+
+    public void setTimesRated(int timesRated) { this.timesRated = timesRated; }
+
+    public long getAverageRating() { return averageRating; }
+
+    public void setAverageRating(long averageRating) { this.averageRating = averageRating; }
+
+    @Version
+    public long getVersion() { return version; }
+
+    public void setVersion(long version) { this.version = version; }
 }
