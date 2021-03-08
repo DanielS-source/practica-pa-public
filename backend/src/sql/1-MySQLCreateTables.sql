@@ -54,7 +54,7 @@ CREATE TABLE Inscription (
     id BIGINT NOT NULL AUTO_INCREMENT,
     creditCardNumber VARCHAR(60) NOT NULL,
     dorsal SMALLINT NOT NULL,
-    dorsalPicked TINYINT NOT NULL,
+    dorsalPicked BIT NOT NULL,
     sportTestId VARCHAR(60) NOT NULL,
     userId VARCHAR(60) NOT NULL,
     score SMALLINT NOT NULL,
