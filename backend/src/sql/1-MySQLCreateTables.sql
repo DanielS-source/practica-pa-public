@@ -24,6 +24,10 @@ CREATE TABLE SportTest (
     location VARCHAR(60) NOT NULL,
     provinceId BIGINT NOT NULL,
     sportTestTypeId BIGINT NOT NULL,
+    participants SMALLINT NOT NULL,
+    timesRated SMALLINT NOT NULL,
+    averageRating BIGINT NOT NULL,
+    version BIGINT NOT NULL,
     CONSTRAINT UserPK PRIMARY KEY (id),
     CONSTRAINT nameUniqueKey UNIQUE (name),
     CONSTRAINT ProvinceFK FOREIGN KEY (provinceId)
@@ -50,8 +54,11 @@ CREATE TABLE Inscription (
     id BIGINT NOT NULL AUTO_INCREMENT,
     creditCardNumber VARCHAR(60) NOT NULL,
     dorsal SMALLINT NOT NULL,
+    dorsalPicked TINYINT NOT NULL,
     sportTestId VARCHAR(60) NOT NULL,
     userId VARCHAR(60) NOT NULL,
+    score SMALLINT NOT NULL,
+    version BIGINT NOT NULL,
     CONSTRAINT UserPK PRIMARY KEY (id),
     CONSTRAINT SportTestFK FOREIGN KEY (sportTestId)
         REFERENCES SportTest (id),
