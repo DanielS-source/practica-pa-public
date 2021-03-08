@@ -4,6 +4,7 @@ import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.exceptions.InvalidDataException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +25,11 @@ public class InfoSearchServiceImpl implements InfoSearchService{
     private SportTestTypeDao sportTestTypeDao;
 
     @Override
-    public List<SportTest> getSportTestList(Long provinceId, Long testType, LocalDate startDate, LocalDate endDate) throws InstanceNotFoundException, InvalidDataException {
-        return null;
+    public Block<SportTest> getSportTestList(Long provinceId, Long testTypeId, LocalDate startDate, LocalDate endDate, int page, int size) throws InstanceNotFoundException, InvalidDataException {
+
+        Slice<SportTest> slice = sportTestDao.find(provinceId, testTypeId, startDate, endDate, page, size);
+
+        return new Block<>(slice.getContent(), slice.hasNext());
     }
 
     @Override

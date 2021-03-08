@@ -9,7 +9,7 @@ import es.udc.paproject.backend.model.exceptions.*;
 import es.udc.paproject.backend.model.entities.Province;
 
 public interface InfoSearchService {
-    List<SportTest> getSportTestList(Long provinceId, Long testType, LocalDate startDate, LocalDate endDate)
+    Block<SportTest> getSportTestList(Long provinceId, Long testType, LocalDate startDate, LocalDate endDate, int page, int size)
             throws InstanceNotFoundException, InvalidDataException;
 
     List<Province> getProvinceList() throws InstanceNotFoundException;
