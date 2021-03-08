@@ -25,7 +25,7 @@ public class InfoSearchServiceImpl implements InfoSearchService{
     private SportTestTypeDao sportTestTypeDao;
 
     @Override
-    public Block<SportTest> getSportTestList(Long provinceId, Long testTypeId, LocalDate startDate, LocalDate endDate, int page, int size) throws InstanceNotFoundException, InvalidDataException {
+    public Block<SportTest> findSportTests(Long provinceId, Long testTypeId, LocalDate startDate, LocalDate endDate, int page, int size){
 
         Slice<SportTest> slice = sportTestDao.find(provinceId, testTypeId, startDate, endDate, page, size);
 
@@ -33,12 +33,12 @@ public class InfoSearchServiceImpl implements InfoSearchService{
     }
 
     @Override
-    public List<Province> getProvinceList() throws InstanceNotFoundException {
+    public List<Province> findAllProvinces() throws InstanceNotFoundException {
         return null;
     }
 
     @Override
-    public List<SportTestType> getSportTestTypeList() throws InstanceNotFoundException {
+    public List<SportTestType> findAllSportTestTypes() throws InstanceNotFoundException {
         return null;
     }
 }
