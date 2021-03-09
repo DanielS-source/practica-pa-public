@@ -1,4 +1,8 @@
+DROP TABLE Inscription;
+DROP TABLE SportTest;
 DROP TABLE User;
+DROP TABLE Province;
+DROP TABLE SportTestType;
 
 CREATE TABLE User (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -13,6 +17,20 @@ CREATE TABLE User (
 ) ENGINE = InnoDB;
 
 CREATE INDEX UserIndexByUserName ON User (userName);
+
+CREATE TABLE Province (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(60) NOT NULL,
+    CONSTRAINT UserPK PRIMARY KEY (id),
+    CONSTRAINT UserNameUniqueKey UNIQUE (name)
+) ENGINE = InnoDB;
+
+CREATE TABLE SportTestType (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(60)  NOT NULL,
+    CONSTRAINT UserPK PRIMARY KEY (id),
+    CONSTRAINT UserNameUniqueKey UNIQUE (name)
+) ENGINE = InnoDB;
 
 CREATE TABLE SportTest (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -36,27 +54,13 @@ CREATE TABLE SportTest (
         REFERENCES SportTestType (id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE Province (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(60) NOT NULL,
-    CONSTRAINT UserPK PRIMARY KEY (id),
-    CONSTRAINT UserNameUniqueKey UNIQUE (name)
-) ENGINE = InnoDB;
-
-CREATE TABLE SportTestType (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(60)  NOT NULL,
-    CONSTRAINT UserPK PRIMARY KEY (id),
-    CONSTRAINT UserNameUniqueKey UNIQUE (name)
-) ENGINE = InnoDB;
-
 CREATE TABLE Inscription (
     id BIGINT NOT NULL AUTO_INCREMENT,
     creditCardNumber VARCHAR(60) NOT NULL,
     dorsal SMALLINT NOT NULL,
     dorsalPicked BIT NOT NULL,
-    sportTestId VARCHAR(60) NOT NULL,
-    userId VARCHAR(60) NOT NULL,
+    sportTestId BIGINT NOT NULL,
+    userId BIGINT NOT NULL,
     score SMALLINT NOT NULL,
     version BIGINT NOT NULL,
     CONSTRAINT UserPK PRIMARY KEY (id),
