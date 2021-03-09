@@ -3,6 +3,7 @@ package es.udc.paproject.backend.test.model.services;
 import static org.junit.jupiter.api.Assertions.*;
 
 import es.udc.paproject.backend.model.entities.*;
+import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.InfoSearchService;
 import org.junit.jupiter.api.Test;
@@ -122,5 +123,42 @@ public class InfoSearchServiceTest {
         assertEquals(expectedBlock ,infoSearchService.findSportTests(province1.getId(), sportTestType1.getId(), LocalDate.now().plusDays(1), LocalDate.now().plusDays(10), 0 ,1));
 
     }
+
+    @Test
+    public void testFindSportTestById() throws InstanceNotFoundException {
+        Long id = 47L;
+        assertThrows(InstanceNotFoundException.class, () -> infoSearchService.findSportTestById(id));
+
+        Province province1 = new Province("province1");
+        Province province2 = new Province("province2");
+        SportTestType sportTestType1 = new SportTestType("sportTestType1");
+        SportTestType sportTestType2 = new SportTestType("sportTestType2");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType1, LocalDate.now().plusDays(5));
+        SportTest sportTest2 = createSportTest("sportTest2", province2, sportTestType2, LocalDate.now().plusDays(2));
+        provinceDao.save(province1);
+        provinceDao.save(province2);
+        sportTestTypeDao.save(sportTestType1);
+        sportTestTypeDao.save(sportTestType2);
+        sportTestDao.save(sportTest1);
+        sportTestDao.save(sportTest2);
+
+        assertEquals(sportTest1, infoSearchService.findSportTestById(sportTest1.getId()));
+        assertEquals(sportTest2, infoSearchService.findSportTestById(sportTest2.getId()));
+    }
+
+    @Test
+    public void testFindAll(){
+        Province province1 = new Province("province1");
+        Province province2 = new Province("province2");
+        provinceDao.save(province1);
+        provinceDao.save(province2);
+        SportTestType sportTestType1 = new SportTestType("sportTestType1");
+        SportTestType sportTestType2 = new SportTestType("sportTestType2");
+        sportTestTypeDao.save(sportTestType1);
+        sportTestTypeDao.save(sportTestType2);
+        assertTrue(infoSearchService.findAllProvinces().contains(province1) && infoSearchService.findAllProvinces().contains(province2) );
+        assertTrue(infoSearchService.findAllSportTestTypes().contains(sportTestType1) && infoSearchService.findAllSportTestTypes().contains(sportTestType2));
+    }
+
 
 }

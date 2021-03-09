@@ -11,7 +11,9 @@ import es.udc.paproject.backend.model.entities.Province;
 public interface InfoSearchService {
     Block<SportTest> findSportTests(Long provinceId, Long testType, LocalDate startDate, LocalDate endDate, int page, int size);
 
-    List<Province> findAllProvinces() throws InstanceNotFoundException;
+    List<Province> findAllProvinces();
 
-    List<SportTestType> findAllSportTestTypes() throws InstanceNotFoundException;
+    List<SportTestType> findAllSportTestTypes();
+
+    SportTest findSportTestById(Long id) throws InstanceNotFoundException;
 }
