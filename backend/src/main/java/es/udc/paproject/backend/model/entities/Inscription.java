@@ -16,10 +16,10 @@ public class Inscription {
 
     public Inscription() {}
 
-    public Inscription(String creditCardNumber, int dorsal, boolean dorsalPicked, SportTest sportTest, User user) {
+    public Inscription(String creditCardNumber, int dorsal, SportTest sportTest, User user) {
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
-        this.dorsalPicked = dorsalPicked;
+        this.dorsalPicked = false;
         this.sportTest = sportTest;
         this.user = user;
     }
