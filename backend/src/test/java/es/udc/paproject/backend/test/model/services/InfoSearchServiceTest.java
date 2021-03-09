@@ -33,8 +33,8 @@ public class InfoSearchServiceTest {
     @Autowired
     private InfoSearchService infoSearchService;
 
-    private SportTest createSportTest(String name, Province province, SportTestType sportTestType, LocalDateTime time){
-        return new SportTest(name, "Test test", time, BigDecimal.valueOf(10.50), 50, "loc", province, sportTestType, 0, 0, 0);
+    private SportTest createSportTest(String name, Province province, SportTestType sportTestType, LocalDate time){
+        return new SportTest(name, "Test test", time.atStartOfDay(), BigDecimal.valueOf(10.50), 50, "loc", province, sportTestType, 0, 0, 0);
     }
 
     @Test
@@ -42,8 +42,8 @@ public class InfoSearchServiceTest {
         Province province1 = new Province("province1");
         Province province2 = new Province("province2");
         SportTestType sportTestType = new SportTestType("sportTestType");
-        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDateTime.now().plusDays(2));
-        SportTest sportTest2 = createSportTest("sportTest2", province2, sportTestType, LocalDateTime.now().plusDays(2));
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        SportTest sportTest2 = createSportTest("sportTest2", province2, sportTestType, LocalDate.now().plusDays(2));
 
         provinceDao.save(province1);
         provinceDao.save(province2);
@@ -62,8 +62,8 @@ public class InfoSearchServiceTest {
         Province province = new Province("province");
         SportTestType sportTestType1 = new SportTestType("sportTestType1");
         SportTestType sportTestType2 = new SportTestType("sportTestType2");
-        SportTest sportTest1 = createSportTest("sportTest1", province, sportTestType1, LocalDateTime.now().plusDays(2));
-        SportTest sportTest2 = createSportTest("sportTest2", province, sportTestType2, LocalDateTime.now().plusDays(2));
+        SportTest sportTest1 = createSportTest("sportTest1", province, sportTestType1, LocalDate.now().plusDays(2));
+        SportTest sportTest2 = createSportTest("sportTest2", province, sportTestType2, LocalDate.now().plusDays(2));
 
         provinceDao.save(province);
         sportTestTypeDao.save(sportTestType1);
@@ -81,9 +81,9 @@ public class InfoSearchServiceTest {
     public void testFindSportTestsByDate() {
         Province province = new Province("province");
         SportTestType sportTestType = new SportTestType("sportTestType");
-        SportTest sportTest1 = createSportTest("sportTest1", province, sportTestType, LocalDateTime.now().plusDays(1));
-        SportTest sportTest2 = createSportTest("sportTest2", province, sportTestType, LocalDateTime.now().plusDays(10));
-        SportTest sportTest3 = createSportTest("sportTest3", province, sportTestType, LocalDateTime.now().plusDays(100));
+        SportTest sportTest1 = createSportTest("sportTest1", province, sportTestType, LocalDate.now().plusDays(1));
+        SportTest sportTest2 = createSportTest("sportTest2", province, sportTestType, LocalDate.now().plusDays(10));
+        SportTest sportTest3 = createSportTest("sportTest3", province, sportTestType, LocalDate.now().plusDays(100));
 
         provinceDao.save(province);
         sportTestTypeDao.save(sportTestType);
@@ -107,8 +107,8 @@ public class InfoSearchServiceTest {
         Province province2 = new Province("province2");
         SportTestType sportTestType1 = new SportTestType("sportTestType1");
         SportTestType sportTestType2 = new SportTestType("sportTestType2");
-        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType1, LocalDateTime.now().plusDays(5));
-        SportTest sportTest2 = createSportTest("sportTest2", province2, sportTestType2, LocalDateTime.now().plusDays(2));
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType1, LocalDate.now().plusDays(5));
+        SportTest sportTest2 = createSportTest("sportTest2", province2, sportTestType2, LocalDate.now().plusDays(2));
 
         provinceDao.save(province1);
         provinceDao.save(province2);

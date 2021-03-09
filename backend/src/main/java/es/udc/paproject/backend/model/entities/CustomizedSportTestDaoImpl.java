@@ -16,11 +16,11 @@ public class CustomizedSportTestDaoImpl implements CustomizedSportTestDao{
     private EntityManager entityManager;
 
     @Override
-    public Slice<SportTest> find(Long provinceId, Long testTypeId, LocalDate startDate, LocalDate endDate, int page, int size) {
+    public Slice<SportTest> find(Long provinceId, Long sportTestTypeId, LocalDate startDate, LocalDate endDate, int page, int size) {
 
         String queryString = "SELECT st FROM SportTest st";
 
-        if (provinceId != null || testTypeId != null || startDate != null || endDate != null) {
+        if (provinceId != null || sportTestTypeId != null || startDate != null || endDate != null) {
             queryString += " WHERE ";
         }
 
@@ -28,8 +28,8 @@ public class CustomizedSportTestDaoImpl implements CustomizedSportTestDao{
             queryString += "st.province.id = :provinceId AND ";
         }
 
-        if (testTypeId != null) {
-            queryString += "st.testType.id = :testTypeId AND ";
+        if (sportTestTypeId != null) {
+            queryString += "st.sportTestType.id = :sportTestTypeId AND ";
         }
 
         if (startDate != null) {
@@ -40,9 +40,11 @@ public class CustomizedSportTestDaoImpl implements CustomizedSportTestDao{
             queryString += "st.testStart < :endDate AND ";
         }
 
-        queryString.substring(0, queryString.lastIndexOf(" AND "));
+        queryString = queryString.substring(0, queryString.lastIndexOf(" AND "));
 
         queryString += " ORDER BY st.testStart DESC";
+
+        System.out.println(queryString);
 
         Query query = entityManager.createQuery(queryString).setFirstResult(page*size).setMaxResults(size+1);
 
@@ -50,16 +52,16 @@ public class CustomizedSportTestDaoImpl implements CustomizedSportTestDao{
             query.setParameter("provinceId", provinceId);
         }
 
-        if (testTypeId != null) {
-            query.setParameter("testTypeId", testTypeId);
+        if (sportTestTypeId != null) {
+            query.setParameter("sportTestTypeId", sportTestTypeId);
         }
 
         if (startDate != null) {
-            query.setParameter("startDate", startDate);
+            query.setParameter("startDate", startDate.atStartOfDay());
         }
 
         if (endDate != null) {
-            query.setParameter("endDate", endDate);
+            query.setParameter("endDate", endDate.atStartOfDay());
         }
 
         List<SportTest> sportTests = query.getResultList();
