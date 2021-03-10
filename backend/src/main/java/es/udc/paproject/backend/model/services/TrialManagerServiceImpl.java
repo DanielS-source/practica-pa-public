@@ -1,15 +1,12 @@
 package es.udc.paproject.backend.model.services;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,8 +64,26 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         return null;
     }
 
-    public void scoreUserSportTest(Long userId, Long inscriptionId, int score) throws InstanceNotFoundException,
-            PermissionException, AlreadyScoredTestException {
+    public void scoreSportTest(Long userId, Long inscriptionId, int score)
+            throws InstanceNotFoundException, PermissionException,
+            AlreadyScoredTestException, TestNotStartedException {
+
+        Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
+
+        if (inscription.isEmpty()) throw new InstanceNotFoundException("Inscription", Inscription.class);
+
+        if (inscription.get().getScore() != -1) throw new AlreadyScoredTestException();
+
+        SportTest st = inscription.get().getSportTest();
+
+        if (LocalDateTime.now().isBefore(st.getTestStart())) throw new TestNotStartedException();
+
+
+        inscription.get().setScore(score);
+
+        st.setTimesRated(st.getTimesRated() + 1);
+        st.setAverageRating(st.getAverageRating() + (score - st.getAverageRating()) / st.getTimesRated());
+
 
     }
 }

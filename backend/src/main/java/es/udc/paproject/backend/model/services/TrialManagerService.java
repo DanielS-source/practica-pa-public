@@ -16,6 +16,6 @@ public interface TrialManagerService {
 
     List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException;
 
-    void scoreUserSportTest(Long userId, Long inscriptionId, int score) throws InstanceNotFoundException,
-            PermissionException, AlreadyScoredTestException;
+    void scoreSportTest(Long userId, Long inscriptionId, int score) throws InstanceNotFoundException,
+            PermissionException, AlreadyScoredTestException, TestNotStartedException;
 }

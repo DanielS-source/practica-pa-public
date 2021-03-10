@@ -1,10 +1,7 @@
 package es.udc.paproject.backend.test.model.services;
 
 import es.udc.paproject.backend.model.entities.*;
-import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
-import es.udc.paproject.backend.model.exceptions.InscriptionPeriodClosedException;
-import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
-import es.udc.paproject.backend.model.exceptions.SportTestFullException;
+import es.udc.paproject.backend.model.exceptions.*;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,6 +15,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -35,6 +33,9 @@ public class TrialManagerServiceTest {
 
     @Autowired
     private ProvinceDao provinceDao;
+
+    @Autowired
+    private InscriptionDao inscriptionDao;
 
     @Autowired
     private TrialManagerService trialManagerService;
@@ -64,4 +65,48 @@ public class TrialManagerServiceTest {
         assertEquals(inscription.getUser(), trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest.getId(), validCredCard).getUser());
     }
+
+    @Test
+    public void testScoreTest () throws PermissionException, AlreadyScoredTestException, InstanceNotFoundException, TestNotStartedException {
+
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest1, user1);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        sportTestDao.save(sportTest1);
+        userDao.save(user1);
+        inscriptionDao.save(inscription);
+
+        int score = 5;
+
+        trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), score);
+
+        assertEquals(score, inscription.getScore());
+    }
+
+    @Test
+    public void testInvalidScore () throws PermissionException, AlreadyScoredTestException, InstanceNotFoundException, TestNotStartedException {
+
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest1, user1);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        sportTestDao.save(sportTest1);
+        userDao.save(user1);
+        inscriptionDao.save(inscription);
+
+        assertThrows(InvalidDataException.class, () -> trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), -1));
+
+    }
+
 }
