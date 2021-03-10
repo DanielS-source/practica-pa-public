@@ -46,10 +46,10 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         if(foundSportTest.getParticipants() == foundSportTest.getMaxParticipants())
             throw new SportTestFullException();
 
-        //Registry expiration date case
-        Long timeDiff = Duration.between(foundSportTest.getTestStart(), LocalDateTime.now()).toMillis();
-        int secs = (int)TimeUnit.MILLISECONDS.toMinutes(timeDiff);
-        if(secs < 1440) throw new InscriptionPeriodClosedException();
+        //Registry expiration date case, currently not working
+        //Long timeDiff = Duration.between(foundSportTest.getTestStart(), LocalDateTime.now()).toMillis();
+        //int secs = (int)TimeUnit.MILLISECONDS.toMinutes(timeDiff);
+        //if(secs < 1440) throw new InscriptionPeriodClosedException();
 
         int newDorsal = foundSportTest.getParticipants() + 1;
         Inscription inscription = new Inscription(creditCard, newDorsal, foundSportTest, user.get());

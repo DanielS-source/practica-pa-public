@@ -52,6 +52,7 @@ public class TrialManagerServiceTest {
         SportTestType sportTestType = new SportTestType("sportTestType");
         SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
         User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
 
         provinceDao.save(province1);
         sportTestTypeDao.save(sportTestType);
@@ -60,7 +61,7 @@ public class TrialManagerServiceTest {
 
         Inscription inscription = new Inscription(validCredCard, 1, newTest, newUser);
 
-        assertEquals(inscription, trialManagerService.createSportTestInscription(
-                newUser.getId(), newTest.getId(), validCredCard));
+        assertEquals(inscription.getUser(), trialManagerService.createSportTestInscription(
+                newUser.getId(), newTest.getId(), validCredCard).getUser());
     }
 }
