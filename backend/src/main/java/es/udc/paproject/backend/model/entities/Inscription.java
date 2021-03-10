@@ -24,6 +24,14 @@ public class Inscription {
         this.user = user;
     }
 
+    public Inscription(String creditCardNumber, int dorsal, boolean dorsalPicked, SportTest sportTest, User user) {
+        this.creditCardNumber = creditCardNumber;
+        this.dorsal = dorsal;
+        this.dorsalPicked = dorsalPicked;
+        this.sportTest = sportTest;
+        this.user = user;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() { return id; }

@@ -9,7 +9,7 @@ import es.udc.paproject.backend.model.entities.Inscription;
 public interface TrialManagerService {
     Inscription createSportTestInscription(Long userId, Long sportTestId, String creditCard) throws
             InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
-            InscriptionPeriodClosedException, InvalidDataException;
+            InscriptionPeriodClosedException;
 
     Inscription deliverInscriptionDorsal(Long inscriptionId, String creditCard) throws InstanceNotFoundException,
             PermissionException, InvalidDataException;
