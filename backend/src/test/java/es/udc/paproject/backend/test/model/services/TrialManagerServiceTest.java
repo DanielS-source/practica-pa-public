@@ -22,6 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 public class TrialManagerServiceTest {
 
+    private final Long NON_EXISTENT_ID = Long.valueOf(-1);
+
     @Autowired
     private UserDao userDao;
 
@@ -67,7 +69,8 @@ public class TrialManagerServiceTest {
     }
 
     @Test
-    public void testScoreTest () throws PermissionException, AlreadyScoredTestException, InstanceNotFoundException, TestNotStartedException {
+    public void testScoreTest () throws PermissionException, AlreadyScoredTestException,
+            InstanceNotFoundException, TestNotStartedException, TooLateToScoreException {
 
         Province province1 = new Province("province1");
         SportTestType sportTestType = new SportTestType("sportTestType");
@@ -90,7 +93,7 @@ public class TrialManagerServiceTest {
     }
 
     @Test
-    public void testInvalidScore () throws PermissionException, AlreadyScoredTestException, InstanceNotFoundException, TestNotStartedException {
+    public void testNotFoundScore () {
 
         Province province1 = new Province("province1");
         SportTestType sportTestType = new SportTestType("sportTestType");
@@ -105,7 +108,91 @@ public class TrialManagerServiceTest {
         userDao.save(user1);
         inscriptionDao.save(inscription);
 
-        assertThrows(InvalidDataException.class, () -> trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), -1));
+        assertThrows(InstanceNotFoundException.class, () -> trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), 4));
+
+    }
+
+    @Test
+    public void testEarlyScore () {
+
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest1, user1);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        sportTestDao.save(sportTest1);
+        userDao.save(user1);
+        inscriptionDao.save(inscription);
+
+        assertThrows(TestNotStartedException.class, () -> trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), 4));
+
+    }
+
+    @Test
+    public void testLateScore () {
+
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest1, user1);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        sportTestDao.save(sportTest1);
+        userDao.save(user1);
+        inscriptionDao.save(inscription);
+
+        assertThrows(TooLateToScoreException.class, () -> trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), 4));
+
+    }
+
+    @Test
+    public void testNonExistentUserScore () {
+
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest1, user1);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        sportTestDao.save(sportTest1);
+        userDao.save(user1);
+        inscriptionDao.save(inscription);
+
+        assertThrows(PermissionException.class, () -> trialManagerService.scoreSportTest(NON_EXISTENT_ID, inscription.getId(), 4));
+
+    }
+
+    @Test
+    public void testAlreadyScored ()
+            throws PermissionException, TooLateToScoreException, AlreadyScoredTestException,
+            InstanceNotFoundException, TestNotStartedException {
+
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest1, user1);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        sportTestDao.save(sportTest1);
+        userDao.save(user1);
+        inscriptionDao.save(inscription);
+
+        trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), 5);
+
+        assertThrows(AlreadyScoredTestException.class, () -> trialManagerService.scoreSportTest(user1.getId(), inscription.getId(), 5));
 
     }
 
