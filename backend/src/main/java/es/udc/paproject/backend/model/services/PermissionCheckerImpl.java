@@ -2,6 +2,9 @@ package es.udc.paproject.backend.model.services;
 
 import java.util.Optional;
 
+import es.udc.paproject.backend.model.entities.Inscription;
+import es.udc.paproject.backend.model.entities.InscriptionDao;
+import es.udc.paproject.backend.model.exceptions.PermissionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,9 @@ public class PermissionCheckerImpl implements PermissionChecker {
 	
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	private InscriptionDao inscriptionDao;
 	
 	@Override
 	public void checkUserExists(Long userId) throws InstanceNotFoundException {
@@ -37,6 +43,21 @@ public class PermissionCheckerImpl implements PermissionChecker {
 		
 		return user.get();
 		
+	}
+
+	@Override
+	public Inscription checkInscriptionExistsAndBelongsTo(Long inscriptionId, Long userId) throws PermissionException, InstanceNotFoundException {
+
+		Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
+
+		if (!inscription.isPresent())
+			throw new InstanceNotFoundException("project.entities.inscription", inscriptionId);
+
+		if(!inscription.get().getUser().getId().equals(userId))
+			throw new PermissionException();
+
+		return inscription.get();
+
 	}
 
 }

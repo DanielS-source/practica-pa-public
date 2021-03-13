@@ -66,21 +66,21 @@ public class TrialManagerServiceImpl implements TrialManagerService {
 
     public void scoreSportTest(Long userId, Long inscriptionId, int score)
             throws InstanceNotFoundException, PermissionException,
-            AlreadyScoredTestException, TestNotStartedException {
+            AlreadyScoredTestException, TestNotStartedException,
+            TooLateToScoreException {
 
-        Optional<Inscription> inscription = inscriptionDao.findById(inscriptionId);
 
-        if (inscription.isEmpty()) throw new InstanceNotFoundException("Inscription", Inscription.class);
+        Inscription inscription = permissionChecker.checkInscriptionExistsAndBelongsTo(inscriptionId, userId);
 
-        if (inscription.get().getScore() != -1) throw new AlreadyScoredTestException();
+        if (inscription.getScore() != -1) throw new AlreadyScoredTestException();
 
-        SportTest st = inscription.get().getSportTest();
+        SportTest st = inscription.getSportTest();
 
         if (LocalDateTime.now().isBefore(st.getTestStart())) throw new TestNotStartedException();
 
+        if (LocalDateTime.now().isAfter(st.getTestStart().plusDays(15))) throw new TooLateToScoreException();
 
-        inscription.get().setScore(score);
-
+        inscription.setScore(score);
         st.setTimesRated(st.getTimesRated() + 1);
         st.setAverageRating(st.getAverageRating() + (score - st.getAverageRating()) / st.getTimesRated());
 
