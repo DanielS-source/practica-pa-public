@@ -72,7 +72,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
 
         Inscription inscription = permissionChecker.checkInscriptionExistsAndBelongsTo(inscriptionId, userId);
 
-        if (inscription.getScore() != -1) throw new AlreadyScoredTestException();
+        if (inscription.getScore() != 0) throw new AlreadyScoredTestException();
 
         SportTest st = inscription.getSportTest();
 
