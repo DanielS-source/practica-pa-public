@@ -202,6 +202,7 @@ public class TrialManagerServiceTest {
         SportTest newTest = sportTestDao.save(sportTest);
         User user = createUser();
         Inscription inscription = new Inscription(validCredCard, 1, newTest, user);
+        inscriptionDao.save(inscription);
         newTest.setTestStart(LocalDateTime.now().plusHours(8));
         assertTrue(trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()) == inscription.getDorsal());
         assertThrows(DorsalAlreadyDeliveredException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()));

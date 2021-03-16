@@ -12,7 +12,7 @@ public interface TrialManagerService {
             InscriptionPeriodClosedException;
 
     int deliverInscriptionDorsal(Long inscriptionId, String creditCard) throws InstanceNotFoundException,
-            PermissionException, InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException, DorsalAlreadyDeliveredException;
+            InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException, DorsalAlreadyDeliveredException;
 
     List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException;
 
