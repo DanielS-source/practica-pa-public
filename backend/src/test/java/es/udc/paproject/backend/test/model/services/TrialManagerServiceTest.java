@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -169,6 +169,42 @@ public class TrialManagerServiceTest {
         trialManagerService.scoreSportTest(user.getId(), inscription.getId(), VALID_SCORE);
 
         assertThrows(AlreadyScoredTestException.class, () -> trialManagerService.scoreSportTest(user.getId(), inscription.getId(), VALID_SCORE));
+
+    }
+
+    @Test
+    public void testDorsalDeliveryLateAndChecks () {
+        SportTest sportTest = createSport(LocalDate.now().minusDays(1));
+        assertThrows(InstanceNotFoundException.class, () -> trialManagerService.deliverInscriptionDorsal(697L, "ljiagf"));
+        User user = createUser();
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        inscriptionDao.save(inscription);
+        assertThrows(InvalidDataException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),"akhdbgia"));
+        assertThrows(TestAlreadyStartedException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),inscription.getCreditCardNumber()));
+    }
+
+    @Test
+    public void tesDorsalDeliverySoon(){
+        SportTest sportTest = createSport(LocalDate.now().plusDays(3));
+        User user = createUser();
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest,user);
+        inscriptionDao.save(inscription);
+        assertThrows(TooSoonToDeliverException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()));
+    }
+
+    @Test
+    public void testDorsalDelivery() throws DorsalAlreadyDeliveredException, TooSoonToDeliverException, InvalidDataException, PermissionException, TestAlreadyStartedException, InstanceNotFoundException {
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest = new SportTest("TestSport", "Test test", LocalDateTime.now().plusDays(3), BigDecimal.valueOf(10.50), 50, "loc", province1, sportTestType, 0, 0, 0);
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        SportTest newTest = sportTestDao.save(sportTest);
+        User user = createUser();
+        Inscription inscription = new Inscription(validCredCard, 1, newTest, user);
+        newTest.setTestStart(LocalDateTime.now().plusHours(8));
+        assertTrue(trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()) == inscription.getDorsal());
+        assertThrows(DorsalAlreadyDeliveredException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()));
 
     }
 

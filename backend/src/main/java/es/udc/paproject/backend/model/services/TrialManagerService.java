@@ -11,8 +11,8 @@ public interface TrialManagerService {
             InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
             InscriptionPeriodClosedException;
 
-    Inscription deliverInscriptionDorsal(Long inscriptionId, String creditCard) throws InstanceNotFoundException,
-            PermissionException, InvalidDataException;
+    int deliverInscriptionDorsal(Long inscriptionId, String creditCard) throws InstanceNotFoundException,
+            PermissionException, InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException, DorsalAlreadyDeliveredException;
 
     List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException;
 
