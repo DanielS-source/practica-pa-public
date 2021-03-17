@@ -2,6 +2,7 @@ package es.udc.paproject.backend.test.model.services;
 
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
+import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -83,9 +85,76 @@ public class TrialManagerServiceTest {
         User newUser = userDao.save(user1);
 
         Inscription inscription = new Inscription(validCredCard, 1, newTest, newUser);
+        Inscription implInsc = trialManagerService.createSportTestInscription(
+                newUser.getId(), newTest.getId(), validCredCard);
 
-        assertEquals(inscription.getUser(), trialManagerService.createSportTestInscription(
-                newUser.getId(), newTest.getId(), validCredCard).getUser());
+        assertEquals(inscription.getUser(), implInsc.getUser());
+        assertEquals(inscription.getDorsal(), implInsc.getDorsal());
+        assertEquals(inscription.getCreditCardNumber(), implInsc.getCreditCardNumber());
+        assertEquals(inscription.getSportTest(), implInsc.getSportTest());
+    }
+
+    @Test
+    public void testCreateDuplicateInscription() throws SportTestFullException, DuplicateInstanceException,
+            InscriptionPeriodClosedException, InstanceNotFoundException {
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        SportTest newTest = sportTestDao.save(sportTest1);
+        User newUser = userDao.save(user1);
+
+        Inscription implInsc = trialManagerService.createSportTestInscription(
+                newUser.getId(), newTest.getId(), validCredCard);
+
+        assertThrows(DuplicateInstanceException.class, () ->
+                trialManagerService.createSportTestInscription(newUser.getId(), newTest.getId(), validCredCard));
+    }
+
+    @Test
+    public void testGetUserInscription() throws SportTestFullException, DuplicateInstanceException,
+            InscriptionPeriodClosedException, InstanceNotFoundException, PermissionException {
+        Province province1 = new Province("province1");
+        SportTestType sportTestType = new SportTestType("sportTestType");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));
+        SportTest sportTest2 = createSportTest("sportTest2", province1, sportTestType, LocalDate.now().plusDays(2));
+        User user1 = new User("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        user1.setRole(User.RoleType.USER);
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType);
+        SportTest newTest1 = sportTestDao.save(sportTest1);
+        SportTest newTest2 = sportTestDao.save(sportTest2);
+        User newUser = userDao.save(user1);
+
+        Inscription inscription1 = new Inscription(validCredCard, 1, newTest1, newUser);
+        trialManagerService.createSportTestInscription(
+                newUser.getId(), newTest1.getId(), validCredCard);
+
+
+        Inscription inscription2 = new Inscription(validCredCard, 1, newTest2, newUser);
+        trialManagerService.createSportTestInscription(
+                newUser.getId(), newTest2.getId(), validCredCard);
+
+        List<Inscription> foundInsc = trialManagerService.getUserInscriptions(newUser.getId());
+
+        Inscription implInsc = foundInsc.get(0);
+
+        assertEquals(inscription1.getUser(), implInsc.getUser());
+        assertEquals(inscription1.getDorsal(), implInsc.getDorsal());
+        assertEquals(inscription1.getCreditCardNumber(), implInsc.getCreditCardNumber());
+        assertEquals(inscription1.getSportTest(), implInsc.getSportTest());
+
+        implInsc = foundInsc.get(1);
+
+        assertEquals(inscription2.getUser(), implInsc.getUser());
+        assertEquals(inscription2.getDorsal(), implInsc.getDorsal());
+        assertEquals(inscription2.getCreditCardNumber(), implInsc.getCreditCardNumber());
+        assertEquals(inscription2.getSportTest(), implInsc.getSportTest());
     }
 
     @Test

@@ -7,6 +7,7 @@ import java.util.Optional;
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +31,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
             InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
             InscriptionPeriodClosedException {
 
-        Optional<Inscription> foundInscription = inscriptionDao.findById(userId);
+        Optional<Inscription> foundInscription = inscriptionDao.findByUserIdAndSportTestId(userId, sportTestId);
         if(foundInscription.isPresent()) throw new DuplicateInstanceException("Duplicated exception", foundInscription);
 
         Optional<User> user = userDao.findById(userId);
@@ -43,14 +44,15 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         if(foundSportTest.getParticipants() == foundSportTest.getMaxParticipants())
             throw new SportTestFullException();
 
-        //Registry expiration date case, currently not working
-        //Long timeDiff = Duration.between(foundSportTest.getTestStart(), LocalDateTime.now()).toMillis();
-        //int secs = (int)TimeUnit.MILLISECONDS.toMinutes(timeDiff);
-        //if(secs < 1440) throw new InscriptionPeriodClosedException();
+        if(LocalDateTime.now().plusDays(1).isAfter(foundSportTest.getTestStart()))
+            throw new InscriptionPeriodClosedException();
 
-        int newDorsal = foundSportTest.getParticipants() + 1;
+        foundSportTest.setParticipants(foundSportTest.getParticipants() + 1);
+        int newDorsal = foundSportTest.getParticipants();
         Inscription inscription = new Inscription(creditCard, newDorsal, foundSportTest, user.get());
         inscription = inscriptionDao.save(inscription);
+
+        sportTestDao.save(foundSportTest);
 
         return inscription;
     }
@@ -68,8 +70,13 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         } else throw new InstanceNotFoundException("project.entities.inscription", inscriptionId);
     }
 
-    public List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException {
-        return null;
+    public List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException {
+
+        Slice<Inscription> slice = inscriptionDao.findByUserId(userId);
+        if (slice == null) {
+            throw new InstanceNotFoundException("project.entities.inscription", userId);
+        }
+        return slice.getContent();
     }
 
     public void scoreSportTest(Long userId, Long inscriptionId, int score)

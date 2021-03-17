@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface InscriptionDao extends PagingAndSortingRepository<Inscription,Long> {
     Slice<Inscription> findByUserId(Long userId);
+
+    Optional<Inscription> findByUserIdAndSportTestId(Long userId, Long sportTestId);
 }
