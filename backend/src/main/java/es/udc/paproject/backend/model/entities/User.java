@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	
-	public enum RoleType {USER};
+	public enum RoleType {USER, EMPLOYEE};
 
 	private Long id;
 	private String userName;
