@@ -18,7 +18,7 @@ public class InfoSearchController {
     @Autowired
     private InfoSearchService infoSearchService;
 
-    @GetMapping
+    @GetMapping("/sportTests")
     Block<SportTest> findSportTests(
             @RequestParam(required = false) Long provinceId,
             @RequestParam(required = false) Long testTypeId,
