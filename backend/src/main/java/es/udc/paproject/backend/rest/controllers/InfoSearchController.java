@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 
 @RestController
-@RequestMapping("/catalog")
+@RequestMapping("/search")
 public class InfoSearchController {
 
     @Autowired
