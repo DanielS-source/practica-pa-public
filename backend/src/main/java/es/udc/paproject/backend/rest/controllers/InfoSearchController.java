@@ -26,6 +26,7 @@ public class InfoSearchController {
             @RequestParam(required = false) LocalDate endDate,
             @RequestParam(defaultValue = "0") int size,
             int page){
+        //toSportTestDto
         Block<SportTest> sportTestBlock = infoSearchService.findSportTests(provinceId, testTypeId, startDate, endDate, page, size);
 
         return sportTestBlock;
