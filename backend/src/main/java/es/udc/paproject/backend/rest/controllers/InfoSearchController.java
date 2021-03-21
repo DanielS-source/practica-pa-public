@@ -18,16 +18,22 @@ public class InfoSearchController {
     @Autowired
     private InfoSearchService infoSearchService;
 
+    //Por cada prueba deportiva que aparece como
+    //resultado de la búsqueda se mostrará su nombre, el tipo, la provincia, la fecha y
+    //hora de celebración y la puntuación media (o una indicación de que todavía no
+            //ha recibido ninguna puntuación).
+
     @GetMapping("/sportTests")
     Block<SportTest> findSportTests(
             @RequestParam(required = false) Long provinceId,
             @RequestParam(required = false) Long testTypeId,
             @RequestParam(required = false) LocalDate startDate,
             @RequestParam(required = false) LocalDate endDate,
-            @RequestParam(defaultValue = "0") int size,
-            int page){
+            @RequestParam(defaultValue = "0") int page){
         //toSportTestDto
-        Block<SportTest> sportTestBlock = infoSearchService.findSportTests(provinceId, testTypeId, startDate, endDate, page, size);
+        Block<SportTest> sportTestBlock = infoSearchService.findSportTests(provinceId, testTypeId, startDate, endDate, page, 10);
+
+
 
         return sportTestBlock;
     }

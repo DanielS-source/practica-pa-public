@@ -20,6 +20,8 @@ public class SportTestDto {
     private int timesRated;
     private Long averageRating;
 
+    public SportTestDto() {}
+
     public SportTestDto(Long id, String name, String description, Long testStart,
                         BigDecimal price, int maxParticipants, String location, Long provinceId,
                         Long sportTestTypeId, int participants, int timesRated, Long averageRating) {

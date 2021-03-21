@@ -71,7 +71,6 @@ public class TrialManagerController {
 
         trialManagerService.scoreSportTest(userId, inscriptionId, score);
 
-        return;
     }
 
 }
