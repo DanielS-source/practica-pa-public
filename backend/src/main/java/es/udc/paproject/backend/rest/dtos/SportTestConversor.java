@@ -5,6 +5,8 @@ import es.udc.paproject.backend.model.entities.SportTest;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SportTestConversor {
 
@@ -22,6 +24,10 @@ public class SportTestConversor {
                 sportTest.getTimesRated()
         );
 
+    }
+
+    public final static List<SportTestSummaryDto> toSportTestSummaryDtos(List<SportTest> sportTests) {
+        return sportTests.stream().map(p -> toSportTestSummaryDto(p)).collect(Collectors.toList());
     }
 
     private final static long toMillis(LocalDateTime date) {
