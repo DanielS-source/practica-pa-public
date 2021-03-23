@@ -1,9 +1,8 @@
-package es.udc.paproject.backend.model.entities;
+package es.udc.paproject.backend.rest.dtos;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Entity
-public class Inscription {
+public class InscriptionDto {
 
     private Long id;
     private String creditCardNumber;
@@ -14,17 +13,9 @@ public class Inscription {
     private int score;
     private long version;
 
-    public Inscription() {}
-
-    public Inscription(String creditCardNumber, int dorsal, Long sportTestId, Long userId) {
-        this.creditCardNumber = creditCardNumber;
-        this.dorsal = dorsal;
-        this.dorsalPicked = false;
-        this.sportTestId = sportTestId;
-        this.userId = userId;
-    }
-
-    public Inscription(String creditCardNumber, int dorsal, boolean dorsalPicked, Long sportTestId, Long userId) {
+    public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
+                          Long sportTestId, Long userId) {
+        this.id = id;
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
         this.dorsalPicked = dorsalPicked;
@@ -32,42 +23,37 @@ public class Inscription {
         this.userId = userId;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
 
+    @NotNull
     public String getCreditCardNumber() { return creditCardNumber; }
 
     public void setCreditCardNumber(String creditCardNumber) { this.creditCardNumber = creditCardNumber; }
 
+    @NotNull
     public int getDorsal() { return dorsal; }
 
     public void setDorsal(int dorsal) { this.dorsal = dorsal; }
 
-    @OneToOne(optional=false , fetch= FetchType.LAZY)
-    @JoinColumn(name="sportTestId")
+    @NotNull
     public Long getSportTestId() { return sportTestId; }
 
     public void setSportTestId(Long sportTestId) { this.sportTestId = sportTestId; }
 
-    @OneToOne(optional=false , fetch= FetchType.LAZY)
-    @JoinColumn(name="userId")
+    @NotNull
     public Long getUserId() { return userId; }
 
-    public void setUser(Long userId) { this.userId = userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 
+    @NotNull
     public boolean isDorsalPicked() { return dorsalPicked;}
 
     public void setDorsalPicked(boolean dorsalPicked) { this.dorsalPicked = dorsalPicked;}
 
+    @NotNull
     public int getScore() { return score; }
 
     public void setScore(int score) { this.score = score; }
-
-    @Version
-    public long getVersion() { return version; }
-
-    public void setVersion(long version) { this.version = version; }
 }

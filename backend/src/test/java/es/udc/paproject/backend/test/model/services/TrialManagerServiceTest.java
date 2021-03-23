@@ -84,14 +84,14 @@ public class TrialManagerServiceTest {
         SportTest newTest = sportTestDao.save(sportTest1);
         User newUser = userDao.save(user1);
 
-        Inscription inscription = new Inscription(validCredCard, 1, newTest, newUser);
+        Inscription inscription = new Inscription(validCredCard, 1, newTest.getId(), newUser.getId());
         Inscription implInsc = trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest.getId(), validCredCard);
 
-        assertEquals(inscription.getUser(), implInsc.getUser());
+        assertEquals(inscription.getUserId(), implInsc.getUserId());
         assertEquals(inscription.getDorsal(), implInsc.getDorsal());
         assertEquals(inscription.getCreditCardNumber(), implInsc.getCreditCardNumber());
-        assertEquals(inscription.getSportTest(), implInsc.getSportTest());
+        assertEquals(inscription.getSportTestId(), implInsc.getSportTestId());
     }
 
     @Test
@@ -131,12 +131,12 @@ public class TrialManagerServiceTest {
         SportTest newTest2 = sportTestDao.save(sportTest2);
         User newUser = userDao.save(user1);
 
-        Inscription inscription1 = new Inscription(validCredCard, 1, newTest1, newUser);
+        Inscription inscription1 = new Inscription(validCredCard, 1, newTest1.getId(), newUser.getId());
         trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest1.getId(), validCredCard);
 
 
-        Inscription inscription2 = new Inscription(validCredCard, 1, newTest2, newUser);
+        Inscription inscription2 = new Inscription(validCredCard, 1, newTest2.getId(), newUser.getId());
         trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest2.getId(), validCredCard);
 
@@ -144,17 +144,17 @@ public class TrialManagerServiceTest {
 
         Inscription implInsc = foundInsc.get(0);
 
-        assertEquals(inscription1.getUser(), implInsc.getUser());
+        assertEquals(inscription1.getUserId(), implInsc.getUserId());
         assertEquals(inscription1.getDorsal(), implInsc.getDorsal());
         assertEquals(inscription1.getCreditCardNumber(), implInsc.getCreditCardNumber());
-        assertEquals(inscription1.getSportTest(), implInsc.getSportTest());
+        assertEquals(inscription1.getSportTestId(), implInsc.getSportTestId());
 
         implInsc = foundInsc.get(1);
 
-        assertEquals(inscription2.getUser(), implInsc.getUser());
+        assertEquals(inscription2.getUserId(), implInsc.getUserId());
         assertEquals(inscription2.getDorsal(), implInsc.getDorsal());
         assertEquals(inscription2.getCreditCardNumber(), implInsc.getCreditCardNumber());
-        assertEquals(inscription2.getSportTest(), implInsc.getSportTest());
+        assertEquals(inscription2.getSportTestId(), implInsc.getSportTestId());
     }
 
     @Test
@@ -163,7 +163,7 @@ public class TrialManagerServiceTest {
 
         SportTest sportTest = createSport(LocalDate.now().minusDays(1));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
 
         inscriptionDao.save(inscription);
 
@@ -177,7 +177,7 @@ public class TrialManagerServiceTest {
 
         SportTest sportTest = createSport(LocalDate.now().minusDays(1));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
 
         inscriptionDao.save(inscription);
 
@@ -190,7 +190,7 @@ public class TrialManagerServiceTest {
 
         SportTest sportTest = createSport(LocalDate.now().plusDays(1));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
 
         inscriptionDao.save(inscription);
 
@@ -203,7 +203,7 @@ public class TrialManagerServiceTest {
 
         SportTest sportTest = createSport(LocalDate.now().minusDays(16));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
 
         inscriptionDao.save(inscription);
 
@@ -216,7 +216,7 @@ public class TrialManagerServiceTest {
 
         SportTest sportTest = createSport(LocalDate.now().minusDays(1));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
 
         inscriptionDao.save(inscription);
 
@@ -231,7 +231,7 @@ public class TrialManagerServiceTest {
 
         SportTest sportTest = createSport(LocalDate.now().minusDays(1));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
 
         inscriptionDao.save(inscription);
 
@@ -246,7 +246,7 @@ public class TrialManagerServiceTest {
         SportTest sportTest = createSport(LocalDate.now().minusDays(1));
         assertThrows(InstanceNotFoundException.class, () -> trialManagerService.deliverInscriptionDorsal(697L, "ljiagf"));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(), user.getId());
         inscriptionDao.save(inscription);
         assertThrows(InvalidDataException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),"akhdbgia"));
         assertThrows(TestAlreadyStartedException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),inscription.getCreditCardNumber()));
@@ -256,7 +256,7 @@ public class TrialManagerServiceTest {
     public void tesDorsalDeliverySoon(){
         SportTest sportTest = createSport(LocalDate.now().plusDays(3));
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest,user);
+        Inscription inscription = new Inscription(validCredCard, 1, sportTest.getId(),user.getId());
         inscriptionDao.save(inscription);
         assertThrows(TooSoonToDeliverException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()));
     }
@@ -270,7 +270,7 @@ public class TrialManagerServiceTest {
         sportTestTypeDao.save(sportTestType);
         SportTest newTest = sportTestDao.save(sportTest);
         User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, newTest, user);
+        Inscription inscription = new Inscription(validCredCard, 1, newTest.getId(), user.getId());
         inscriptionDao.save(inscription);
         newTest.setTestStart(LocalDateTime.now().plusHours(8));
         assertTrue(trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()) == inscription.getDorsal());
