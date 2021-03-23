@@ -53,7 +53,7 @@ public class PermissionCheckerImpl implements PermissionChecker {
 		if (!inscription.isPresent())
 			throw new InstanceNotFoundException("project.entities.inscription", inscriptionId);
 
-		if(!inscription.get().getUser().equals(userId))
+		if(!inscription.get().getUser().getId().equals(userId))
 			throw new PermissionException();
 
 		return inscription.get();
