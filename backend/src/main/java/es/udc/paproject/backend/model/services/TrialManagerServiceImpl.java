@@ -16,9 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class TrialManagerServiceImpl implements TrialManagerService {
 
     @Autowired
-    private InfoSearchService infoSearchService;
-
-    @Autowired
     private PermissionChecker permissionChecker;
 
     @Autowired
@@ -52,7 +49,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
 
         foundSportTest.setParticipants(foundSportTest.getParticipants() + 1);
         int newDorsal = foundSportTest.getParticipants();
-        Inscription inscription = new Inscription(creditCard, newDorsal, foundSportTest.getId(), user.get().getId());
+        Inscription inscription = new Inscription(creditCard, newDorsal, foundSportTest, user.get());
         inscription = inscriptionDao.save(inscription);
 
         sportTestDao.save(foundSportTest);
@@ -66,9 +63,9 @@ public class TrialManagerServiceImpl implements TrialManagerService {
             Inscription inscription = inscriptionDao.findById(inscriptionId).get();
             if (inscription.isDorsalPicked()) throw new DorsalAlreadyDeliveredException();//posible devolver el dorsal con la excepcion igualmente(?)
             if (!inscription.getCreditCardNumber().equals(creditCard)) throw new InvalidDataException();
-            if (infoSearchService.findSportTestById(inscription.getSportTestId()).getTestStart().plusHours(-12).isAfter(LocalDateTime.now()))
+            if (inscription.getSportTest().getTestStart().plusHours(-12).isAfter(LocalDateTime.now()))
                 throw new TooSoonToDeliverException();
-            if (infoSearchService.findSportTestById(inscription.getSportTestId()).getTestStart().isBefore(LocalDateTime.now()))
+            if (inscription.getSportTest().getTestStart().isBefore(LocalDateTime.now()))
                 throw new TestAlreadyStartedException();
             inscription.setDorsalPicked(true);
             return inscription.getDorsal();
@@ -94,7 +91,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
 
         if (inscription.getScore() != 0) throw new AlreadyScoredTestException();
 
-        SportTest st = infoSearchService.findSportTestById(inscription.getSportTestId());
+        SportTest st = inscription.getSportTest();
 
         if (LocalDateTime.now().isBefore(st.getTestStart())) throw new TestNotStartedException();
 

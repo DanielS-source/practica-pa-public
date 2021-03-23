@@ -8,13 +8,16 @@ public class InscriptionConversor {
 
     public static InscriptionDto toInscriptionDto(Inscription inscription) {
         return new InscriptionDto(inscription.getId(), inscription.getCreditCardNumber(), inscription.getDorsal(),
-                inscription.isDorsalPicked(), inscription.getSportTestId(), inscription.getUserId());
+                inscription.isDorsalPicked(), inscription.getSportTest().getId(), inscription.getUser().getId());
     }
 
+    /*
     public static Inscription toInscription(InscriptionDto inscriptionDto) {
 
         return new Inscription(inscriptionDto.getCreditCardNumber(), inscriptionDto.getDorsal(),
-                inscriptionDto.isDorsalPicked(), inscriptionDto.getSportTestId(),
-                inscriptionDto.getUserId());
+                inscriptionDto.isDorsalPicked(), inscriptionDto.getSportTest(),
+                inscriptionDto.getUser());
     }
+
+     */
 }

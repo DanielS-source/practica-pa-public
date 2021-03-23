@@ -9,27 +9,27 @@ public class Inscription {
     private String creditCardNumber;
     private int dorsal;
     private boolean dorsalPicked;
-    private Long sportTestId;
-    private Long userId;
+    private SportTest sportTest;
+    private User user;
     private int score;
     private long version;
 
     public Inscription() {}
 
-    public Inscription(String creditCardNumber, int dorsal, Long sportTestId, Long userId) {
+    public Inscription(String creditCardNumber, int dorsal, SportTest sportTest, User user) {
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
         this.dorsalPicked = false;
-        this.sportTestId = sportTestId;
-        this.userId = userId;
+        this.sportTest = sportTest;
+        this.user = user;
     }
 
-    public Inscription(String creditCardNumber, int dorsal, boolean dorsalPicked, Long sportTestId, Long userId) {
+    public Inscription(String creditCardNumber, int dorsal, boolean dorsalPicked, SportTest sportTest, User user) {
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
         this.dorsalPicked = dorsalPicked;
-        this.sportTestId = sportTestId;
-        this.userId = userId;
+        this.sportTest = sportTest;
+        this.user = user;
     }
 
     @Id
@@ -48,15 +48,15 @@ public class Inscription {
 
     @OneToOne(optional=false , fetch= FetchType.LAZY)
     @JoinColumn(name="sportTestId")
-    public Long getSportTestId() { return sportTestId; }
+    public SportTest getSportTest() { return sportTest; }
 
-    public void setSportTestId(Long sportTestId) { this.sportTestId = sportTestId; }
+    public void setSportTest(SportTest sportTest) { this.sportTest = sportTest; }
 
     @OneToOne(optional=false , fetch= FetchType.LAZY)
     @JoinColumn(name="userId")
-    public Long getUserId() { return userId; }
+    public User getUser() { return user; }
 
-    public void setUser(Long userId) { this.userId = userId; }
+    public void setUser(User user) { this.user = user; }
 
     public boolean isDorsalPicked() { return dorsalPicked;}
 
