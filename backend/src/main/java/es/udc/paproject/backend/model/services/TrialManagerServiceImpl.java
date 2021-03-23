@@ -63,14 +63,16 @@ public class TrialManagerServiceImpl implements TrialManagerService {
             Inscription inscription = inscriptionDao.findById(inscriptionId).get();
             if (inscription.isDorsalPicked()) throw new DorsalAlreadyDeliveredException();//posible devolver el dorsal con la excepcion igualmente(?)
             if (!inscription.getCreditCardNumber().equals(creditCard)) throw new InvalidDataException();
-            if (inscription.getSportTest().getTestStart().plusHours(-12).isAfter(LocalDateTime.now())) throw new TooSoonToDeliverException();
-            if (inscription.getSportTest().getTestStart().isBefore(LocalDateTime.now())) throw new TestAlreadyStartedException();
+            if (inscription.getSportTest().getTestStart().plusHours(-12).isAfter(LocalDateTime.now()))
+                throw new TooSoonToDeliverException();
+            if (inscription.getSportTest().getTestStart().isBefore(LocalDateTime.now()))
+                throw new TestAlreadyStartedException();
             inscription.setDorsalPicked(true);
             return inscription.getDorsal();
         } else throw new InstanceNotFoundException("project.entities.inscription", inscriptionId);
     }
 
-    public List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException {
+    public List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException {
 
         Slice<Inscription> slice = inscriptionDao.findByUserId(userId);
         if (slice == null) {
