@@ -30,6 +30,21 @@ public class SportTestConversor {
         return sportTests.stream().map(p -> toSportTestSummaryDto(p)).collect(Collectors.toList());
     }
 
+    public final static SportTestDto toSportTestDto(SportTest sportTest){
+        return new SportTestDto(
+                sportTest.getId(),
+                sportTest.getName(),sportTest.getDescription(),
+                toMillis(sportTest.getTestStart()),
+                sportTest.getPrice(),
+                sportTest.getMaxParticipants(),
+                sportTest.getLocation(),
+                sportTest.getProvince().getId(),
+                sportTest.getSportTestType().getId(),
+                sportTest.getParticipants(),
+                sportTest.getTimesRated(),
+                sportTest.getAverageRating());
+    }
+
     private final static long toMillis(LocalDateTime date) {
         return date.truncatedTo(ChronoUnit.MINUTES).atZone(ZoneOffset.systemDefault()).toInstant().toEpochMilli();
     }
