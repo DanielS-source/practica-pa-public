@@ -66,7 +66,7 @@ public class TrialManagerController {
 
     @PostMapping("/inscriptions/{inscriptionId}/score")
     private void scoreSportTest(
-            @RequestBody Long userId,
+            @RequestAttribute Long userId,
             @PathVariable Long inscriptionId,
             @RequestBody int score)
             throws PermissionException, TooLateToScoreException,
@@ -79,7 +79,7 @@ public class TrialManagerController {
 
     @PostMapping("/inscriptions/inscribe")
     private InscriptionDto createSportTestInscription(
-            @RequestBody Long userId,
+            @RequestAttribute Long userId,
             @RequestBody Long sportTestId,
             @RequestBody String creditCard)
             throws InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
@@ -92,7 +92,7 @@ public class TrialManagerController {
 
     @PostMapping("/inscriptions/retrieve")
     private List<InscriptionDto> retrieveInscriptionList(
-            @RequestBody Long userId)
+            @RequestAttribute Long userId)
             throws InstanceNotFoundException, PermissionException {
 
         List<Inscription> foundInsc = trialManagerService.getUserInscriptions(userId);
