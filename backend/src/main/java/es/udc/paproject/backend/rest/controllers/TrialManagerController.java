@@ -80,7 +80,7 @@ public class TrialManagerController {
     @PostMapping("/inscriptions/inscribe")
     private InscriptionDto createSportTestInscription(
             @RequestBody Long userId,
-            @PathVariable Long sportTestId,
+            @RequestBody Long sportTestId,
             @RequestBody String creditCard)
             throws InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
             InscriptionPeriodClosedException {
