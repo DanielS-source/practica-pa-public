@@ -1,6 +1,10 @@
 package es.udc.paproject.backend.rest.dtos;
 
 import es.udc.paproject.backend.model.entities.Inscription;
+import es.udc.paproject.backend.model.entities.SportTest;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InscriptionConversor {
 
@@ -11,13 +15,7 @@ public class InscriptionConversor {
                 inscription.isDorsalPicked(), inscription.getSportTest().getId(), inscription.getUser().getId());
     }
 
-    /*
-    public static Inscription toInscription(InscriptionDto inscriptionDto) {
-
-        return new Inscription(inscriptionDto.getCreditCardNumber(), inscriptionDto.getDorsal(),
-                inscriptionDto.isDorsalPicked(), inscriptionDto.getSportTest(),
-                inscriptionDto.getUser());
+    public final static List<InscriptionDto> toInscriptionDtos(List<Inscription> inscriptions) {
+        return inscriptions.stream().map(p -> toInscriptionDto(p)).collect(Collectors.toList());
     }
-
-     */
 }

@@ -4,13 +4,14 @@ import es.udc.paproject.backend.model.entities.Inscription;
 import es.udc.paproject.backend.model.exceptions.*;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
+import es.udc.paproject.backend.rest.dtos.InscriptionConversor;
+import es.udc.paproject.backend.rest.dtos.InscriptionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 import java.util.Locale;
 
 @RestController
@@ -77,7 +78,7 @@ public class TrialManagerController {
     }
 
     @PostMapping("/inscriptions/inscribe")
-    private void createSportTestInscription(
+    private InscriptionDto createSportTestInscription(
             @RequestBody Long userId,
             @PathVariable Long sportTestId,
             @RequestBody String creditCard)
@@ -86,19 +87,18 @@ public class TrialManagerController {
 
         Inscription newInsc = trialManagerService.createSportTestInscription(userId, sportTestId, creditCard);
 
-        //toInscriptionDto
-        return;//inscriptionConversor.toInscriptionDto(newInsc);
+        return InscriptionConversor.toInscriptionDto(newInsc);
     }
 
     @PostMapping("/inscriptions/retrieve")
-    private List<Inscription> retrieveInscriptionList(
+    private List<InscriptionDto> retrieveInscriptionList(
             @RequestBody Long userId)
             throws InstanceNotFoundException, PermissionException {
 
         List<Inscription> foundInsc = trialManagerService.getUserInscriptions(userId);
 
         //toBlock<InscriptionDto>
-        return foundInsc;
+        return InscriptionConversor.toInscriptionDtos(foundInsc);
     }
 
     @PostMapping("/dorsal/{sportTestId}")
