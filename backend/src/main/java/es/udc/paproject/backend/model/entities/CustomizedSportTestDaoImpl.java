@@ -19,8 +19,10 @@ public class CustomizedSportTestDaoImpl implements CustomizedSportTestDao{
     public Slice<SportTest> find(Long provinceId, Long sportTestTypeId, LocalDate startDate, LocalDate endDate, int page, int size) {
 
         String queryString = "SELECT st FROM SportTest st";
+        boolean hasParameters = false;
 
         if (provinceId != null || sportTestTypeId != null || startDate != null || endDate != null) {
+            hasParameters = true;
             queryString += " WHERE ";
         }
 
@@ -40,7 +42,7 @@ public class CustomizedSportTestDaoImpl implements CustomizedSportTestDao{
             queryString += "st.testStart < :endDate AND ";
         }
 
-        queryString = queryString.substring(0, queryString.lastIndexOf(" AND "));
+        if (hasParameters) queryString = queryString.substring(0, queryString.lastIndexOf(" AND "));
 
         queryString += " ORDER BY st.testStart DESC";
 
