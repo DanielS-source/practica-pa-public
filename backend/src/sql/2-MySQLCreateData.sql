@@ -22,13 +22,13 @@ INSERT INTO SportTest (name, description, testStart, price, maxParticipants, loc
     VALUES ('Prueba 4', 'DescripcionP4', '2020-03-01 16:00:00', 6.99, 2,   'Micasa', 2, 2, 0, 0, 0, 1);
 
 INSERT INTO User (userName, password, firstName, lastName, email, role)
-    VALUES ('competitor1', 'ficrunner', 'firstName', 'lastName', 'email@email.email', 1);
+    VALUES ('competitor1', '$2a$10$uicNGMO41KcyofyMPaCCwuQ89o1WM/wn5f9TGgCuFjZrfDLnECPyi', 'firstName', 'lastName', 'email@email.email', 1);
 
 INSERT INTO User (userName, password, firstName, lastName, email, role)
-    VALUES ('competitor2', 'ficrunner', 'firstName', 'lastName', 'email@email.email', 1);
+    VALUES ('competitor2', '$2a$10$uicNGMO41KcyofyMPaCCwuQ89o1WM/wn5f9TGgCuFjZrfDLnECPyi', 'firstName', 'lastName', 'email@email.email', 1);
 
 INSERT INTO User (userName, password, firstName, lastName, email, role)
-    VALUES ('competitor3', 'ficrunner', 'firstName', 'lastName', 'email@email.email', 1);
+    VALUES ('competitor3', '$2a$10$uicNGMO41KcyofyMPaCCwuQ89o1WM/wn5f9TGgCuFjZrfDLnECPyi', 'firstName', 'lastName', 'email@email.email', 1);
 
 INSERT INTO User (userName, password, firstName, lastName, email, role)
-    VALUES ('employee',    'ficrunner', 'firstName', 'lastName', 'email@email.email', 2);
+    VALUES ('employee',    '$2a$10$uicNGMO41KcyofyMPaCCwuQ89o1WM/wn5f9TGgCuFjZrfDLnECPyi', 'firstName', 'lastName', 'email@email.email', 2);
