@@ -79,8 +79,8 @@ public class TrialManagerController {
 
     @PostMapping("/inscriptions/inscribe")
     private InscriptionDto createSportTestInscription(
-            @RequestBody Long userId,
-            @PathVariable Long sportTestId,
+            @RequestAttribute Long userId,
+            @RequestBody Long sportTestId,
             @RequestBody String creditCard)
             throws InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
             InscriptionPeriodClosedException {
@@ -92,7 +92,7 @@ public class TrialManagerController {
 
     @PostMapping("/inscriptions/retrieve")
     private List<InscriptionDto> retrieveInscriptionList(
-            @RequestBody Long userId)
+            @RequestAttribute Long userId)
             throws InstanceNotFoundException, PermissionException {
 
         List<Inscription> foundInsc = trialManagerService.getUserInscriptions(userId);
