@@ -4,6 +4,7 @@ import es.udc.paproject.backend.model.entities.Inscription;
 import es.udc.paproject.backend.model.exceptions.*;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
+import es.udc.paproject.backend.rest.dtos.GetDorsalParamsDto;
 import es.udc.paproject.backend.rest.dtos.InscriptionConversor;
 import es.udc.paproject.backend.rest.dtos.InscriptionDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,12 +104,11 @@ public class TrialManagerController {
 
     @PostMapping("/dorsal/{sportTestId}")
     private int deliverInscriptionDorsal(
-            @RequestBody Long inscriptionId,
-            @RequestBody String creditCard,
+            @RequestBody GetDorsalParamsDto params,
             @PathVariable Long sportTestId
     )throws InstanceNotFoundException, InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException,
             DorsalAlreadyDeliveredException
     {
-        return trialManagerService.deliverInscriptionDorsal(inscriptionId,creditCard,sportTestId);
+        return trialManagerService.deliverInscriptionDorsal(params.getInscriptionId(), params.getCreditCard(), sportTestId);
     }
 }
