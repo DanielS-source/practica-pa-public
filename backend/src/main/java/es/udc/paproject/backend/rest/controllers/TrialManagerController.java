@@ -66,7 +66,7 @@ public class TrialManagerController {
 
     @PostMapping("/inscriptions/{inscriptionId}/score")
     private void scoreSportTest(
-            @RequestBody Long userId,
+            @RequestAttribute Long userId,
             @PathVariable Long inscriptionId,
             @RequestBody int score)
             throws PermissionException, TooLateToScoreException,
