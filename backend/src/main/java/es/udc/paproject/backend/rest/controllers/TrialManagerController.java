@@ -7,9 +7,11 @@ import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.dtos.GetDorsalParamsDto;
 import es.udc.paproject.backend.rest.dtos.InscriptionConversor;
 import es.udc.paproject.backend.rest.dtos.InscriptionDto;
+import es.udc.paproject.backend.rest.dtos.InscriptionParamsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -81,12 +83,12 @@ public class TrialManagerController {
     @PostMapping("/inscriptions/inscribe")
     private InscriptionDto createSportTestInscription(
             @RequestAttribute Long userId,
-            @RequestBody Long sportTestId,
-            @RequestBody String creditCard)
+            @Validated @RequestBody InscriptionParamsDto params)
             throws InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
             InscriptionPeriodClosedException {
 
-        Inscription newInsc = trialManagerService.createSportTestInscription(userId, sportTestId, creditCard);
+        Inscription newInsc = trialManagerService.createSportTestInscription(userId, params.getSportTestId(),
+                params.getCreditCard());
 
         return InscriptionConversor.toInscriptionDto(newInsc);
     }
