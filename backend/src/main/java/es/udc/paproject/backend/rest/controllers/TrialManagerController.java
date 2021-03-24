@@ -4,10 +4,7 @@ import es.udc.paproject.backend.model.entities.Inscription;
 import es.udc.paproject.backend.model.exceptions.*;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
-import es.udc.paproject.backend.rest.dtos.GetDorsalParamsDto;
-import es.udc.paproject.backend.rest.dtos.InscriptionConversor;
-import es.udc.paproject.backend.rest.dtos.InscriptionDto;
-import es.udc.paproject.backend.rest.dtos.InscriptionParamsDto;
+import es.udc.paproject.backend.rest.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -71,12 +68,12 @@ public class TrialManagerController {
     private void scoreSportTest(
             @RequestAttribute Long userId,
             @PathVariable Long inscriptionId,
-            @RequestBody int score)
+            @RequestBody ScoreParamsDto params)
             throws PermissionException, TooLateToScoreException,
             AlreadyScoredTestException, InstanceNotFoundException,
             TestNotStartedException {
 
-        trialManagerService.scoreSportTest(userId, inscriptionId, score);
+        trialManagerService.scoreSportTest(userId, inscriptionId, params.getScore());
 
     }
 
