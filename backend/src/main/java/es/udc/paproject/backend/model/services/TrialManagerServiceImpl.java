@@ -57,10 +57,11 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         return inscription;
     }
 
-    public int deliverInscriptionDorsal(Long inscriptionId, String creditCard) throws InstanceNotFoundException,
+    public int deliverInscriptionDorsal(Long inscriptionId, String creditCard, Long sportTestId) throws InstanceNotFoundException,
             InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException, DorsalAlreadyDeliveredException {
         if (inscriptionDao.findById(inscriptionId).isPresent()) {
             Inscription inscription = inscriptionDao.findById(inscriptionId).get();
+            if (inscription.getSportTest().getId() != sportTestId) {throw new InvalidDataException();}
             if (inscription.isDorsalPicked()) throw new DorsalAlreadyDeliveredException();//posible devolver el dorsal con la excepcion igualmente(?)
             if (!inscription.getCreditCardNumber().equals(creditCard)) throw new InvalidDataException();
             if (inscription.getSportTest().getTestStart().plusHours(-12).isAfter(LocalDateTime.now()))

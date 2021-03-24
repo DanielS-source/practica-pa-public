@@ -100,4 +100,15 @@ public class TrialManagerController {
         //toBlock<InscriptionDto>
         return foundInsc;
     }
+
+    @PostMapping("/dorsal/{sportTestId}")
+    private int deliverInscriptionDorsal(
+            @RequestBody Long inscriptionId,
+            @RequestBody String creditCard,
+            @PathVariable Long sportTestId
+    )throws InstanceNotFoundException, InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException,
+            DorsalAlreadyDeliveredException
+    {
+        return trialManagerService.deliverInscriptionDorsal(inscriptionId,creditCard,sportTestId);
+    }
 }

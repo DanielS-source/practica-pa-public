@@ -241,12 +241,12 @@ public class TrialManagerServiceTest {
     @Test
     public void testDorsalDeliveryLateAndChecks () {
         SportTest sportTest = createSport(LocalDate.now().minusDays(1));
-        assertThrows(InstanceNotFoundException.class, () -> trialManagerService.deliverInscriptionDorsal(697L, "ljiagf"));
+        assertThrows(InstanceNotFoundException.class, () -> trialManagerService.deliverInscriptionDorsal(697L, "ljiagf", 364L));
         User user = createUser();
         Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
         inscriptionDao.save(inscription);
-        assertThrows(InvalidDataException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),"akhdbgia"));
-        assertThrows(TestAlreadyStartedException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),inscription.getCreditCardNumber()));
+        assertThrows(InvalidDataException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),"akhdbgia", inscription.getSportTest().getId()));
+        assertThrows(TestAlreadyStartedException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(),inscription.getCreditCardNumber(), inscription.getSportTest().getId()));
     }
 
     @Test
@@ -255,7 +255,7 @@ public class TrialManagerServiceTest {
         User user = createUser();
         Inscription inscription = new Inscription(validCredCard, 1, sportTest,user);
         inscriptionDao.save(inscription);
-        assertThrows(TooSoonToDeliverException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()));
+        assertThrows(TooSoonToDeliverException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber(), inscription.getSportTest().getId()));
     }
 
     @Test
@@ -270,9 +270,9 @@ public class TrialManagerServiceTest {
         Inscription inscription = new Inscription(validCredCard, 1, newTest, user);
         inscriptionDao.save(inscription);
         newTest.setTestStart(LocalDateTime.now().plusHours(8));
-        assertTrue(trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()) == inscription.getDorsal());
-        assertThrows(DorsalAlreadyDeliveredException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber()));
-
+        assertTrue(trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber(), inscription.getSportTest().getId()) == inscription.getDorsal());
+        assertThrows(DorsalAlreadyDeliveredException.class, () -> trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber(), inscription.getSportTest().getId()));
+        assertThrows(InvalidDataException.class, ()->trialManagerService.deliverInscriptionDorsal(inscription.getId(), inscription.getCreditCardNumber(), 4793437L));
     }
 
 }
