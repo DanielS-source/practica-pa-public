@@ -44,7 +44,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         if(foundSportTest.getParticipants() == foundSportTest.getMaxParticipants())
             throw new SportTestFullException();
 
-        if(LocalDateTime.now().plusDays(1).isAfter(foundSportTest.getTestStart()))
+        if(foundSportTest.getTestStart().isBefore(LocalDateTime.now().plusHours(24)))
             throw new InscriptionPeriodClosedException();
 
         foundSportTest.setParticipants(foundSportTest.getParticipants() + 1);
