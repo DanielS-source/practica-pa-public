@@ -4,13 +4,13 @@ import javax.validation.constraints.NotNull;
 
 public class GetDorsalParamsDto {
 
-    private Long inscriptionId;
+    private Long sportTestId;
     private String creditCard;
 
     @NotNull
-    public Long getInscriptionId(){return inscriptionId;}
+    public Long getsportTestId(){return sportTestId;}
 
-    public void setInscriptionId(Long id){this.inscriptionId = id;}
+    public void setsportTestId(Long id){this.sportTestId = id;}
 
     @NotNull
     public String getCreditCard(){return creditCard;}
