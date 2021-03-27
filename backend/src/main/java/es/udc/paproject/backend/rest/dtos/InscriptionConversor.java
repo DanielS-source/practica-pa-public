@@ -2,6 +2,7 @@ package es.udc.paproject.backend.rest.dtos;
 
 import es.udc.paproject.backend.model.entities.Inscription;
 import es.udc.paproject.backend.model.entities.SportTest;
+import org.springframework.cglib.core.Block;
 
 import java.util.List;
 import java.util.stream.Collectors;
