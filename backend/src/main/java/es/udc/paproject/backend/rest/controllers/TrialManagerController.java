@@ -77,7 +77,7 @@ public class TrialManagerController {
 
     }
 
-    @PostMapping("/inscriptions/inscribe")
+    @PostMapping("/inscriptions")
     private InscriptionDto createSportTestInscription(
             @RequestAttribute Long userId,
             @Validated @RequestBody InscriptionParamsDto params)
