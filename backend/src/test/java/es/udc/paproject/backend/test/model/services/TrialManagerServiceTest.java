@@ -116,7 +116,7 @@ public class TrialManagerServiceTest {
 
     @Test
     public void testGetUserInscription() throws SportTestFullException, DuplicateInstanceException,
-            InscriptionPeriodClosedException, InstanceNotFoundException, PermissionException {
+            InscriptionPeriodClosedException, InstanceNotFoundException {
         Province province1 = new Province("province1");
         SportTestType sportTestType = new SportTestType("sportTestType");
         SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType, LocalDate.now().plusDays(2));

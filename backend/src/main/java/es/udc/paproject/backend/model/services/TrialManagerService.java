@@ -14,7 +14,7 @@ public interface TrialManagerService {
     int deliverInscriptionDorsal(Long inscriptionId, String creditCard, Long sportTestId) throws InstanceNotFoundException,
             InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException, DorsalAlreadyDeliveredException;
 
-    Block<Inscription> getUserInscriptions(Long userId, int page, int size) throws InstanceNotFoundException, PermissionException;
+    Block<Inscription> getUserInscriptions(Long userId, int page, int size);
 
     void scoreSportTest(Long userId, Long inscriptionId, int score) throws InstanceNotFoundException,
             PermissionException, AlreadyScoredTestException, TestNotStartedException, TooLateToScoreException;
