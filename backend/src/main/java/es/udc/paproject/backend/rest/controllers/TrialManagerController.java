@@ -136,10 +136,10 @@ public class TrialManagerController {
     @GetMapping("/inscriptions/retrieve")
     private BlockDto<InscriptionDto> retrieveInscriptionList(
             @RequestAttribute Long userId,
-            @RequestBody PagingParams params)
+            @RequestParam(defaultValue = "0") int page)
             throws InstanceNotFoundException, PermissionException {
 
-        Block<Inscription> inscriptionBlock = trialManagerService.getUserInscriptions(userId, params.getPage(), 2);
+        Block<Inscription> inscriptionBlock = trialManagerService.getUserInscriptions(userId, page, 2);
 
         return new BlockDto<>(InscriptionConversor.toInscriptionDtos(inscriptionBlock.getItems()),
                 inscriptionBlock.getExistMoreItems());
