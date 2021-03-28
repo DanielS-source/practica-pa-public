@@ -135,22 +135,23 @@ public class TrialManagerController {
 
     @GetMapping("/inscriptions/retrieve")
     private BlockDto<InscriptionDto> retrieveInscriptionList(
-            @RequestAttribute Long userId)
+            @RequestAttribute Long userId,
+            @RequestBody PagingParams params)
             throws InstanceNotFoundException, PermissionException {
 
-        Block<Inscription> inscriptionBlock = trialManagerService.getUserInscriptions(userId);
+        Block<Inscription> inscriptionBlock = trialManagerService.getUserInscriptions(userId, params.getPage(), 2);
 
         return new BlockDto<>(InscriptionConversor.toInscriptionDtos(inscriptionBlock.getItems()),
                 inscriptionBlock.getExistMoreItems());
     }
 
     @PostMapping("/dorsal/{inscriptionId}")
-    private int deliverInscriptionDorsal(
+    private DorsalDto deliverInscriptionDorsal(
             @RequestBody GetDorsalParamsDto params,
             @PathVariable Long inscriptionId
     )throws InstanceNotFoundException, InvalidDataException, TooSoonToDeliverException, TestAlreadyStartedException,
             DorsalAlreadyDeliveredException
     {
-        return trialManagerService.deliverInscriptionDorsal(inscriptionId, params.getCreditCard(), params.getsportTestId());
+        return new DorsalDto(trialManagerService.deliverInscriptionDorsal(inscriptionId, params.getCreditCard(), params.getsportTestId()));
     }
 }

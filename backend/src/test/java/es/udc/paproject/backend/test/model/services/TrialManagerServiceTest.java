@@ -138,9 +138,9 @@ public class TrialManagerServiceTest {
         trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest2.getId(), validCredCard);
 
-        Block<Inscription> foundInsc = trialManagerService.getUserInscriptions(newUser.getId());
+        Block<Inscription> foundInsc = trialManagerService.getUserInscriptions(newUser.getId(), 0, 10);
 
-        List<Inscription> foundInscs = trialManagerService.getUserInscriptions(newUser.getId()).getItems();
+        List<Inscription> foundInscs = trialManagerService.getUserInscriptions(newUser.getId(), 0, 10).getItems();
         Inscription fInd = foundInscs.get(0);
         assertEquals(inscription1.getUser(), fInd.getUser());
         assertEquals(inscription1.getDorsal(), fInd.getDorsal());

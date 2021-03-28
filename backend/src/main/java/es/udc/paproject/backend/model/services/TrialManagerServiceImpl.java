@@ -7,6 +7,7 @@ import java.util.Optional;
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,9 +74,9 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         } else throw new InstanceNotFoundException("project.entities.inscription", inscriptionId);
     }
 
-    public Block<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException {
+    public Block<Inscription> getUserInscriptions(Long userId, int page, int size) throws InstanceNotFoundException, PermissionException {
 
-        Slice<Inscription> slice = inscriptionDao.findByUserId(userId);
+        Slice<Inscription> slice = inscriptionDao.findByUserId(userId, PageRequest.of(page, size));
         if (slice == null) {
             throw new InstanceNotFoundException("project.entities.inscription", userId);
         }
