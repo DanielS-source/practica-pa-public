@@ -42,7 +42,7 @@ public class TrialManagerController {
     private TrialManagerService trialManagerService;
 
     @ExceptionHandler(AlreadyScoredTestException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public ErrorsDto handleAlreadyScoredTestException(AlreadyScoredTestException exception, Locale locale) {
 
@@ -54,7 +54,7 @@ public class TrialManagerController {
     }
 
     @ExceptionHandler(TooLateToScoreException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public ErrorsDto handleTooLateToScoreException(TooLateToScoreException exception, Locale locale) {
 
@@ -66,24 +66,12 @@ public class TrialManagerController {
     }
 
     @ExceptionHandler(TestNotStartedException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public ErrorsDto handleTestNotStartedException(TestNotStartedException exception, Locale locale) {
 
         String errorMessage = messageSource.getMessage(TEST_NOT_STARTED_EXCEPTION_CODE,
                 null, TEST_NOT_STARTED_EXCEPTION_CODE, locale);
-
-        return new ErrorsDto(errorMessage);
-
-    }
-
-    @ExceptionHandler(DuplicateInstanceException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
-    public ErrorsDto handleDuplicateInstanceException(DuplicateInstanceException exception, Locale locale) {
-
-        String errorMessage = messageSource.getMessage(DUPLICATE_INSTANCE_EXCEPTION_CODE,
-                null, DUPLICATE_INSTANCE_EXCEPTION_CODE, locale);
 
         return new ErrorsDto(errorMessage);
 
@@ -111,15 +99,6 @@ public class TrialManagerController {
 
         return new ErrorsDto(errorMessage);
 
-    }
-
-    @ExceptionHandler(InstanceNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
-    public ErrorsDto handleInstanceNotFoundException(InstanceNotFoundException exception, Locale locale){
-        String errorMessage = messageSource.getMessage(INSTANCE_NOT_FOUND_EXCEPTION_CODE,
-                null, INSTANCE_NOT_FOUND_EXCEPTION_CODE, locale);
-        return new ErrorsDto(errorMessage);
     }
 
     @ExceptionHandler(InvalidDataException.class)
