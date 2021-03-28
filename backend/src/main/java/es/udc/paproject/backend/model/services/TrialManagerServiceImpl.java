@@ -32,7 +32,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
             InscriptionPeriodClosedException {
 
         Optional<Inscription> foundInscription = inscriptionDao.findByUserIdAndSportTestId(userId, sportTestId);
-        if(foundInscription.isPresent()) throw new DuplicateInstanceException("Duplicated exception", foundInscription);
+        if(foundInscription.isPresent()) throw new DuplicateInstanceException("project.entities.inscription", foundInscription.get().getSportTest().getName());
 
         Optional<User> user = userDao.findById(userId);
         if(!user.isPresent()) throw new InstanceNotFoundException("project.entities.user", userId);
