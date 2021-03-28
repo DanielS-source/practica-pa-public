@@ -27,12 +27,12 @@ public class InfoSearchController {
     @GetMapping("/sportTests")
     public BlockDto<SportTestSummaryDto> findSportTests(
             @RequestParam(required = false) Long provinceId,
-            @RequestParam(required = false) Long testTypeId,
+            @RequestParam(required = false) Long sportTestTypeId,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
             @RequestParam(defaultValue = "0") int page){
 
-        Block<SportTest> sportTestBlock = infoSearchService.findSportTests(provinceId, testTypeId, startDate, endDate, page, 2);
+        Block<SportTest> sportTestBlock = infoSearchService.findSportTests(provinceId, sportTestTypeId, startDate, endDate, page, 2);
 
         return new BlockDto<>(toSportTestSummaryDtos(sportTestBlock.getItems()), sportTestBlock.getExistMoreItems());
     }
