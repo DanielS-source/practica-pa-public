@@ -73,13 +73,13 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         } else throw new InstanceNotFoundException("project.entities.inscription", inscriptionId);
     }
 
-    public List<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException {
+    public Block<Inscription> getUserInscriptions(Long userId) throws InstanceNotFoundException, PermissionException {
 
         Slice<Inscription> slice = inscriptionDao.findByUserId(userId);
         if (slice == null) {
             throw new InstanceNotFoundException("project.entities.inscription", userId);
         }
-        return slice.getContent();
+        return new Block<>(slice.getContent(), slice.hasNext());
     }
 
     public void scoreSportTest(Long userId, Long inscriptionId, int score)

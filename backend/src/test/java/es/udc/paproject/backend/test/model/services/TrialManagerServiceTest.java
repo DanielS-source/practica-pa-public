@@ -2,6 +2,7 @@ package es.udc.paproject.backend.test.model.services;
 
 import es.udc.paproject.backend.model.entities.*;
 import es.udc.paproject.backend.model.exceptions.*;
+import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -132,26 +134,25 @@ public class TrialManagerServiceTest {
         trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest1.getId(), validCredCard);
 
-
         Inscription inscription2 = new Inscription(validCredCard, 1, newTest2, newUser);
         trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest2.getId(), validCredCard);
 
-        List<Inscription> foundInsc = trialManagerService.getUserInscriptions(newUser.getId());
+        Block<Inscription> foundInsc = trialManagerService.getUserInscriptions(newUser.getId());
 
-        Inscription implInsc = foundInsc.get(0);
+        List<Inscription> foundInscs = trialManagerService.getUserInscriptions(newUser.getId()).getItems();
+        Inscription fInd = foundInscs.get(0);
+        assertEquals(inscription1.getUser(), fInd.getUser());
+        assertEquals(inscription1.getDorsal(), fInd.getDorsal());
+        assertEquals(inscription1.getCreditCardNumber(), fInd.getCreditCardNumber());
+        assertEquals(inscription1.getSportTest(), fInd.getSportTest());
 
-        assertEquals(inscription1.getUser(), implInsc.getUser());
-        assertEquals(inscription1.getDorsal(), implInsc.getDorsal());
-        assertEquals(inscription1.getCreditCardNumber(), implInsc.getCreditCardNumber());
-        assertEquals(inscription1.getSportTest(), implInsc.getSportTest());
+        fInd = foundInscs.get(1);
+        assertEquals(inscription2.getUser(), fInd.getUser());
+        assertEquals(inscription2.getDorsal(), fInd.getDorsal());
+        assertEquals(inscription2.getCreditCardNumber(), fInd.getCreditCardNumber());
+        assertEquals(inscription2.getSportTest(), fInd.getSportTest());
 
-        implInsc = foundInsc.get(1);
-
-        assertEquals(inscription2.getUser(), implInsc.getUser());
-        assertEquals(inscription2.getDorsal(), implInsc.getDorsal());
-        assertEquals(inscription2.getCreditCardNumber(), implInsc.getCreditCardNumber());
-        assertEquals(inscription2.getSportTest(), implInsc.getSportTest());
     }
 
     @Test
