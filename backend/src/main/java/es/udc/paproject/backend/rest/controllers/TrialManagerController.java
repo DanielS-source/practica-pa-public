@@ -54,7 +54,7 @@ public class TrialManagerController {
     }
 
     @ExceptionHandler(TooLateToScoreException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     public ErrorsDto handleTooLateToScoreException(TooLateToScoreException exception, Locale locale) {
 
@@ -66,7 +66,7 @@ public class TrialManagerController {
     }
 
     @ExceptionHandler(TestNotStartedException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     public ErrorsDto handleTestNotStartedException(TestNotStartedException exception, Locale locale) {
 
