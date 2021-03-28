@@ -158,9 +158,6 @@ public class InfoSearchServiceTest {
         sportTestDao.save(sportTest3);
 
         Block<SportTest> expectedBlock = new Block<>(Arrays.asList(sportTest1, sportTest2), true);
-        System.out.println(infoSearchService.findSportTests(null, null, null, null, 0,2).getItems().get(0).getName());
-        System.out.println(infoSearchService.findSportTests(null, null, null, null, 0,2).getItems().get(1).getName());
-        System.out.println(infoSearchService.findSportTests(null, null, null, null, 0,2).getItems().size());
         assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, null, null, 0,2));
 
         expectedBlock = new Block<>(Arrays.asList(sportTest3), false);
