@@ -133,7 +133,7 @@ public class TrialManagerController {
         return InscriptionConversor.toInscriptionDto(newInsc);
     }
 
-    @PostMapping("/inscriptions/retrieve")
+    @GetMapping("/inscriptions/retrieve")
     private BlockDto<InscriptionDto> retrieveInscriptionList(
             @RequestAttribute Long userId)
             throws InstanceNotFoundException, PermissionException {
