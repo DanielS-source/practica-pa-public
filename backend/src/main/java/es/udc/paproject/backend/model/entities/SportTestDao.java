@@ -1,5 +1,6 @@
 package es.udc.paproject.backend.model.entities;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -13,7 +14,7 @@ public interface SportTestDao extends PagingAndSortingRepository<SportTest,Long>
             "AND (?2 IS NULL OR st.sportTestType.id = ?2) " +
             "AND (?3 IS NULL OR st.testStart >= ?3)" +
             "AND (?4 IS NULL OR st.testStart <= ?4)" +
-            "ORDER BY st.testStart DESC")
-    Slice<SportTest> find(Long provinceId, Long testTypeId, LocalDate startDate, LocalDate endDate, int page, int size);
+            "ORDER BY st.testStart ASC")
+    Slice<SportTest> find(Long provinceId, Long testTypeId, LocalDate startDate, LocalDate endDate, Pageable pageable);
 
 }

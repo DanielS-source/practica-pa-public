@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @SpringBootTest
@@ -125,6 +125,53 @@ public class InfoSearchServiceTest {
     }
 
     @Test
+    public void testFindNoSportTests() {
+        Province province1 = new Province("province1");
+        SportTestType sportTestType1 = new SportTestType("sportTestType1");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType1, LocalDate.now().plusDays(5));
+
+        provinceDao.save(province1);
+        sportTestTypeDao.save(sportTestType1);
+        sportTestDao.save(sportTest1);
+
+        Block<SportTest> expectedBlock = new Block<>(new ArrayList<>(), false);
+        assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, LocalDate.now().plusDays(10), null, 0 ,1));
+
+    }
+
+    @Test
+    public void testFindSportTestsByPages() {
+        Province province1 = new Province("province1");
+        Province province2 = new Province("province2");
+        SportTestType sportTestType1 = new SportTestType("sportTestType1");
+        SportTestType sportTestType2 = new SportTestType("sportTestType2");
+        SportTest sportTest1 = createSportTest("sportTest1", province1, sportTestType1, LocalDate.now().plusDays(1));
+        SportTest sportTest2 = createSportTest("sportTest2", province2, sportTestType2, LocalDate.now().plusDays(2));
+        SportTest sportTest3 = createSportTest("sportTest3", province1, sportTestType2, LocalDate.now().plusDays(3));
+
+        provinceDao.save(province1);
+        provinceDao.save(province2);
+        sportTestTypeDao.save(sportTestType1);
+        sportTestTypeDao.save(sportTestType2);
+        sportTestDao.save(sportTest1);
+        sportTestDao.save(sportTest2);
+        sportTestDao.save(sportTest3);
+
+        Block<SportTest> expectedBlock = new Block<>(Arrays.asList(sportTest1, sportTest2), true);
+        System.out.println(infoSearchService.findSportTests(null, null, null, null, 0,2).getItems().get(0).getName());
+        System.out.println(infoSearchService.findSportTests(null, null, null, null, 0,2).getItems().get(1).getName());
+        System.out.println(infoSearchService.findSportTests(null, null, null, null, 0,2).getItems().size());
+        assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, null, null, 0,2));
+
+        expectedBlock = new Block<>(Arrays.asList(sportTest3), false);
+        assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, null, null, 1,2));
+
+        expectedBlock = new Block<>(new ArrayList<>(), false);
+        assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, null, null, 2,2));
+
+    }
+
+    @Test
     public void testFindSportTestById() throws InstanceNotFoundException {
         Long id = 47L;
         assertThrows(InstanceNotFoundException.class, () -> infoSearchService.findSportTestById(id));
@@ -147,16 +194,21 @@ public class InfoSearchServiceTest {
     }
 
     @Test
-    public void testFindAll(){
+    public void testFindAllProvinces(){
         Province province1 = new Province("province1");
         Province province2 = new Province("province2");
         provinceDao.save(province1);
         provinceDao.save(province2);
+        assertTrue(infoSearchService.findAllProvinces().contains(province1) && infoSearchService.findAllProvinces().contains(province2) );
+        }
+
+    @Test
+    public void testFindAllSportTestTypes(){
+
         SportTestType sportTestType1 = new SportTestType("sportTestType1");
         SportTestType sportTestType2 = new SportTestType("sportTestType2");
         sportTestTypeDao.save(sportTestType1);
         sportTestTypeDao.save(sportTestType2);
-        assertTrue(infoSearchService.findAllProvinces().contains(province1) && infoSearchService.findAllProvinces().contains(province2) );
         assertTrue(infoSearchService.findAllSportTestTypes().contains(sportTestType1) && infoSearchService.findAllSportTestTypes().contains(sportTestType2));
     }
 
