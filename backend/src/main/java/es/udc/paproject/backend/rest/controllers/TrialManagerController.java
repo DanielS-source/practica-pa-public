@@ -6,6 +6,7 @@ import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.dtos.*;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,11 @@ public class TrialManagerController {
     private final static String SPORTTEST_FULL_EXCEPTION_CODE = "project.exceptions.SportTestFullException";
     private final static String INSCRIPTION_PERIOD_CLOSED_EXCEPTION_CODE =
             "project.exceptions.InscriptionPeriodClosedException";
+    private final static String INSTANCE_NOT_FOUND_EXCEPTION_CODE ="project.exceptions.InstanceNotFoundException";
+    private final static String INVALID_DATA_EXCEPTION_CODE = "project.exceptions.InvalidDataException";
+    private final static String TOO_SOON_TO_DELIVER_EXCEPTION_CODE = "project.exceptions.TooSoonToDeliverException";
+    private final static String TEST_ALREADY_STARTED_EXCEPTION_CODE = "project.exceptions.TestAlreadyStartedException";
+    private final static String DORSAL_ALREADY_DELIVERED_EXCEPTION_CODE = "project.exceptions.DorsalAlreadyDeliveredException";
 
     @Autowired
     private MessageSource messageSource;
@@ -106,6 +112,53 @@ public class TrialManagerController {
         return new ErrorsDto(errorMessage);
 
     }
+
+    @ExceptionHandler(InstanceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorsDto handleInstanceNotFoundException(InstanceNotFoundException exception, Locale locale){
+        String errorMessage = messageSource.getMessage(INSTANCE_NOT_FOUND_EXCEPTION_CODE,
+                null, INSTANCE_NOT_FOUND_EXCEPTION_CODE, locale);
+        return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(InvalidDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorsDto handleInvalidDataException(InvalidDataException exception, Locale locale){
+        String errorMessage = messageSource.getMessage(INVALID_DATA_EXCEPTION_CODE,
+                null, INVALID_DATA_EXCEPTION_CODE, locale);
+        return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(TooSoonToDeliverException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseBody
+    public ErrorsDto handleTooSoonToDeliverException(TooSoonToDeliverException exception, Locale locale){
+        String errorMessage = messageSource.getMessage(TOO_SOON_TO_DELIVER_EXCEPTION_CODE,
+                null, TOO_SOON_TO_DELIVER_EXCEPTION_CODE, locale);
+        return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(TestAlreadyStartedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseBody
+    public ErrorsDto handleTestAlreadyStartedException(TestAlreadyStartedException exception, Locale locale){
+        String errorMessage = messageSource.getMessage(TEST_ALREADY_STARTED_EXCEPTION_CODE,
+                null, TEST_ALREADY_STARTED_EXCEPTION_CODE, locale);
+        return new ErrorsDto(errorMessage);
+    }
+
+    @ExceptionHandler(DorsalAlreadyDeliveredException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseBody
+    public ErrorsDto handleDorsalAlreadyDeliveredException(DorsalAlreadyDeliveredException exception, Locale locale){
+        String errorMessage = messageSource.getMessage(DORSAL_ALREADY_DELIVERED_EXCEPTION_CODE,
+                null, DORSAL_ALREADY_DELIVERED_EXCEPTION_CODE, locale);
+        return new ErrorsDto(errorMessage);
+    }
+
+
 
     @PostMapping("/inscriptions/{inscriptionId}/score")
     private void scoreSportTest(
