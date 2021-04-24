@@ -167,7 +167,7 @@ public class TrialManagerController {
     private BlockDto<InscriptionDto> retrieveInscriptionList(
             @RequestAttribute Long userId,
             @RequestParam(defaultValue = "0") int page)
-            throws InstanceNotFoundException, PermissionException {
+            throws InstanceNotFoundException {
 
         Block<Inscription> inscriptionBlock = trialManagerService.getUserInscriptions(userId, page, 2);
 
