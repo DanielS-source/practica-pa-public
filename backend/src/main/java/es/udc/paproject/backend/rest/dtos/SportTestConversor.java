@@ -20,8 +20,7 @@ public class SportTestConversor {
                 sportTest.getSportTestType().getId(),
                 sportTest.getProvince().getId(),
                 toMillis(sportTest.getTestStart()),
-                sportTest.getAverageRating(),
-                sportTest.getTimesRated()
+                sportTest.getAverageRating()
         );
 
     }
@@ -41,7 +40,6 @@ public class SportTestConversor {
                 sportTest.getProvince().getId(),
                 sportTest.getSportTestType().getId(),
                 sportTest.getParticipants(),
-                sportTest.getTimesRated(),
                 sportTest.getAverageRating());
     }
 

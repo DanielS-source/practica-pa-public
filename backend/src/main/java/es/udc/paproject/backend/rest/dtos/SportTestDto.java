@@ -17,14 +17,13 @@ public class SportTestDto {
     private Long provinceId;
     private Long sportTestTypeId;
     private int participants;
-    private int timesRated;
     private Long averageRating;
 
     public SportTestDto() {}
 
     public SportTestDto(Long id, String name, String description, Long testStart,
                         BigDecimal price, int maxParticipants, String location, Long provinceId,
-                        Long sportTestTypeId, int participants, int timesRated, Long averageRating) {
+                        Long sportTestTypeId, int participants, Long averageRating) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -35,7 +34,6 @@ public class SportTestDto {
         this.provinceId = provinceId;
         this.sportTestTypeId = sportTestTypeId;
         this.participants = participants;
-        this.timesRated = timesRated;
         this.averageRating = averageRating;
     }
 
@@ -128,14 +126,6 @@ public class SportTestDto {
 
     public void setParticipants(int participants) {
         this.participants = participants;
-    }
-
-    public int getTimesRated() {
-        return timesRated;
-    }
-
-    public void setTimesRated(int timesRated) {
-        this.timesRated = timesRated;
     }
 
     public Long getAverageRating() {

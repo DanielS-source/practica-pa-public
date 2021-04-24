@@ -8,19 +8,17 @@ public class SportTestSummaryDto {
     private Long provinceId;
     private Long testStart;
     private Long averageRating;
-    private int timesRated;
 
     public SportTestSummaryDto() {}
 
     public SportTestSummaryDto(Long id, String name, Long sportTestTypeId, Long provinceId,
-                               Long testStart, Long averageRating, int timesRated) {
+                               Long testStart, Long averageRating) {
         this.id = id;
         this.name = name;
         this.sportTestTypeId = sportTestTypeId;
         this.provinceId = provinceId;
         this.testStart = testStart;
         this.averageRating = averageRating;
-        this.timesRated = timesRated;
     }
 
     public Long getId() {
@@ -71,11 +69,4 @@ public class SportTestSummaryDto {
         this.averageRating = averageRating;
     }
 
-    public int getTimesRated() {
-        return timesRated;
-    }
-
-    public void setTimesRated(int timesRated) {
-        this.timesRated = timesRated;
-    }
 }
