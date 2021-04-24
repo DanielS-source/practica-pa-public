@@ -69,6 +69,14 @@ public class TrialManagerServiceTest {
         return newUser;
     }
 
+    private User createUser(String name, String pass, String first, String last, String email){
+        User user = new User(name, pass, first, last, email);
+        user.setRole(User.RoleType.USER);
+        User newUser = userDao.save(user);
+
+        return newUser;
+    }
+
     @Test
     public void testCreateInscription() throws SportTestFullException, DuplicateInstanceException,
             InscriptionPeriodClosedException, InstanceNotFoundException {
@@ -157,17 +165,24 @@ public class TrialManagerServiceTest {
 
     @Test
     public void testScoreTest() throws PermissionException, AlreadyScoredTestException,
-            InstanceNotFoundException, TestNotStartedException, TooLateToScoreException {
+            InstanceNotFoundException, TestNotStartedException, TooLateToScoreException,
+            SportTestFullException, DuplicateInstanceException, InscriptionPeriodClosedException {
 
-        SportTest sportTest = createSport(LocalDate.now().minusDays(1));
-        User user = createUser();
-        Inscription inscription = new Inscription(validCredCard, 1, sportTest, user);
+        SportTest sportTest = createSport(LocalDate.now().plusDays(2));
+        User user = createUser("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");
+        User user2 = createUser("PedroTester2", "", "Pedro2", "Tester2", "pt2@gmail.com");
+        Inscription inscription = trialManagerService.createSportTestInscription(user.getId(), sportTest.getId(), validCredCard);
+        Inscription inscription2 = trialManagerService.createSportTestInscription(user2.getId(), sportTest.getId(), validCredCard);
 
         inscriptionDao.save(inscription);
+        inscriptionDao.save(inscription2);
+        sportTest.setTestStart(sportTest.getTestStart().minusDays(2));
+        trialManagerService.scoreSportTest(user.getId(), inscription.getId(), 5);
+        trialManagerService.scoreSportTest(user2.getId(), inscription2.getId(), 3);
 
-        trialManagerService.scoreSportTest(user.getId(), inscription.getId(), VALID_SCORE);
-
-        assertEquals(VALID_SCORE, inscription.getScore());
+        assertEquals(5, inscription.getScore());
+        assertEquals(3, inscription2.getScore());
+        assertEquals(4, sportTest.getAverageRating());
     }
 
     @Test
