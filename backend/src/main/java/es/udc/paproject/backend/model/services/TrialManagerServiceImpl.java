@@ -53,7 +53,6 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         Inscription inscription = new Inscription(creditCard, newDorsal, foundSportTest, user.get());
         inscription = inscriptionDao.save(inscription);
 
-        sportTestDao.save(foundSportTest);
 
         return inscription;
     }

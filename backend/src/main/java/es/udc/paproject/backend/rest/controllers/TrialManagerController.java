@@ -151,7 +151,7 @@ public class TrialManagerController {
     }
 
     @PostMapping("/inscribe")
-    private InscriptionDto createSportTestInscription(
+    private InscriptionReturnDto createSportTestInscription(
             @RequestAttribute Long userId,
             @Validated @RequestBody InscriptionParamsDto params)
             throws InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
@@ -160,7 +160,7 @@ public class TrialManagerController {
         Inscription newInsc = trialManagerService.createSportTestInscription(userId, params.getSportTestId(),
                 params.getCreditCard());
 
-        return InscriptionConversor.toInscriptionDto(newInsc);
+        return InscriptionConversor.toInscriptionReturnDto(newInsc);
     }
 
     @GetMapping("/retrieve")
