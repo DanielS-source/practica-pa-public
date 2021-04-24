@@ -11,7 +11,6 @@ public class InscriptionDto {
     private Long sportTestId;
     private Long userId;
     private int score;
-    private long version;
 
     public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
                           Long sportTestId, Long userId) {
