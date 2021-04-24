@@ -12,7 +12,6 @@ public class Inscription {
     private SportTest sportTest;
     private User user;
     private int score;
-    private long version;
 
     public Inscription() {}
 
@@ -66,8 +65,4 @@ public class Inscription {
 
     public void setScore(int score) { this.score = score; }
 
-    @Version
-    public long getVersion() { return version; }
-
-    public void setVersion(long version) { this.version = version; }
 }

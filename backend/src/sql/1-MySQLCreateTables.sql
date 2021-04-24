@@ -62,7 +62,6 @@ CREATE TABLE Inscription (
     sportTestId BIGINT NOT NULL,
     userId BIGINT NOT NULL,
     score SMALLINT NOT NULL,
-    version BIGINT NOT NULL,
     CONSTRAINT UserPK PRIMARY KEY (id),
     CONSTRAINT SportTestFK FOREIGN KEY (sportTestId)
         REFERENCES SportTest (id),
