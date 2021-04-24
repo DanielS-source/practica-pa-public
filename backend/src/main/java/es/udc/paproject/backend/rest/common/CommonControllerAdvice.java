@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
+import es.udc.paproject.backend.model.exceptions.DuplicateInscriptionException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.exceptions.PermissionException;
 
@@ -52,10 +52,10 @@ public class CommonControllerAdvice {
 		
 	}
 	
-	@ExceptionHandler(DuplicateInstanceException.class)
+	@ExceptionHandler(DuplicateInscriptionException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
-	public ErrorsDto handleDuplicateInstanceException(DuplicateInstanceException exception, Locale locale) {
+	public ErrorsDto handleDuplicateInstanceException(DuplicateInscriptionException exception, Locale locale) {
 		
 		String nameMessage = messageSource.getMessage(exception.getName(), null, exception.getName(), locale);
 		String errorMessage = messageSource.getMessage(DUPLICATE_INSTANCE_EXCEPTION_CODE, 

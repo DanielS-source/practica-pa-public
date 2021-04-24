@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
+import es.udc.paproject.backend.model.exceptions.DuplicateInscriptionException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.entities.UserDao;
@@ -28,10 +28,10 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public void signUp(User user) throws DuplicateInstanceException {
+	public void signUp(User user) throws DuplicateInscriptionException {
 		
 		if (userDao.existsByUserName(user.getUserName())) {
-			throw new DuplicateInstanceException("project.entities.user", user.getUserName());
+			throw new DuplicateInscriptionException("project.entities.user", user.getUserName());
 		}
 			
 		user.setPassword(passwordEncoder.encode(user.getPassword()));

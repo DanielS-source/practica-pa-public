@@ -27,7 +27,7 @@ public class InscriptionDto {
     public void setId(Long id) { this.id = id; }
 
     @NotNull
-    public String getCreditCardNumber() { return creditCardNumber; }
+    public String getCreditCardNumber() { return creditCardNumber.substring(creditCardNumber.length() - 4); }
 
     public void setCreditCardNumber(String creditCardNumber) { this.creditCardNumber = creditCardNumber; }
 

@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
+import es.udc.paproject.backend.model.exceptions.DuplicateInscriptionException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.exceptions.IncorrectLoginException;
@@ -30,7 +30,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testSignUpAndLoginFromId() throws DuplicateInstanceException, InstanceNotFoundException {
+	public void testSignUpAndLoginFromId() throws DuplicateInscriptionException, InstanceNotFoundException {
 		
 		User user = createUser("user");
 		
@@ -44,12 +44,12 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testSignUpDuplicatedUserName() throws DuplicateInstanceException {
+	public void testSignUpDuplicatedUserName() throws DuplicateInscriptionException {
 		
 		User user = createUser("user");
 		
 		userService.signUp(user);
-		assertThrows(DuplicateInstanceException.class, () -> userService.signUp(user));
+		assertThrows(DuplicateInscriptionException.class, () -> userService.signUp(user));
 		
 	}
 	
@@ -59,7 +59,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testLogin() throws DuplicateInstanceException, IncorrectLoginException {
+	public void testLogin() throws DuplicateInscriptionException, IncorrectLoginException {
 		
 		User user = createUser("user");
 		String clearPassword = user.getPassword();
@@ -73,7 +73,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testLoginWithIncorrectPassword() throws DuplicateInstanceException {
+	public void testLoginWithIncorrectPassword() throws DuplicateInscriptionException {
 		
 		User user = createUser("user");
 		String clearPassword = user.getPassword();
@@ -90,7 +90,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testUpdateProfile() throws InstanceNotFoundException, DuplicateInstanceException {
+	public void testUpdateProfile() throws InstanceNotFoundException, DuplicateInscriptionException {
 		
 		User user = createUser("user");
 		
@@ -116,7 +116,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testChangePassword() throws DuplicateInstanceException, InstanceNotFoundException,
+	public void testChangePassword() throws DuplicateInscriptionException, InstanceNotFoundException,
 		IncorrectPasswordException, IncorrectLoginException {
 		
 		User user = createUser("user");
@@ -136,7 +136,7 @@ public class UserServiceTest {
 	}
 	
 	@Test
-	public void testChangePasswordWithIncorrectPassword() throws DuplicateInstanceException {
+	public void testChangePasswordWithIncorrectPassword() throws DuplicateInscriptionException {
 		
 		User user = createUser("user");
 		String oldPassword = user.getPassword();

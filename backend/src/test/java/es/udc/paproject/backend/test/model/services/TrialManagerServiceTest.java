@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,7 +77,7 @@ public class TrialManagerServiceTest {
     }
 
     @Test
-    public void testCreateInscription() throws SportTestFullException, DuplicateInstanceException,
+    public void testCreateInscription() throws SportTestFullException, DuplicateInscriptionException,
             InscriptionPeriodClosedException, InstanceNotFoundException {
         Province province1 = new Province("province1");
         SportTestType sportTestType = new SportTestType("sportTestType");
@@ -102,7 +101,7 @@ public class TrialManagerServiceTest {
     }
 
     @Test
-    public void testCreateDuplicateInscription() throws SportTestFullException, DuplicateInstanceException,
+    public void testCreateDuplicateInscription() throws SportTestFullException, DuplicateInscriptionException,
             InscriptionPeriodClosedException, InstanceNotFoundException {
         Province province1 = new Province("province1");
         SportTestType sportTestType = new SportTestType("sportTestType");
@@ -118,12 +117,12 @@ public class TrialManagerServiceTest {
         Inscription implInsc = trialManagerService.createSportTestInscription(
                 newUser.getId(), newTest.getId(), validCredCard);
 
-        assertThrows(DuplicateInstanceException.class, () ->
+        assertThrows(DuplicateInscriptionException.class, () ->
                 trialManagerService.createSportTestInscription(newUser.getId(), newTest.getId(), validCredCard));
     }
 
     @Test
-    public void testGetUserInscription() throws SportTestFullException, DuplicateInstanceException,
+    public void testGetUserInscription() throws SportTestFullException, DuplicateInscriptionException,
             InscriptionPeriodClosedException, InstanceNotFoundException {
         Province province1 = new Province("province1");
         SportTestType sportTestType = new SportTestType("sportTestType");
@@ -166,7 +165,7 @@ public class TrialManagerServiceTest {
     @Test
     public void testScoreTest() throws PermissionException, AlreadyScoredTestException,
             InstanceNotFoundException, TestNotStartedException, TooLateToScoreException,
-            SportTestFullException, DuplicateInstanceException, InscriptionPeriodClosedException {
+            SportTestFullException, DuplicateInscriptionException, InscriptionPeriodClosedException {
 
         SportTest sportTest = createSport(LocalDate.now().plusDays(2));
         User user = createUser("PedroTester", "", "Pedro", "Tester", "pt@gmail.com");

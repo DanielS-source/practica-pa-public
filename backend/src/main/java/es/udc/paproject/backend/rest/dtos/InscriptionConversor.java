@@ -19,4 +19,8 @@ public class InscriptionConversor {
     public final static List<InscriptionDto> toInscriptionDtos(List<Inscription> inscriptions) {
         return inscriptions.stream().map(p -> toInscriptionDto(p)).collect(Collectors.toList());
     }
+
+    public static InscriptionReturnDto toInscriptionReturnDto(Inscription inscription){
+        return new InscriptionReturnDto(inscription.getId(), inscription.getDorsal());
+    }
 }

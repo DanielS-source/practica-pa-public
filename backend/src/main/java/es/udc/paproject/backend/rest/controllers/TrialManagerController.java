@@ -6,7 +6,6 @@ import es.udc.paproject.backend.model.services.Block;
 import es.udc.paproject.backend.model.services.TrialManagerService;
 import es.udc.paproject.backend.rest.common.ErrorsDto;
 import es.udc.paproject.backend.rest.dtos.*;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -23,7 +22,7 @@ public class TrialManagerController {
     private final static String ALREADY_SCORED_TEST_EXCEPTION_CODE = "project.exceptions.AlreadyScoredTestException";
     private final static String TOO_LATE_TO_SCORE_EXCEPTION_CODE = "project.exceptions.TooLateToScoreException";
     private final static String TEST_NOT_STARTED_EXCEPTION_CODE = "project.exceptions.AlreadyScoredTestException";
-    private final static String DUPLICATE_INSTANCE_EXCEPTION_CODE = "project.exceptions.DuplicateInstanceException";
+    private final static String DUPLICATE_INSCRIPTION_EXCEPTION_CODE = "project.exceptions.DuplicateInscriptionException";
     private final static String SPORTTEST_FULL_EXCEPTION_CODE = "project.exceptions.SportTestFullException";
     private final static String INSCRIPTION_PERIOD_CLOSED_EXCEPTION_CODE =
             "project.exceptions.InscriptionPeriodClosedException";
@@ -70,6 +69,18 @@ public class TrialManagerController {
 
         String errorMessage = messageSource.getMessage(TEST_NOT_STARTED_EXCEPTION_CODE,
                 null, TEST_NOT_STARTED_EXCEPTION_CODE, locale);
+
+        return new ErrorsDto(errorMessage);
+
+    }
+
+    @ExceptionHandler(DuplicateInscriptionException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorsDto handleDuplicateInscriptionException(DuplicateInscriptionException exception, Locale locale) {
+
+        String errorMessage = messageSource.getMessage(DUPLICATE_INSCRIPTION_EXCEPTION_CODE,
+                null, DUPLICATE_INSCRIPTION_EXCEPTION_CODE, locale);
 
         return new ErrorsDto(errorMessage);
 
@@ -151,16 +162,16 @@ public class TrialManagerController {
     }
 
     @PostMapping("/inscribe")
-    private InscriptionDto createSportTestInscription(
+    private InscriptionReturnDto createSportTestInscription(
             @RequestAttribute Long userId,
             @Validated @RequestBody InscriptionParamsDto params)
-            throws InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
+            throws InstanceNotFoundException, DuplicateInscriptionException, SportTestFullException,
             InscriptionPeriodClosedException {
 
         Inscription newInsc = trialManagerService.createSportTestInscription(userId, params.getSportTestId(),
                 params.getCreditCard());
 
-        return InscriptionConversor.toInscriptionDto(newInsc);
+        return InscriptionConversor.toInscriptionReturnDto(newInsc);
     }
 
     @GetMapping("/retrieve")
