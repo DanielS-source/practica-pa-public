@@ -1,7 +1,6 @@
 package es.udc.paproject.backend.model.services;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import es.udc.paproject.backend.model.entities.*;
@@ -29,11 +28,12 @@ public class TrialManagerServiceImpl implements TrialManagerService {
     private UserDao userDao;
 
     public Inscription createSportTestInscription(Long userId, Long sportTestId, String creditCard) throws
-            InstanceNotFoundException, DuplicateInstanceException, SportTestFullException,
+            InstanceNotFoundException, DuplicateInscriptionException, SportTestFullException,
             InscriptionPeriodClosedException {
 
         Optional<Inscription> foundInscription = inscriptionDao.findByUserIdAndSportTestId(userId, sportTestId);
-        if(foundInscription.isPresent()) throw new DuplicateInstanceException("project.entities.inscription", foundInscription.get().getSportTest().getName());
+        if(foundInscription.isPresent()) throw new DuplicateInscriptionException("project.entities.inscription",
+                foundInscription.get().getSportTest().getName());
 
         Optional<User> user = userDao.findById(userId);
         if(!user.isPresent()) throw new InstanceNotFoundException("project.entities.user", userId);
@@ -52,7 +52,6 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         int newDorsal = foundSportTest.getParticipants();
         Inscription inscription = new Inscription(creditCard, newDorsal, foundSportTest, user.get());
         inscription = inscriptionDao.save(inscription);
-
 
         return inscription;
     }
@@ -78,14 +77,12 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         Slice<Inscription> slice = inscriptionDao.findByUserId(userId, PageRequest.of(page, size));
 
         return new Block<>(slice.getContent(), slice.hasNext());
-
     }
 
     public void scoreSportTest(Long userId, Long inscriptionId, int score)
             throws InstanceNotFoundException, PermissionException,
             AlreadyScoredTestException, TestNotStartedException,
             TooLateToScoreException {
-
 
         Inscription inscription = permissionChecker.checkInscriptionExistsAndBelongsTo(inscriptionId, userId);
 
@@ -100,7 +97,5 @@ public class TrialManagerServiceImpl implements TrialManagerService {
         inscription.setScore(score);
         st.setTimesRated(st.getTimesRated() + 1);
         st.setAverageRating(st.getAverageRating() + (score - st.getAverageRating()) / st.getTimesRated());
-
-
     }
 }

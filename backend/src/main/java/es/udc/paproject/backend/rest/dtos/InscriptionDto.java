@@ -11,7 +11,6 @@ public class InscriptionDto {
     private Long sportTestId;
     private Long userId;
     private int score;
-    private long version;
 
     public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
                           Long sportTestId, Long userId) {
@@ -28,7 +27,7 @@ public class InscriptionDto {
     public void setId(Long id) { this.id = id; }
 
     @NotNull
-    public String getCreditCardNumber() { return creditCardNumber; }
+    public String getCreditCardNumber() { return creditCardNumber.substring(creditCardNumber.length() - 4); }
 
     public void setCreditCardNumber(String creditCardNumber) { this.creditCardNumber = creditCardNumber; }
 

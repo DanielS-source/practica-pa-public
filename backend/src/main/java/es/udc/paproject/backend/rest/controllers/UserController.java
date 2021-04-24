@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import es.udc.paproject.backend.model.exceptions.DuplicateInstanceException;
+import es.udc.paproject.backend.model.exceptions.DuplicateInscriptionException;
 import es.udc.paproject.backend.model.exceptions.InstanceNotFoundException;
 import es.udc.paproject.backend.model.entities.User;
 import es.udc.paproject.backend.model.exceptions.IncorrectLoginException;
@@ -81,7 +81,7 @@ public class UserController {
 
 	@PostMapping("/signUp")
 	public ResponseEntity<AuthenticatedUserDto> signUp(
-		@Validated({UserDto.AllValidations.class}) @RequestBody UserDto userDto) throws DuplicateInstanceException {
+		@Validated({UserDto.AllValidations.class}) @RequestBody UserDto userDto) throws DuplicateInscriptionException {
 		
 		User user = toUser(userDto);
 		
