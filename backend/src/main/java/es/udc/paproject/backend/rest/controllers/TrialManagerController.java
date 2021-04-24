@@ -13,13 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Locale;
 
-import static es.udc.paproject.backend.rest.dtos.SportTestConversor.toSportTestSummaryDtos;
 
 @RestController
-@RequestMapping("/trials")
+@RequestMapping("/inscriptions")
 public class TrialManagerController {
 
     private final static String ALREADY_SCORED_TEST_EXCEPTION_CODE = "project.exceptions.AlreadyScoredTestException";
@@ -139,7 +137,7 @@ public class TrialManagerController {
 
 
 
-    @PostMapping("/inscriptions/{inscriptionId}/score")
+    @PostMapping("/{inscriptionId}/score")
     private void scoreSportTest(
             @RequestAttribute Long userId,
             @PathVariable Long inscriptionId,
@@ -152,7 +150,7 @@ public class TrialManagerController {
 
     }
 
-    @PostMapping("/inscriptions")
+    @PostMapping("/inscribe")
     private InscriptionDto createSportTestInscription(
             @RequestAttribute Long userId,
             @Validated @RequestBody InscriptionParamsDto params)
@@ -165,7 +163,7 @@ public class TrialManagerController {
         return InscriptionConversor.toInscriptionDto(newInsc);
     }
 
-    @GetMapping("/inscriptions/retrieve")
+    @GetMapping("/retrieve")
     private BlockDto<InscriptionDto> retrieveInscriptionList(
             @RequestAttribute Long userId,
             @RequestParam(defaultValue = "0") int page)

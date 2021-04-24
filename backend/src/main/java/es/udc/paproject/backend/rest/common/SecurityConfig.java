@@ -35,10 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET,"/search/provinces").permitAll()
 			.antMatchers(HttpMethod.GET,"/search/sportTestTypes").permitAll()
 			.antMatchers(HttpMethod.GET,"/search/sportTests/*").permitAll()
-			.antMatchers(HttpMethod.POST, "/trials/inscriptions/*/score").hasRole("USER")
-			.antMatchers(HttpMethod.POST,"/trials/dorsal/*").permitAll()
-			.antMatchers(HttpMethod.POST, "/trials/inscriptions").hasRole("USER")
-			.antMatchers(HttpMethod.GET, "/trials/inscriptions/retrieve").permitAll()
+			.antMatchers(HttpMethod.POST, "/inscriptions/*/score").hasRole("USER")
+			.antMatchers(HttpMethod.POST,"/inscriptions/dorsal/*").permitAll()
+			.antMatchers(HttpMethod.POST, "/inscriptions/inscribe").hasRole("USER")
+			.antMatchers(HttpMethod.GET, "/inscriptions/retrieve").permitAll()
 			.anyRequest().denyAll();
 
 	}
