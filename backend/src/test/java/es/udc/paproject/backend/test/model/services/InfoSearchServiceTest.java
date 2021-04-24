@@ -157,10 +157,10 @@ public class InfoSearchServiceTest {
         sportTestDao.save(sportTest2);
         sportTestDao.save(sportTest3);
 
-        Block<SportTest> expectedBlock = new Block<>(Arrays.asList(sportTest1, sportTest2), true);
+        Block<SportTest> expectedBlock = new Block<>(Arrays.asList(sportTest3, sportTest2), true);
         assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, null, null, 0,2));
 
-        expectedBlock = new Block<>(Arrays.asList(sportTest3), false);
+        expectedBlock = new Block<>(Arrays.asList(sportTest1), false);
         assertEquals(expectedBlock ,infoSearchService.findSportTests(null, null, null, null, 1,2));
 
         expectedBlock = new Block<>(new ArrayList<>(), false);
