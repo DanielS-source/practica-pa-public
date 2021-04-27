@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import users from '../../users';
+import {FindSportingEvents} from "../../eventsearch";
 
 const Header = () => {
 
@@ -23,6 +24,9 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul className="navbar-nav mr-auto">
+                    <li>
+                        <FindSportingEvents/>
+                    </li>
                 </ul>
                 
                 {userName ? 
