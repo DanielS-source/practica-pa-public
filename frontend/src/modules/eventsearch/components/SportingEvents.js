@@ -12,10 +12,19 @@ const SportingEvents = ({sportingEvents}) => (
         <thead>
             <tr>
                 <th scope="col">
-                    <FormattedMessage id='project.global.fields.department'/>
+                    <FormattedMessage id='project.global.fields.name'/>
                 </th>
                 <th scope="col">
-                    <FormattedMessage id='project.global.fields.name'/>
+                    <FormattedMessage id='project.global.fields.sportTestTypeId'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.provinceId'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.testStart'/>
+                </th>
+                <th scope="col">
+                    <FormattedMessage id='project.global.fields.averageRating'/>
                 </th>
             </tr>
         </thead>

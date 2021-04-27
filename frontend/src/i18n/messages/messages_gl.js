@@ -28,6 +28,10 @@ export default {
     'project.global.validator.required': 'Campo obrigatorio',
 
     'project.global.buttons.search': 'Buscar',
+    'project.global.fields.sportTestTypeId': 'ID',
+    'project.global.fields.provinceId': 'ID de provincia',
+    'project.global.fields.testStart': 'Fecha de Evento',
+    'project.global.fields.averageRating': 'Puntuación Media',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contrasinal nova',
     'project.users.ChangePassword.fields.newPassword': 'Contrasinal nova',
