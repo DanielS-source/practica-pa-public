@@ -6,7 +6,6 @@ export default {
     'project.app.Home.welcome': 'MiniPortal main page content!',
 
     'project.common.ErrorDialog.title': 'Error',
-
     'project.global.buttons.cancel': 'Cancel',
     'project.global.buttons.close': 'Close',
     'project.global.buttons.next': 'Next',
@@ -26,6 +25,8 @@ export default {
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
     'project.global.validator.required': 'Required field',
+
+    'project.global.buttons.search': 'Search',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirm new password',
     'project.users.ChangePassword.fields.newPassword': 'New password',

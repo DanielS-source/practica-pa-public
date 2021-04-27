@@ -3,7 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 
 import * as selectors from '../selectors';
-import {SportingEventLink} from '../../common';
+import SportingEventLink from "../../common/components/SportingEventLink";
 
 const SportingEvents = ({events}) => (
 
