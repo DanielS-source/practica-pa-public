@@ -5,11 +5,16 @@ import backend from '../../backend';
 export const findSportingEvents = criteria => dispatch => {
 
     dispatch(clearSportingEventSearch());
-    backend.infoSearchService.findSportTests(criteria,
-        result => dispatch(findProductsCompleted({criteria, result})));
+    backend.searchService.findSportingEvents(criteria,
+        result => dispatch(findSportingEventsCompleted({criteria, result})));
 
 }
 
 const clearSportingEventSearch = () => ({
     type: actionTypes.CLEAR_SPORTING_EVENTS_SEARCH
+});
+
+const findSportingEventsCompleted = sportingEventSearch => ({
+    type: actionTypes.FIND_SPORTING_EVENTS_COMPLETED,
+    sportingEventSearch
 });
