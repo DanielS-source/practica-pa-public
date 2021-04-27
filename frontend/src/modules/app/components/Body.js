@@ -4,6 +4,7 @@ import {Route, Switch} from 'react-router-dom';
 
 import AppGlobalComponents from './AppGlobalComponents';
 import Home from './Home';
+import {FindSportingEventsResult } from "../../eventsearch";
 import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users';
 import users from '../../users';
 
@@ -18,6 +19,7 @@ const Body = () => {
             <AppGlobalComponents/>
             <Switch>
                 <Route exact path="/"><Home/></Route>
+                <Route exact path="/search/find-sporting-events-result"><FindSportingEventsResult/></Route>
                 {loggedIn && <Route exact path="/users/update-profile"><UpdateProfile/></Route>}
                 {loggedIn && <Route exact path="/users/change-password"><ChangePassword/></Route>}
                 {loggedIn && <Route exact path="/users/logout"><Logout/></Route>}
