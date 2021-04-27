@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {Link} from 'react-router-dom';
 
-const SportingEventLink = ({id, name, type, province, start, avg}) => {
+const SportingEventLink = ({id, name}) => {
 
     return (
         <Link to={`/search/sporting-event-details/${id}`}>
@@ -15,11 +15,7 @@ const SportingEventLink = ({id, name, type, province, start, avg}) => {
 
 SportingEventLink.propTypes = {
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.number.isRequired,
-    province: PropTypes.number.isRequired,
-    start: PropTypes.string.isRequired,
-    avg: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
 };
 
 export default SportingEventLink;

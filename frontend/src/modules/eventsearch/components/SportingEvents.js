@@ -32,7 +32,11 @@ const SportingEvents = ({sportingEvents}) => (
         <tbody>
             {sportingEvents.map(event =>
                 <tr key={event.id}>
-                    <td><SportingEventLink id={event.id} name={event.name} type={event.sportingEventTypeId} province={event.provinceId} start={event.startDate} avg={event.avg}/></td>
+                    <td><SportingEventLink id={event.id} name={event.name} /></td>
+                    <td>event.sportTestTypeId</td>
+                    <td>event.provinceId</td>
+                    <td>event.testStart</td>
+                    <td>event.averageRating</td>
                 </tr>
             )}
         </tbody>
