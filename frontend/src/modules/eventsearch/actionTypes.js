@@ -1,0 +1,1 @@
+export const CLEAR_SPORTING_EVENTS_SEARCH = "project/catalog/clearSportingEventSearch";
