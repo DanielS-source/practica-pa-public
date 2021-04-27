@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, FormattedNumber} from 'react-intl';
 import PropTypes from 'prop-types';
 
 import * as selectors from '../selectors';
@@ -30,13 +30,13 @@ const SportingEvents = ({sportingEvents}) => (
         </thead>
 
         <tbody>
-            {sportingEvents.map(event =>
-                <tr key={event.id}>
-                    <td><SportingEventLink id={event.id} name={event.name} /></td>
-                    <td>event.sportTestTypeId</td>
-                    <td>event.provinceId</td>
-                    <td>event.testStart</td>
-                    <td>event.averageRating</td>
+            {sportingEvents.map(sportingEvent =>
+                <tr key={sportingEvent.id}>
+                    <td><SportingEventLink id={sportingEvent.id} name={sportingEvent.name} /></td>
+                    <td><FormattedNumber value={sportingEvent.sportTestTypeId}/></td>
+                    <td><FormattedNumber value={sportingEvent.provinceId}/></td>
+                    <td><FormattedMessage id={sportingEvent.testStart}/></td>
+                    <td><FormattedNumber value={sportingEvent.averageRating}/></td>
                 </tr>
             )}
         </tbody>
