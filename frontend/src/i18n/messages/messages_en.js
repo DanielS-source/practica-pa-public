@@ -27,7 +27,7 @@ export default {
     'project.global.validator.required': 'Required field',
 
     'project.global.buttons.search': 'Search',
-    'project.global.fields.sportTestTypeId': 'ID',
+    'project.global.fields.sportTestTypeId': 'Test ID',
     'project.global.fields.provinceId':'Province ID',
     'project.global.fields.testStart':'Event Date',
     'project.global.fields.averageRating': 'Average Rating',
