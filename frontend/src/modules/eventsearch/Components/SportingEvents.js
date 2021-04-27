@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as selectors from '../selectors';
 import {SportingEventLink} from '../../common';
 
-const SportingEvents = ({events}) => {
+const SportingEvents = ({events}) => (
 
     <table className="table table-striped table-hover">
 
