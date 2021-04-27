@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as selectors from '../selectors';
 import SportingEventLink from "../../common/components/SportingEventLink";
 
-const SportingEvents = ({events}) => (
+const SportingEvents = ({sportingEvents}) => (
 
     <table className="table table-striped table-hover">
 
@@ -21,7 +21,7 @@ const SportingEvents = ({events}) => (
         </thead>
 
         <tbody>
-            {events.map(event =>
+            {sportingEvents.map(event =>
                 <tr key={event.id}>
                     <td><SportingEventLink id={event.id} name={event.name}/></td>
                 </tr>

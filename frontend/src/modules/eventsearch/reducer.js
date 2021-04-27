@@ -3,18 +3,18 @@ import {combineReducers} from 'redux';
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-    search: null
+    sportingEventSearch: null
 };
 
-const search = (state = initialState.search, action) => {
+const sportingEventSearch = (state = initialState.sportingEventSearch, action) => {
 
     switch (action.type) {
 
         case actionTypes.FIND_SPORTING_EVENTS_COMPLETED:
-            return action.search;
+            return action.sportingEventSearch;
 
         case actionTypes.CLEAR_SPORTING_EVENTS_SEARCH:
-            return initialState.search;
+            return initialState.sportingEventSearch;
 
         default:
             return state;
@@ -24,7 +24,7 @@ const search = (state = initialState.search, action) => {
 }
 
 const reducer = combineReducers({
-    search
+    sportingEventSearch
 });
 
 export default reducer;
