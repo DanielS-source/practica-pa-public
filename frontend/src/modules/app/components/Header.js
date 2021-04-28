@@ -25,7 +25,6 @@ const Header = () => {
 
                 <ul className="navbar-nav mr-auto">
                     <li>
-                        <FindSportingEvents/>
                     </li>
                 </ul>
                 
