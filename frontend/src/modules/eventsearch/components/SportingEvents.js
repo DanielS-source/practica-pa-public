@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormattedMessage, FormattedNumber} from 'react-intl';
+import {FormattedDate, FormattedMessage, FormattedNumber} from 'react-intl';
 import PropTypes from 'prop-types';
 
 import * as selectors from '../selectors';
@@ -35,7 +35,7 @@ const SportingEvents = ({sportingEvents}) => (
                     <td><SportingEventLink id={sportingEvent.id} name={sportingEvent.name} /></td>
                     <td><FormattedNumber value={sportingEvent.sportTestTypeId}/></td>
                     <td><FormattedNumber value={sportingEvent.provinceId}/></td>
-                    <td><FormattedMessage id={new Date(sportingEvent.testStart)}/></td>
+                    <td><FormattedDate value={new Date(sportingEvent.testStart)}/></td>
                     <td><FormattedNumber value={sportingEvent.averageRating}/></td>
                 </tr>
             )}
