@@ -22,7 +22,6 @@ const FindSportingEvents = () => {
                 startDate: startDate.trim(),
                 endDate: endDate.trim(),
                 page: 0}));
-        history.push('/search/find-sporting-events-result');
     }
 
     const toNumber = value => value.length > 0 ? Number(value) : null;
