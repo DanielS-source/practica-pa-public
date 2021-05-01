@@ -1,8 +1,7 @@
 import * as actionTypes from './actionTypes';
 import * as selectors from './selectors';
 import backend from '../../backend';
-import {act} from "react-dom/test-utils";
-import {findAllSportingEventTypes} from "../../backend/searchService";
+
 
 
 
