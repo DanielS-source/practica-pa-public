@@ -6,6 +6,7 @@ const initialState = {
     sportingEventSearch: null,
     provinces: null,
     sportingEventsTypes: null,
+    sportingEvent: null
 };
 
 const provinces = (state = initialState.provinces, action) => {
@@ -53,10 +54,28 @@ const sportingEventSearch = (state = initialState.sportingEventSearch, action) =
 
 }
 
+const sportingEvent = (state = initialState.sportingEvent, action) => {
+
+    switch (action.type) {
+
+        case actionTypes.FIND_SPORTING_EVENTS_BY_ID_COMPLETED:
+            return action.sportingEvent;
+
+        case actionTypes.CLEAR_SPORTING_EVENTS:
+            return initialState.sportingEvent;
+
+        default:
+            return state;
+
+    }
+
+}
+
 const reducer = combineReducers({
     sportingEventSearch,
     provinces,
-    sportingEventsTypes
+    sportingEventsTypes,
+    sportingEvent
 });
 
 export default reducer;

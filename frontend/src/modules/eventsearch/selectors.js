@@ -40,3 +40,6 @@ export const getProvinceNames = (provinces, id) => {
     return province.name;
 
 }
+
+export const getSportingEvent = state =>
+    getModuleState(state).sportingEvent;
