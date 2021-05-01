@@ -13,7 +13,7 @@ const SportingEventTypeSelector = (selectProps) => {
 
         <select {...selectProps}>
 
-            <FormattedMessage id='project.catalog.CategorySelector.allDepartments'>
+            <FormattedMessage id='project.catalog.SportingEventTypeSelector.allTypes'>
                 {message => (<option value="">{message}</option>)}
             </FormattedMessage>
 
