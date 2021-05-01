@@ -13,3 +13,12 @@ export const findSportingEvents = ({provinceId, sportingEventTypeId, startDate, 
     appFetch(path, config('GET'), onSuccess);
 
 }
+
+export const findAllProvinces = (onSuccess) =>
+    appFetch('/search/provinces', config('GET'), onSuccess);
+
+export const findAllSportingEventTypes = (onSuccess) =>
+    appFetch('/search/sportTestTypes', config('GET'), onSuccess);
+
+export const findBySportingEventId = (id, onSuccess) =>
+    appFetch(`/search/sportTests/${id}`, config('GET'), onSuccess);
