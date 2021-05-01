@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {FormattedMessage, FormattedNumber} from 'react-intl';
+import {FormattedDate, FormattedMessage, FormattedNumber} from 'react-intl';
 import {useParams} from 'react-router-dom';
 
 import * as selectors from '../selectors';
@@ -51,7 +51,7 @@ const SportingEventDetails = () => {
                     <p className="card-text">{event.description}</p>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.testStart'/>
-                        : FormattedDate value={new Date(event.testStart)}/>
+                        : <FormattedDate value={new Date(event.testStart)}/>
                     </p>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.location'/>
