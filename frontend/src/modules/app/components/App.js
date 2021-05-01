@@ -6,6 +6,7 @@ import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
 import users from '../../users';
+import eventsearch from '../../eventsearch'
 
 const App = () => {
 
@@ -15,6 +16,10 @@ const App = () => {
 
         dispatch(users.actions.tryLoginFromServiceToken(
             () => dispatch(users.actions.logout())));
+
+        dispatch(eventsearch.actions.findAllSportingEventTypes());
+
+        dispatch(eventsearch.actions.findAllProvinces());
     
     });
 
