@@ -33,8 +33,8 @@ const SportingEvents = ({sportingEvents, eventType, province}) => (
             {sportingEvents.map(sportingEvent =>
                 <tr key={sportingEvent.id}>
                     <td><SportingEventLink id={sportingEvent.id} name={sportingEvent.name} /></td>
-                    <td>{selectors.getSportingEventTypes(eventType, sportingEvent.sportingEventTypeId)}</td>
-                    <td>{selectors.getProvinces(province,sportingEvent.provinceId)}</td>
+                    <td>{selectors.getSportingEventTypeNames(eventType, sportingEvent.sportingEventTypeId)}</td>
+                    <td>{selectors.getProvinceNames(province,sportingEvent.provinceId)}</td>
                     <td><FormattedDate value={new Date(sportingEvent.testStart)}/></td>
                     <td><FormattedNumber value={sportingEvent.averageRating}/></td>
                 </tr>
