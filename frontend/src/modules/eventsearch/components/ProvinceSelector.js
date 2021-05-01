@@ -13,7 +13,7 @@ const ProvinceSelector = (selectProps) => {
 
         <select {...selectProps}>
 
-            <FormattedMessage id='project.catalog.ProvinceSelector.allDepartments'>
+            <FormattedMessage id='project.catalog.ProvinceSelector.allProvinces'>
                 {message => (<option value="">{message}</option>)}
             </FormattedMessage>
 
