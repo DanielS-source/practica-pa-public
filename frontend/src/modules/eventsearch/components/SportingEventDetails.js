@@ -76,18 +76,6 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            <!--
-            Para cuando incorporemos suscripciones
-
-            {loggedIn &&
-                <div>
-                    <br/>
-                    <AddToShoppingCart productId={product.id}/>
-                </div>
-            }
-            */
-            -->
-
         </div>
 
     );
