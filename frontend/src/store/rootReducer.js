@@ -7,7 +7,7 @@ import eventSearch from '../modules/eventsearch';
 const rootReducer = combineReducers({
     app: app.reducer,
     users: users.reducer,
-    search: eventSearch.reducer
+    eventSearch: eventSearch.reducer
 });
 
 export default rootReducer;

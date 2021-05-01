@@ -42,11 +42,11 @@ const SportingEventDetails = () => {
                     <h5 className="card-title">{event.name}</h5>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.sportTestTypeId'/>:&nbsp;
-                            {selectors.getSportingEventTypeNames(types, event.sportTestTypeId)}
+                            {selectors.getSportingEventTypeName(types, event.sportTestTypeId)}
                     </p>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.provinceId'/>:&nbsp;
-                            {selectors.getProvinceNames(provinces, event.provinceId)}
+                            {selectors.getProvinceName(provinces, event.provinceId)}
                     </p>
                     <p className="card-text">{event.description}</p>
                     <p className="card-text">

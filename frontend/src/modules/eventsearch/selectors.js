@@ -1,4 +1,4 @@
-const getModuleState = state => state.search;
+const getModuleState = state => state.eventSearch;
 
 export const getSportingEventSearch = state =>
     getModuleState(state).sportingEventSearch;
@@ -6,7 +6,7 @@ export const getSportingEventSearch = state =>
 export const getSportingEventTypes = state =>
     getModuleState(state).sportingEventTypes;
 
-export const getSportingEventTypeNames = (sportingEventTypes, id) => {
+export const getSportingEventTypeName = (sportingEventTypes, id) => {
 
     if (!sportingEventTypes) {
         return '';
@@ -14,7 +14,7 @@ export const getSportingEventTypeNames = (sportingEventTypes, id) => {
 
     const sportingEventType = sportingEventTypes.find(sportingEventType => sportingEventType.id === id);
 
-    if (!sportingEventTypes) {
+    if (!sportingEventType) {
         return '';
     }
 
@@ -25,7 +25,7 @@ export const getSportingEventTypeNames = (sportingEventTypes, id) => {
 export const getProvinces = state =>
     getModuleState(state).provinces;
 
-export const getProvinceNames = (provinces, id) => {
+export const getProvinceName = (provinces, id) => {
 
     if (!provinces) {
         return '';
@@ -33,7 +33,7 @@ export const getProvinceNames = (provinces, id) => {
 
     const province = provinces.find(province => province.id === id);
 
-    if (!provinces) {
+    if (!province) {
         return '';
     }
 

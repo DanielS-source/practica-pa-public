@@ -29,7 +29,7 @@ const FindSportingEventsResult = () => {
     return (
 
         <div>
-            <SportingEvents sportingEvents={sportingEventSearch.result.items} eventTypes={sportingEventTypes} provinces={provinces} />
+            <SportingEvents sportingEvents={sportingEventSearch.result.items} sportingEventTypes={sportingEventTypes} provinces={provinces} />
             <Pager
                 back={{
                     enabled: sportingEventSearch.criteria.page >= 1,

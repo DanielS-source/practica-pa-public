@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import users from '../../users';
-import {FindSportingEvents} from "../../eventsearch";
 
 const Header = () => {
 

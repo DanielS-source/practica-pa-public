@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import * as actions from '../actions';
@@ -10,9 +9,8 @@ import ProvinceSelector from "./ProvinceSelector";
 const FindSportingEvents = () => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const [provinceId, setProvinceId] = useState('');
-    const [sportingEventTypeId, setSportingEventTypeId] = useState('');
+    const [sportTestTypeId, setSportTestTypeId] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
@@ -20,7 +18,7 @@ const FindSportingEvents = () => {
         event.preventDefault();
         dispatch(actions.findSportingEvents(
             {provinceId: toNumber(provinceId),
-                sportingEventTypeId: toNumber(sportingEventTypeId),
+                sportTestTypeId: toNumber(sportTestTypeId),
                 startDate: startDate.trim(),
                 endDate: endDate.trim(),
                 page: 0}));
@@ -32,8 +30,8 @@ const FindSportingEvents = () => {
 
         <form className="form-inline mt-2 mt-md-0" onSubmit={e => handleSubmit(e)}>
 
-            <SportingEventTypeSelector id="sportingEventTypeId" className="custom-select my-1 mr-sm-2"
-                              value={sportingEventTypeId} onChange={e => setSportingEventTypeId(e.target.value)}/>
+            <SportingEventTypeSelector id="sportEventTypeId" className="custom-select my-1 mr-sm-2"
+                                       value={sportTestTypeId} onChange={e => setSportTestTypeId(e.target.value)}/>
 
             <ProvinceSelector id="provinceId" className="custom-select my-1 mr-sm-2"
                               value={provinceId} onChange={e => setProvinceId(e.target.value)}/>

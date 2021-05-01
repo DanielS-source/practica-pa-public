@@ -6,7 +6,7 @@ const initialState = {
     sportingEventSearch: null,
     provinces: null,
     sportingEventTypes: null,
-    sportingEvent: null
+    sportingEvent: null,
 };
 
 const provinces = (state = initialState.provinces, action) => {
@@ -75,7 +75,7 @@ const reducer = combineReducers({
     sportingEventSearch,
     provinces,
     sportingEventTypes,
-    sportingEvent
+    sportingEvent,
 });
 
 export default reducer;
