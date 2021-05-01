@@ -5,7 +5,7 @@ import * as actionTypes from './actionTypes';
 const initialState = {
     sportingEventSearch: null,
     provinces: null,
-    sportingEventsTypes: null,
+    sportingEventTypes: null,
     sportingEvent: null
 };
 
@@ -23,12 +23,12 @@ const provinces = (state = initialState.provinces, action) => {
 
 }
 
-const sportingEventsTypes = (state = initialState.sportingEventsTypes, action) => {
+const sportingEventTypes = (state = initialState.sportingEventTypes, action) => {
 
     switch (action.type) {
 
-        case actionTypes.FIND_ALL_SPORTING_EVENTS_TYPES_COMPLETED:
-            return action.sportingEventsTypes;
+        case actionTypes.FIND_ALL_SPORTING_EVENT_TYPES_COMPLETED:
+            return action.sportingEventTypes;
 
         default:
             return state;
@@ -74,7 +74,7 @@ const sportingEvent = (state = initialState.sportingEvent, action) => {
 const reducer = combineReducers({
     sportingEventSearch,
     provinces,
-    sportingEventsTypes,
+    sportingEventTypes,
     sportingEvent
 });
 

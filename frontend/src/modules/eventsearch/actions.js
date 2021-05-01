@@ -60,7 +60,7 @@ export const findAllProvinces = () => (dispatch, getState) => {
 }
 
 const findAllSportingEventTypesCompleted = sportingEventTypes => ({
-    type: actionTypes.FIND_ALL_SPORTING_EVENTS_TYPES_COMPLETED,
+    type: actionTypes.FIND_ALL_SPORTING_EVENT_TYPES_COMPLETED,
     sportingEventTypes
 })
 
