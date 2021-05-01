@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import * as selectors from './selectors';
 import backend from '../../backend';
 import {act} from "react-dom/test-utils";
+import {findAllSportingEventTypes} from "../../backend/searchService";
 
 
 
@@ -59,4 +60,18 @@ export const findAllProvinces = () => (dispatch, getState) => {
     }
 }
 
+const findAllSportingEventTypesCompleted = sportingEventTypes => ({
+    type: actionTypes.FIND_ALL_SPORTING_EVENTS_TYPES_COMPLETED,
+    sportingEventTypes
+})
+
+export const findAllSportingEventTypes = () => (dispatch, getState) => {
+    const sportingEventTypes = selectors.getSportingEventTypes(getState());
+
+    if (!sportingEventTypes){
+        backend.searchService.findAllSportingEventTypes(
+            sportingEventTypes => dispatch(findAllSportingEventTypesCompleted(sportingEventTypes))
+        )
+    }
+}
 
