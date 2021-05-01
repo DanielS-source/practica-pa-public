@@ -1,4 +1,4 @@
-    import React, {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {FormattedMessage, FormattedNumber} from 'react-intl';
 import {useParams} from 'react-router-dom';
@@ -75,18 +75,6 @@ const SportingEventDetails = () => {
                     </p>
                 </div>
             </div>
-
-            <!--
-
-            Para cuando incorporemos suscripciones
-
-            {loggedIn &&
-                <div>
-                    <br/>
-                    <AddToShoppingCart productId={product.id}/>
-                </div>
-            }
-            -->
 
         </div>
 
