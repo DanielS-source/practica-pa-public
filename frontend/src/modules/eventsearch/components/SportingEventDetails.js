@@ -41,11 +41,11 @@ const SportingEventDetails = () => {
                 <div className="card-body">
                     <h5 className="card-title">{event.name}</h5>
                     <h6 className="card-subtitle text-muted">
-                        <FormattedMessage id='project.global.fields.type'/>:&nbsp;
+                        <FormattedMessage id='project.global.fields.sportTestTypeId'/>:&nbsp;
                             {selectors.getSportingEventTypeNames(types, event.sportTestTypeId)}
                     </h6>
                     <h6 className="card-subtitle text-muted">
-                        <FormattedMessage id='project.global.fields.province'/>:&nbsp;
+                        <FormattedMessage id='project.global.fields.provinceId'/>:&nbsp;
                             {selectors.getProvinceNames(provinces, event.provinceId)}
                     </h6>
                     <p className="card-text">{event.description}</p>
@@ -75,7 +75,6 @@ const SportingEventDetails = () => {
                     </p>
                 </div>
             </div>
-
         </div>
 
     );

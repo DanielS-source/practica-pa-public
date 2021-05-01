@@ -28,9 +28,13 @@ export default {
     'project.global.validator.required': 'Campo obligatorio',
 
     'project.global.buttons.search': 'Buscar',
-    'project.global.fields.sportTestTypeId': 'ID de prueba',
-    'project.global.fields.provinceId': 'ID de provincia',
+    'project.global.fields.sportTestTypeId': 'Tipo de prueba',
+    'project.global.fields.provinceId': 'Provincia',
     'project.global.fields.testStart': 'Fecha de Evento',
+    'project.global.fields.location': 'Lugar del Evento',
+    'project.global.fields.participants': 'Participantes',
+    'project.global.fields.maxParticipants': 'Max. Participantes',
+    'project.global.fields.price': 'Precio',
     'project.global.fields.averageRating': 'Puntuación Media',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contraseña nueva',

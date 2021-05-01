@@ -27,9 +27,13 @@ export default {
     'project.global.validator.required': 'Required field',
 
     'project.global.buttons.search': 'Search',
-    'project.global.fields.sportTestTypeId': 'Test ID',
-    'project.global.fields.provinceId':'Province ID',
+    'project.global.fields.sportTestTypeId': 'Test type',
+    'project.global.fields.provinceId':'Province',
     'project.global.fields.testStart':'Event Date',
+    'project.global.fields.location': 'Event location',
+    'project.global.fields.participants': 'Participants',
+    'project.global.fields.maxParticipants': 'Max. Participants',
+    'project.global.fields.price': 'Price',
     'project.global.fields.averageRating': 'Average Rating',
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirm new password',
