@@ -58,10 +58,10 @@ const sportingEvent = (state = initialState.sportingEvent, action) => {
 
     switch (action.type) {
 
-        case actionTypes.FIND_SPORTING_EVENTS_BY_ID_COMPLETED:
+        case actionTypes.FIND_SPORTING_EVENT_BY_ID_COMPLETED:
             return action.sportingEvent;
 
-        case actionTypes.CLEAR_SPORTING_EVENTS:
+        case actionTypes.CLEAR_SPORTING_EVENT:
             return initialState.sportingEvent;
 
         default:
