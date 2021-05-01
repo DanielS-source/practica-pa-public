@@ -27,3 +27,16 @@ export const previousFindProductsResultPage = criteria =>
 export const nextFindProductsResultPage = criteria =>
     findSportingEvents({...criteria, page: criteria.page+1});
 
+const findSportingEventsByIdCompleted = sportingEvent => ({
+    type: actionTypes.FIND_SPORTING_EVENT_BY_ID_COMPLETED,
+    sportingEvent
+})
+
+export const findSportingEventsById = id => dispatch => {
+    backend.searchService.findBySportingEventId(id,
+        sportingEvent => dispatch(findSportingEventsByIdCompleted(sportingEvent)));
+}
+
+export const clearSportingEvent = () => ({
+    type: actionTypes.CLEAR_SPORTING_EVENT
+})
