@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import * as actions from '../actions';
+import SportingEventTypeSelector from "./SportingEventTypeSelector";
+import ProvinceSelector from "./ProvinceSelector";
 
 const FindSportingEvents = () => {
 
@@ -29,6 +31,12 @@ const FindSportingEvents = () => {
     return (
 
         <form className="form-inline mt-2 mt-md-0" onSubmit={e => handleSubmit(e)}>
+
+            <SportingEventTypeSelector id="sportingEventTypeId" className="custom-select my-1 mr-sm-2"
+                              value={sportingEventTypeId} onChange={e => setSportingEventTypeId(e.target.value)}/>
+
+            <ProvinceSelector id="provinceId" className="custom-select my-1 mr-sm-2"
+                              value={provinceId} onChange={e => setProvinceId(e.target.value)}/>
 
             <input id="startDate" type="text" className="form-control mr-sm-2"
                    value={startDate} onChange={e => setStartDate(e.target.value)}/>
