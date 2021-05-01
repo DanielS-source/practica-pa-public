@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as selectors from '../selectors';
 import SportingEventLink from "../../common/components/SportingEventLink";
 
-const SportingEvents = ({sportingEvents}) => (
+const SportingEvents = ({sportingEvents, eventType, province}) => (
 
     <table className="table table-striped table-hover">
 
@@ -33,8 +33,8 @@ const SportingEvents = ({sportingEvents}) => (
             {sportingEvents.map(sportingEvent =>
                 <tr key={sportingEvent.id}>
                     <td><SportingEventLink id={sportingEvent.id} name={sportingEvent.name} /></td>
-                    <td><FormattedNumber value={sportingEvent.sportTestTypeId}/></td>
-                    <td><FormattedNumber value={sportingEvent.provinceId}/></td>
+                    <td>{selectors.getSportingEventType(eventType, sportingEvent.eventType)}</td>
+                    <td>{selectors.getProvince(province,sportingEvent.province)}</td>
                     <td><FormattedDate value={new Date(sportingEvent.testStart)}/></td>
                     <td><FormattedNumber value={sportingEvent.averageRating}/></td>
                 </tr>
@@ -46,7 +46,9 @@ const SportingEvents = ({sportingEvents}) => (
 );
 
 SportingEvents.propTypes = {
-    events: PropTypes.array.isRequired,
+    sportingEvents: PropTypes.array.isRequired,
+    eventType: PropTypes.array.isRequired,
+    province: PropTypes.array.isRequired
 }
 
 export default SportingEvents;
