@@ -20,7 +20,7 @@ const SportingEventDetails = () => {
         const eventId = Number(id);
 
         if (!Number.isNaN(eventId)) {
-            dispatch(actions.findSportingEventById(eventId));
+            dispatch(actions.findSportingEventsById(eventId));
         }
 
         return () => dispatch(actions.clearSportingEvent());
@@ -42,11 +42,11 @@ const SportingEventDetails = () => {
                     <h5 className="card-title">{event.name}</h5>
                     <h6 className="card-subtitle text-muted">
                         <FormattedMessage id='project.global.fields.type'/>:&nbsp;
-                            {selectors.getSportingEventType(types, event.sportTestTypeId)}
+                            {selectors.getSportingEventTypeNames(types, event.sportTestTypeId)}
                     </h6>
                     <h6 className="card-subtitle text-muted">
                         <FormattedMessage id='project.global.fields.province'/>:&nbsp;
-                            {selectors.getProvinces(provinces, event.provinceId)}
+                            {selectors.getProvinceNames(provinces, event.provinceId)}
                     </h6>
                     <p className="card-text">{event.description}</p>
                     <p className="card-text">
@@ -94,4 +94,4 @@ const SportingEventDetails = () => {
 
 }
 
-export default ProductDetails;
+export default SportingEventDetails;
