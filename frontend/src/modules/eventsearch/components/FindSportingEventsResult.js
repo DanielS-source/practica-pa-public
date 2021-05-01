@@ -10,8 +10,8 @@ import SportingEvents from './SportingEvents';
 const FindSportingEventsResult = () => {
 
     const sportingEventSearch = useSelector(selectors.getSportingEventSearch);
-    const sportingEventType = useSelector(selectors.getSportingEventType);
-    const province = useSelector(selectors.getProvince);
+    const sportingEventTypes = useSelector(selectors.getSportingEventTypes);
+    const provinces = useSelector(selectors.getProvinces);
     const dispatch = useDispatch();
 
     if (!sportingEventSearch) {
@@ -29,7 +29,7 @@ const FindSportingEventsResult = () => {
     return (
 
         <div>
-            <SportingEvents sportingEvents={sportingEventSearch.result.items} eventTypes={sportingEventType} provinces={province} />
+            <SportingEvents sportingEvents={sportingEventSearch.result.items} eventTypes={sportingEventTypes} provinces={provinces} />
             <Pager
                 back={{
                     enabled: sportingEventSearch.criteria.page >= 1,
