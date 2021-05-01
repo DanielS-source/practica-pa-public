@@ -4,7 +4,7 @@ export const getSportingEventSearch = state =>
     getModuleState(state).sportingEventSearch;
 
 export const getSportingEventType = state =>
-    getModuleState(state).sportingEventSearch;
+    getModuleState(state).sportingEventsTypes;
 
 export const getSportingEventTypeName = (sportingEventTypes, id) => {
 
@@ -23,7 +23,7 @@ export const getSportingEventTypeName = (sportingEventTypes, id) => {
 }
 
 export const getProvince = state =>
-    getModuleState(state).sportingEventSearch;
+    getModuleState(state).provinces;
 
 export const getProvinceName = (provinces, id) => {
 
