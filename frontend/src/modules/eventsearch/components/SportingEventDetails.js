@@ -76,8 +76,7 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            /*
-
+            <!--
             Para cuando incorporemos suscripciones
 
             {loggedIn &&
@@ -87,6 +86,7 @@ const SportingEventDetails = () => {
                 </div>
             }
             */
+            -->
 
         </div>
 
