@@ -7,7 +7,7 @@ import * as selectors from '../selectors';
 
 const SportingEventTypeSelector = (selectProps) => {
 
-    const sportingEventTypes = useSelector(selectors.getSportingEventTypes());
+    const sportingEventTypes = useSelector(selectors.getSportingEventTypes);
 
     return (
 

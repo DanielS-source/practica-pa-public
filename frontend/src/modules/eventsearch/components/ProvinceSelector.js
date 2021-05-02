@@ -7,7 +7,7 @@ import * as selectors from '../selectors';
 
 const ProvinceSelector = (selectProps) => {
 
-    const provinces = useSelector(selectors.getProvinces());
+    const provinces = useSelector(selectors.getProvinces);
 
     return (
 
