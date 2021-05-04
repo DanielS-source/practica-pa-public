@@ -36,6 +36,10 @@ export default {
     'project.global.fields.maxParticipants': 'Max. Participantes',
     'project.global.fields.price': 'Precio',
     'project.global.fields.averageRating': 'Puntuación Media',
+    'project.catalog.SportingEventTypeSelector.allTypes':'Todos os Tipos de Evento Deportivo',
+    'project.catalog.ProvinceSelector.allProvinces':'Todas as Provincias',
+    'project.catalog.FindSportingEventsResult.noSportingEventsFound':'Non se Encontraron Eventos Deportivos',
+
 
     'project.users.ChangePassword.fields.confirmNewPassword': 'Confirmar contrasinal nova',
     'project.users.ChangePassword.fields.newPassword': 'Contrasinal nova',
