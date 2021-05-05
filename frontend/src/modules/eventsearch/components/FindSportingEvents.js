@@ -36,10 +36,10 @@ const FindSportingEvents = () => {
             <ProvinceSelector id="provinceId" className="custom-select my-1 mr-sm-2"
                               value={provinceId} onChange={e => setProvinceId(e.target.value)}/>
 
-            <input id="startDate" type="text" className="form-control mr-sm-2"
+            <input id="startDate" type="date" className="form-control mr-sm-2"
                    value={startDate} onChange={e => setStartDate(e.target.value)}/>
 
-            <input id="endDate" type="text" className="form-control mr-sm-2"
+            <input id="endDate" type="date" className="form-control mr-sm-2"
                    value={endDate} onChange={e => setEndDate(e.target.value)}/>
 
             <button type="submit" className="btn btn-primary my-2 my-sm-0">
