@@ -6,8 +6,8 @@ import {useParams} from 'react-router-dom';
 import users from '../../users';
 import * as selectors from '../selectors';
 import * as actions from '../actions';
-import {RegistrationForm} from '../../registrations'
 import {BackLink} from '../../common';
+import RegistrationForm from "../../registrations/components/RegistrationForm";
 
 const SportingEventDetails = () => {
 
