@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 
 import * as selectors from '../selectors';
-import Inscription from './InscriptionLink';
+import InscriptionLink from "../../common/components/InscriptionLink";
 
 const RegistrationResult = () => {
 
