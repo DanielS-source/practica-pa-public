@@ -3,7 +3,8 @@ import {combineReducers} from 'redux';
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-    inscription: null
+    inscription: null,
+    dorsal: null
 };
 
 const getInscription = (state = initialState.inscription, action) => {
@@ -20,8 +21,23 @@ const getInscription = (state = initialState.inscription, action) => {
 
 }
 
+const getDorsal = (state = initialState.dorsal, action) => {
+
+    switch (action.type) {
+
+        case actionTypes.DORSAL_DELIVERED:
+            return action.dorsal;
+
+        default:
+            return state;
+
+    }
+
+}
+
 const reducer = combineReducers({
-    getInscription
+    getInscription,
+    getDorsal
 });
 
 export default reducer;

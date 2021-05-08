@@ -8,6 +8,7 @@ import * as selectors from '../selectors';
 import * as actions from '../actions';
 import {BackLink} from '../../common';
 import RegistrationForm from "../../registrations/components/RegistrationForm";
+import DeliverDorsalForm from "../../registrations/components/DeliverDorsalForm";
 
 const SportingEventDetails = () => {
 
@@ -83,6 +84,13 @@ const SportingEventDetails = () => {
                 <div>
                     <br/>
                         <RegistrationForm SportingEventId={event.id}/>
+                </div>
+            }
+
+            {loggedIn &&
+                <div>
+                    <br/>
+                        <DeliverDorsalForm SportingEventId={event.id}/>
                 </div>
             }
         </div>

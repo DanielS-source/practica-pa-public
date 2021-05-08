@@ -6,6 +6,10 @@ import * as selectors from '../selectors';
 
 const DeliverDorsalForm = ({SportingEventId}) => {
 
+    const dorsal = useSelector(selectors.getDorsal());
+
 
 
 }
+
+export default DeliverDorsalForm;
