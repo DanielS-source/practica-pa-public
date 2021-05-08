@@ -1,4 +1,3 @@
-
 import {combineReducers} from 'redux';
 
 import users from '../users';
@@ -6,7 +5,7 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
     sportingEvent: null,
-    getLastInscriptionId: null
+    lastInscriptionId: null
 };
 
 const sportingEvent = (state = initialState.sportingEvent, action) => {
@@ -29,13 +28,12 @@ const sportingEvent = (state = initialState.sportingEvent, action) => {
 
 }
 
-const getLastInscriptionId = (state = initialState.getLastInscriptionId, action) => {
+const getLastInscriptionId = (state = initialState.lastInscriptionId, action) => {
 
     switch (action.type) {
 
         case actionTypes.INSCRIPTION_COMPLETED:
-            return action.getLastInscriptionId;
-            //en PA-Shop esto sería registrationId pero creo que es una errata porque no sale de ninguna parte
+            return action.lastInscriptionId;
 
         default:
             return state;
@@ -46,7 +44,7 @@ const getLastInscriptionId = (state = initialState.getLastInscriptionId, action)
 
 const reducer = combineReducers({
     sportingEvent,
-    lastInscriptionId
+    getLastInscriptionId
 });
 
 export default reducer;

@@ -10,7 +10,6 @@ const RegistrationForm = () => {
     const sportingEvent = useSelector(selectors.getSportingEvent);
     const dispatch = useDispatch();
     const history = useHistory();
-    const userId = 1;
     const [creditCard, setCreditCard] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
@@ -21,8 +20,7 @@ const RegistrationForm = () => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.inscribe(sportingEvent.id,
-                userId, creditCard.trim(),
+            dispatch(actions.inscribe(sportingEvent.id, creditCard.trim(),
                 () => history.push('/registrations/inscription-completed'),
                 errors => setBackendErrors(errors)));
 
