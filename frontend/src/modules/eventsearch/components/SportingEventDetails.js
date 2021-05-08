@@ -3,12 +3,15 @@ import {useSelector, useDispatch} from 'react-redux';
 import {FormattedDate, FormattedMessage, FormattedNumber} from 'react-intl';
 import {useParams} from 'react-router-dom';
 
+import users from '../../users';
 import * as selectors from '../selectors';
 import * as actions from '../actions';
+import {RegistrationForm} from '../../registrations'
 import {BackLink} from '../../common';
 
 const SportingEventDetails = () => {
 
+    const loggedIn = useSelector(users.selectors.isLoggedIn);
     const event = useSelector(selectors.getSportingEvent);
     const types = useSelector(selectors.getSportingEventTypes);
     const provinces = useSelector(selectors.getProvinces);
@@ -75,6 +78,13 @@ const SportingEventDetails = () => {
                     </p>
                 </div>
             </div>
+
+            {loggedIn &&
+                <div>
+                    <br/>
+                        <RegistrationForm/>
+                </div>
+            }
         </div>
 
     );
