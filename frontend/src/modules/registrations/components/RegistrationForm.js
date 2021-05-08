@@ -7,9 +7,8 @@ import {Errors} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 
-const RegistrationForm = () => {
+const RegistrationForm = ({SportingEventId}) => {
 
-    const sportingEvent = useSelector(selectors.getSportingEvent);
     const dispatch = useDispatch();
     const history = useHistory();
     const [creditCard, setCreditCard] = useState('');
@@ -22,7 +21,7 @@ const RegistrationForm = () => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.inscribe(sportingEvent.id, creditCard.trim(),
+            dispatch(actions.inscribe(SportingEventId, creditCard.trim(),
                 () => history.push('/registrations/inscription-completed'),
                 errors => setBackendErrors(errors)));
 

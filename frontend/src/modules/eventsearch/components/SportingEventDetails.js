@@ -82,7 +82,7 @@ const SportingEventDetails = () => {
             {loggedIn &&
                 <div>
                     <br/>
-                        <RegistrationForm/>
+                        <RegistrationForm SportingEventId={event.id}/>
                 </div>
             }
         </div>
