@@ -1,0 +1,1 @@
+export const INSCRIPTION_COMPLETED = "project/register/registrationCompleted"

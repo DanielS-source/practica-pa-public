@@ -9,7 +9,7 @@ const RegistrationResult = () => {
 
     const inscriptionId = useSelector(selectors.getLastInscriptionId);
 
-    if (!inscriptionIdId) {
+    if (!inscriptionId) {
         return null;
     }
 
