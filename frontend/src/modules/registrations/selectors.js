@@ -1,6 +1,6 @@
 const getModuleState = state => state.registrations;
 
-export const getLastRegistrationId = state =>
+export const getLastInscriptionId = state =>
     getModuleState(state).getLastInscriptionId;
 
 export const getSportingEvent = state =>
