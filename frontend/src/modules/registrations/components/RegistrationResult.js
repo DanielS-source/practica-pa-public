@@ -14,11 +14,11 @@ const RegistrationResult = () => {
     }
 
     return (
-        <div className="card bg-light border-dark"">
+        <div className="card bg-light border-dark">
             <p className="card-text">
                 <FormattedMessage id='project.registrations.fields.inscriptionId'/>
                     &nbsp;
-                    <InscriptionLink inscription.id/>
+                <InscriptionLink inscription.id/>
             </p>
             <p className="card-text">
                 <FormattedMessage id='project.registrations.fields.inscriptionDorsal'/>
