@@ -7,13 +7,24 @@ import InscriptionLink from "../../common/components/InscriptionLink";
 
 const RegistrationResult = () => {
 
-    const inscriptionId = useSelector(selectors.getLastInscriptionId);
+    const inscription = useSelector(selectors.getInscription);
 
-    if (!inscriptionId) {
+    if (!inscription) {
         return null;
     }
 
     return (
+        <div className="card bg-light border-dark"">
+            <p className="card-text">
+                <FormattedMessage id='project.registrations.fields.inscriptionId'/>
+                    : {inscription.id}
+            </p>
+            <p className="card-text">
+                <FormattedMessage id='project.registrations.fields.inscriptionDorsal'/>
+                    : {inscription.dorsal}
+            </p>
+        </div>
+
         <div className="alert alert-success" role="alert">
             <FormattedMessage id="project.registrations.RegCompleted.inscriptionGenerated"/>:
             &nbsp;
