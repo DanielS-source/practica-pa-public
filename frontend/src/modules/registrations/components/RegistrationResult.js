@@ -17,18 +17,13 @@ const RegistrationResult = () => {
         <div className="card bg-light border-dark"">
             <p className="card-text">
                 <FormattedMessage id='project.registrations.fields.inscriptionId'/>
-                    : {inscription.id}
+                    &nbsp;
+                    <InscriptionLink inscription.id/>
             </p>
             <p className="card-text">
                 <FormattedMessage id='project.registrations.fields.inscriptionDorsal'/>
                     : {inscription.dorsal}
             </p>
-        </div>
-
-        <div className="alert alert-success" role="alert">
-            <FormattedMessage id="project.registrations.RegCompleted.inscriptionGenerated"/>:
-            &nbsp;
-            <InscriptionLink id={inscriptionId}/>
         </div>
     );
 

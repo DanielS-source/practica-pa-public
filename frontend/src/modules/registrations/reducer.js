@@ -3,15 +3,15 @@ import {combineReducers} from 'redux';
 import * as actionTypes from './actionTypes';
 
 const initialState = {
-    lastInscriptionId: null
+    inscription: null
 };
 
-const getLastInscriptionId = (state = initialState.lastInscriptionId, action) => {
+const getInscription = (state = initialState.inscription, action) => {
 
     switch (action.type) {
 
         case actionTypes.INSCRIPTION_COMPLETED:
-            return action.inscriptionId;
+            return action.inscription;
 
         default:
             return state;
@@ -21,7 +21,7 @@ const getLastInscriptionId = (state = initialState.lastInscriptionId, action) =>
 }
 
 const reducer = combineReducers({
-    getLastInscriptionId
+    getInscription
 });
 
 export default reducer;
