@@ -5,7 +5,6 @@ import {useHistory} from 'react-router-dom';
 
 import {Errors} from '../../common';
 import * as actions from '../actions';
-import * as selectors from '../selectors';
 
 const RegistrationForm = ({SportingEventId}) => {
 

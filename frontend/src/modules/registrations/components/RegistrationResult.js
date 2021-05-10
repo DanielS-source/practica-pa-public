@@ -13,13 +13,19 @@ const RegistrationResult = () => {
         return null;
     }
 
-    return (
-        <div className="card bg-light border-dark">
-            <p className="card-text">
+    /*
+
+                <p className="card-text">
                 <FormattedMessage id='project.registrations.fields.inscriptionId'/>
                     &nbsp;
                 <InscriptionLink inscription.id/>
             </p>
+
+    * */
+
+    return (
+        <div className="card bg-light border-dark">
+
             <p className="card-text">
                 <FormattedMessage id='project.registrations.fields.inscriptionDorsal'/>
                     : {inscription.dorsal}

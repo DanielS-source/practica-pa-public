@@ -16,6 +16,7 @@ const SportingEventDetails = () => {
     const event = useSelector(selectors.getSportingEvent);
     const types = useSelector(selectors.getSportingEventTypes);
     const provinces = useSelector(selectors.getProvinces);
+    const userRole = useSelector(users.selectors.getUserRole);
     const dispatch = useDispatch();
     const {id} = useParams();
 
@@ -80,14 +81,14 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            {loggedIn &&
+            {loggedIn && userRole=="USER" &&
                 <div>
                     <br/>
                         <RegistrationForm SportingEventId={event.id}/>
                 </div>
             }
 
-            {loggedIn &&
+            {loggedIn && userRole=="EMPLOYEE" &&
                 <div>
                     <br/>
                         <DeliverDorsalForm SportingEventId={event.id}/>
