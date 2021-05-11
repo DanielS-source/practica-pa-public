@@ -36,6 +36,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
     function showDorsal(){
         alert(dorsal);
+        console.log(dorsal);
     }
     return (
         <div>
