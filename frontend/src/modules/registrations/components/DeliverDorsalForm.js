@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
-import {useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {Errors} from '../../common';
@@ -11,7 +10,6 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
     const dispatch = useDispatch();
     const dorsal = useSelector(selectors.getDorsal);
-    const history = useHistory();
     const [creditCard, setCreditCard] = useState('');
     const [inscriptionId, setInscriptionId] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
