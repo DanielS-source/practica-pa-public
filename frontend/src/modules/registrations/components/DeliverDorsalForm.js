@@ -24,7 +24,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         if (form.checkValidity()) {
 
             dispatch(actions.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
-                () => history.push('/registrations/inscription-completed'),
+                () => showDorsal(),
                 errors => setBackendErrors(errors)));
 
         } else {
@@ -82,7 +82,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                         </div>
                         <div className="form-group row">
                             <div className="offset-md-3 col-md-1">
-                                <button type="submit" className="btn btn-primary" onClick={showDorsal}>
+                                <button type="submit" className="btn btn-primary">
                                     <FormattedMessage id="project.global.buttons.dorsalButton"/>
                                 </button>
                             </div>

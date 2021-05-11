@@ -51,6 +51,8 @@ export default {
     'project.users.SignUp.fields.confirmPassword': 'Confirmar contrasinal',
     'project.users.SignUp.title': 'Rexistrarse',
     'project.users.UpdateProfile.title': 'Actualizar perfil',
+    'project.global.fields.inscriptionId': 'Id de Inscripción',
+    'project.global.buttons.dorsalButton':'Obter Dorsal',
 
     'project.registrations.regForm.title' : 'Formulario de rexistro',
     'project.registrations.regRes.title' : '¡Rexistro completado!',
