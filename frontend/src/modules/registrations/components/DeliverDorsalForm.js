@@ -38,6 +38,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         Success({message: "Your dosal is: " + dorsal, onClose: null})
          */
     }
+
     return (
         <div>
             <Errors errors={backendErrors}
@@ -87,11 +88,18 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                                 </button>
                             </div>
                         </div>
+                        {dorsal &&
+                        <div>
+                            <br/>
+                            <FormattedMessage id={dorsal}/>
+                        </div>
+                        }
                     </form>
                 </div>
             </div>
         </div>
     );
+
 
 }
 
