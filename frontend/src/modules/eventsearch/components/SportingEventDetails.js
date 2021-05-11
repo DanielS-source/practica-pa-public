@@ -81,14 +81,14 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            {loggedIn && userRole=="USER" &&
+            {loggedIn && userRole==="USER" &&
                 <div>
                     <br/>
                         <RegistrationForm SportingEventId={event.id}/>
                 </div>
             }
 
-            {loggedIn && userRole=="EMPLOYEE" &&
+            {loggedIn && userRole==="EMPLOYEE" &&
                 <div>
                     <br/>
                         <DeliverDorsalForm SportingEventId={event.id}/>
