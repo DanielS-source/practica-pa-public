@@ -10,6 +10,7 @@ import * as selectors from '../selectors';
 const DeliverDorsalForm = ({SportingEventId}) => {
 
     const dispatch = useDispatch();
+    const dorsal = useSelector(selectors.getDorsal);
     const history = useHistory();
     const [creditCard, setCreditCard] = useState('');
     const [inscriptionId, setInscriptionId] = useState('');
@@ -76,8 +77,16 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                         </div>
                         <div className="form-group row">
                             <div className="offset-md-3 col-md-1">
+                                <label>
+                                    <FormattedMessage id="project.global.fields.dorsal"/>
+                                    : {dorsal}
+                                </label>
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <div className="offset-md-3 col-md-1">
                                 <button type="submit" className="btn btn-primary">
-                                    <FormattedMessage id="project.global.buttons.dorsal"/>
+                                    <FormattedMessage id="project.global.buttons.dorsalButton"/>
                                 </button>
                             </div>
                         </div>
