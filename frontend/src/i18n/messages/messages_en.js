@@ -52,6 +52,8 @@ export default {
     'project.global.fields.inscriptionId': 'Inscription Id',
     'project.global.buttons.dorsalButton':'Get Number',
     'project.registrations.dorsalForm.title':'Get Sport Test number',
+    'project.exceptions.InvalidDataException':'Invalid Data',
+    'project.exceptions.TooSoonToDeliverException':"It's too soon to deliver",
 
     'project.registrations.regForm.title' : 'Registration form',
     'project.registrations.regRes.title' : 'Registration complete!',

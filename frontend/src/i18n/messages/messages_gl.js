@@ -54,6 +54,8 @@ export default {
     'project.global.fields.inscriptionId': 'Id de Inscripción',
     'project.global.buttons.dorsalButton':'Obter Dorsal',
     'project.registrations.dorsalForm.title':'Obter Dorsal da Proba Deportiva',
+    'project.exceptions.InvalidDataException':'Datos Inválidos',
+    'project.exceptions.TooSoonToDeliverException':'Demasiado pronto para entregar Dorsales',
 
     'project.registrations.regForm.title' : 'Formulario de rexistro',
     'project.registrations.regRes.title' : '¡Rexistro completado!',

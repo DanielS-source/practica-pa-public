@@ -36,6 +36,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         alert(dorsal);
         console.log(dorsal);
     }
+
     return (
         <div>
             <Errors errors={backendErrors}
@@ -85,11 +86,18 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                                 </button>
                             </div>
                         </div>
+                        {dorsal &&
+                        <div>
+                            <br/>
+                            <FormattedMessage id={dorsal}/>
+                        </div>
+                        }
                     </form>
                 </div>
             </div>
         </div>
     );
+
 
 }
 
