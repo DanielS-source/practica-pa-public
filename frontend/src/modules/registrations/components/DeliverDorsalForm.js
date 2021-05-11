@@ -33,6 +33,11 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         }
     }
 
+
+    function showDorsal(){
+        alert("dorsal");
+    }
+
     return (
         <div>
             <Errors errors={backendErrors}
@@ -77,15 +82,8 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                         </div>
                         <div className="form-group row">
                             <div className="offset-md-3 col-md-1">
-                                <label>
-                                    <FormattedMessage id="project.global.fields.dorsal"/>
-                                    : {dorsal}
-                                </label>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="offset-md-3 col-md-1">
                                 <button type="submit" className="btn btn-primary">
+                                    onClick{() => showDorsal()}
                                     <FormattedMessage id="project.global.buttons.dorsalButton"/>
                                 </button>
                             </div>
