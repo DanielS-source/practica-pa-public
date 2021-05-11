@@ -22,7 +22,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.deliverDorsal(inscriptionId, SportingEventId, creditCard.trim(),
+            dispatch(actions.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
                 () => history.push('/registrations/inscription-completed'),
                 errors => setBackendErrors(errors)));
 
@@ -38,7 +38,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                     onClose={() => setBackendErrors(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
-                    <FormattedMessage id="project.registrations.regForm.title"/>
+                    <FormattedMessage id="project.registrations.dorsalForm.title"/>
                 </h5>
                 <div className="card-body">
                     <form ref={node => form = node}
@@ -60,9 +60,24 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                             </div>
                         </div>
                         <div className="form-group row">
+                            <label htmlFor="inscriptionId" className="col-md-3 col-form-label">
+                                <FormattedMessage id="project.global.fields.inscriptionId"/>
+                            </label>
+                            <div className="col-md-4">
+                                <input type="text" id="userId" className="form-control"
+                                       value={inscriptionId}
+                                       onChange={e => setInscriptionId(e.target.value)}
+                                       autoFocus
+                                       required/>
+                                <div className="invalid-feedback">
+                                    <FormattedMessage id='project.global.validator.required'/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form-group row">
                             <div className="offset-md-3 col-md-1">
                                 <button type="submit" className="btn btn-primary">
-                                    <FormattedMessage id="project.global.buttons.inscribe"/>
+                                    <FormattedMessage id="project.global.buttons.dorsal"/>
                                 </button>
                             </div>
                         </div>
