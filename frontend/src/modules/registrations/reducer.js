@@ -7,7 +7,7 @@ const initialState = {
     dorsal: null
 };
 
-const getInscription = (state = initialState.inscription, action) => {
+const inscription = (state = initialState.inscription, action) => {
 
     switch (action.type) {
 
@@ -21,7 +21,7 @@ const getInscription = (state = initialState.inscription, action) => {
 
 }
 
-const getDorsal = (state = initialState.dorsal, action) => {
+const dorsal = (state = initialState.dorsal, action) => {
 
     switch (action.type) {
 
@@ -36,8 +36,8 @@ const getDorsal = (state = initialState.dorsal, action) => {
 }
 
 const reducer = combineReducers({
-    getInscription,
-    getDorsal
+    inscription,
+    dorsal
 });
 
 export default reducer;

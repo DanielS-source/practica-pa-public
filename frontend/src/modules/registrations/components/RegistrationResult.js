@@ -21,9 +21,11 @@ const RegistrationResult = () => {
                 </h5>
                 <p className="card-text">
                     <FormattedMessage id='project.registrations.regRes.inscriptionId'/>
+                    : {inscription.id}
                 </p>
                 <p className="card-text">
                     <FormattedMessage id='project.registrations.regRes.inscriptionDorsal'/>
+                    : {inscription.dorsal}
                 </p>
             </div>
         </div>
