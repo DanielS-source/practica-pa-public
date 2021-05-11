@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {Errors} from '../../common';
+import {Errors, Success} from '../../common';
 import * as actions from '../actions';
 import * as selectors from '../selectors';
 
@@ -34,7 +34,9 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
     function showDorsal(){
         alert(dorsal);
-        console.log(dorsal);
+        /*
+        Success({message: "Your dosal is: " + dorsal, onClose: null})
+         */
     }
     return (
         <div>
