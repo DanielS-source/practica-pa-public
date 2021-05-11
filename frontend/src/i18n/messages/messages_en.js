@@ -51,6 +51,7 @@ export default {
     'project.users.UpdateProfile.title': 'Update profile',
     'project.global.fields.inscriptionId': 'Inscription Id',
     'project.global.buttons.dorsalButton':'Get Number',
+    'project.registrations.dorsalForm.title':'Get Sport Test number',
 
     'project.registrations.regForm.title' : 'Registration form',
     'project.registrations.regRes.title' : 'Registration complete!',
