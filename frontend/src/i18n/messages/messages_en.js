@@ -49,6 +49,8 @@ export default {
     'project.users.SignUp.fields.confirmPassword': 'Confirm password',
     'project.users.SignUp.title': 'Sign up',
     'project.users.UpdateProfile.title': 'Update profile',
+    'project.global.fields.inscriptionId': 'Inscription Id',
+    'project.global.buttons.dorsalButton':'Get Number',
 
     'project.registrations.regForm.title' : 'Registration form',
     'project.registrations.regRes.title' : 'Registration complete!',
