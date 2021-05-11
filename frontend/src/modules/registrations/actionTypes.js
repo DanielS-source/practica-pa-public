@@ -1,2 +1,2 @@
-export const INSCRIPTION_COMPLETED = "project/register/registrationCompleted";
+export const INSCRIPTION_COMPLETED = "project/registrations/inscription-completed";
 export const DORSAL_DELIVERED = "project/register/dorsalDelivered"
