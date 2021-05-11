@@ -12,6 +12,7 @@ export default {
     'project.global.buttons.ok': 'OK',
     'project.global.buttons.back': 'Back',
     'project.global.buttons.save': 'Save',
+    'project.global.buttons.inscribe' : 'Inscribe',
     'project.global.exceptions.NetworkError': 'Network error',
     'project.global.fields.date': 'Date',
     'project.global.fields.email': 'Email address',
@@ -22,6 +23,7 @@ export default {
     'project.global.fields.postalAddress': 'Postal address',
     'project.global.fields.postalCode': 'Postal code',
     'project.global.fields.userName': 'Username',
+    'project.global.fields.creditCard': 'Credit card',
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
     'project.global.validator.required': 'Required field',
@@ -46,6 +48,11 @@ export default {
     'project.users.Login.title': 'Login',
     'project.users.SignUp.fields.confirmPassword': 'Confirm password',
     'project.users.SignUp.title': 'Sign up',
-    'project.users.UpdateProfile.title': 'Update profile'
+    'project.users.UpdateProfile.title': 'Update profile',
+
+    'project.registrations.regForm.title' : 'Registration form',
+    'project.registrations.regRes.title' : 'Registration complete!',
+    'project.registrations.regRes.inscriptionId' : 'Inscription id',
+    'project.registrations.regRes.inscriptionDorsal' : 'Inscription dorsal'
 
 }
