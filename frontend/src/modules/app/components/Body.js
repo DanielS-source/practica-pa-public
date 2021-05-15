@@ -26,7 +26,7 @@ const Body = () => {
                 {loggedIn && <Route exact path="/registrations/inscription-completed"><RegistrationResult/></Route>}
                 {loggedIn && <Route exact path="/registrations/find-registrations"><FindRegistrations/></Route>}
                 {loggedIn && <Route exact path="/registrations/find-registrations-result"><FindRegistrationsResult/></Route>}
-                {loggedIn && <Route exact path="/registrations/rate-registrations"><RateRegistration/></Route>}
+                {loggedIn && <Route exact path="/registrations/rate-registrations/:id"><RateRegistration/></Route>}
                 {loggedIn && <Route exact path="/users/update-profile"><UpdateProfile/></Route>}
                 {loggedIn && <Route exact path="/users/change-password"><ChangePassword/></Route>}
                 {loggedIn && <Route exact path="/users/logout"><Logout/></Route>}

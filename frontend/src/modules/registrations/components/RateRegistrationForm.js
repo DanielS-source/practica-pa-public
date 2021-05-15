@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import * as actions from "../actions";
 import {useDispatch, useSelector} from "react-redux";
 
-const RateRegistrationForm = () => {
+const RateRegistrationForm = ({id}) => {
 
     const dispatch = useDispatch();
     const [score, setScore] = useState('');
