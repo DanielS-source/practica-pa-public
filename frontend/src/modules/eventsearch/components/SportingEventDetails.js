@@ -37,7 +37,7 @@ const SportingEventDetails = () => {
     }
 
     const maxParticipants = () => {
-        return event.participants==event.maxParticipants
+        return event.participants===event.maxParticipants
     };
 
     const onTime = () => {

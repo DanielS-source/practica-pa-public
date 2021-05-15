@@ -1,7 +1,6 @@
 import React from 'react';
-import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
-import RegistrationLink from "./RegistrationLink";
 import RateLink from "./RateLink";
 
 const Registrations = ({registrations}) => (
@@ -39,7 +38,7 @@ const Registrations = ({registrations}) => (
                 <td> {reg.dorsal} </td>
                 <td> {reg.dorsalPicked.toString()} </td>
                 <td> {reg.sportTestId} </td>
-                <td> {reg.score == 0 ? <RateLink id={reg.id}/> : reg.score} </td>
+                <td> {reg.score === 0 ? <RateLink id={reg.id}/> : reg.score} </td>
             </tr>
         )}
         </tbody>
