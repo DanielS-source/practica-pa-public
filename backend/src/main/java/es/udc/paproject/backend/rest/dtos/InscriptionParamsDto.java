@@ -8,6 +8,7 @@ public class InscriptionParamsDto {
     private Long sportTestId;
 
     @NotNull
+    @Size(min=12, max=12)
     public String getCreditCard(){ return creditCard; }
 
     public void setCreditCard(String creditCard){
