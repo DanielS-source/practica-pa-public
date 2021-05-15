@@ -7,7 +7,7 @@ import * as selectors from '../selectors';
 import {Pager} from '../../common';
 import Registrations from "./Registrations";
 
-const FindRegistrationResult = () => {
+const FindRegistrationsResult = () => {
 
     const registrationSearch = useSelector(selectors.getRegistrationSearch());
     const dispatch = useDispatch();
@@ -41,4 +41,4 @@ const FindRegistrationResult = () => {
 
 }
 
-export default FindRegistrationResult;
+export default FindRegistrationsResult;
