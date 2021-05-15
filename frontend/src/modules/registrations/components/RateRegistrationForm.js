@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import * as actions from "../actions";
 import {useDispatch, useSelector} from "react-redux";
 
-const RateRegistrationForm = () => {
+const RateRegistrationForm = ({id}) => {
 
     const dispatch = useDispatch();
     const [score, setScore] = useState('');
-    const [inscriptionId, setInscriptionId] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
 
@@ -16,7 +15,7 @@ const RateRegistrationForm = () => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.rateRegistration(inscriptionId.trim(), score,
+            dispatch(actions.rateRegistration(id, score,
                 () => null,
                 errors => setBackendErrors(errors)));
 

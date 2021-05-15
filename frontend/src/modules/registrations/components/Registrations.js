@@ -11,10 +11,22 @@ const Registrations = ({registrations}) => (
         <thead>
         <tr>
             <th scope="col">
-                <FormattedMessage id='project.global.fields.inscription'/>
+                <FormattedMessage id='project.registrations.regRes.inscriptionId'/>
             </th>
             <th scope="col">
-                <FormattedMessage id='project.global.fields.date'/>
+                <FormattedMessage id='project.global.fields.creditCard'/>
+            </th>
+            <th scope="col">
+                <FormattedMessage id='project.registrations.regRes.inscriptionDorsal'/>
+            </th>
+            <th scope="col">
+                <FormattedMessage id='project.registrations.regRes.dorsalPicked'/>
+            </th>
+            <th scope="col">
+                <FormattedMessage id='project.registrations.regRes.sportTestId'/>
+            </th>
+            <th scope="col">
+                <FormattedMessage id='project.global.fields.averageRating'/>
             </th>
         </tr>
         </thead>
@@ -22,11 +34,12 @@ const Registrations = ({registrations}) => (
         <tbody>
         {registrations.map(reg =>
             <tr key={reg.id}>
-                <td><RegistrationLink id={reg.id}/></td>
+                <td> {reg.id} </td>
+                <td> {reg.creditCardNumber} </td>
+                <td> {reg.dorsal} </td>
+                <td> {reg.dorsalPicked.toString()} </td>
+                <td> {reg.sportTestId} </td>
                 <td><RateLink id={reg.id}/></td>
-                <td>
-                    <FormattedDate value={new Date(reg.date)}/> - <FormattedTime value={new Date(reg.date)}/>
-                </td>
             </tr>
         )}
         </tbody>
