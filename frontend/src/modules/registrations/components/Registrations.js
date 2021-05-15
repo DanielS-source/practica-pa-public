@@ -1,7 +1,6 @@
 import React from 'react';
-import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
-import RegistrationLink from "./RegistrationLink";
 import RateLink from "./RateLink";
 
 const Registrations = ({registrations}) => (

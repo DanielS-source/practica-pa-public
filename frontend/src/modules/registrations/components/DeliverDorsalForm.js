@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
-import {useDispatch} from 'react-redux';
 
 import {Errors, Success} from '../../common';
 import backend from '../../../backend';
 
 const DeliverDorsalForm = ({SportingEventId}) => {
 
-    const dispatch = useDispatch();
     const [creditCard, setCreditCard] = useState('');
     const [inscriptionId, setInscriptionId] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
