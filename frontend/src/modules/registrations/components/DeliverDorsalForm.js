@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import {Errors, Success} from '../../common';
-import * as actions from '../actions';
-import * as selectors from '../selectors';
+import backend from '../../../backend';
 
 const DeliverDorsalForm = ({SportingEventId}) => {
 
@@ -12,6 +11,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
     const [creditCard, setCreditCard] = useState('');
     const [inscriptionId, setInscriptionId] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
+    const [dorsal, setDorsal] = useState(null);
     let form;
 
     const handleSubmit = event => {
@@ -20,8 +20,8 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
-                (dorsal) => Success({message: "Your dosal is: " + dorsal, onClose: null}),
+            dispatch(backend.registrationService.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
+                dorsal => setDorsal(dorsal),
                 errors => setBackendErrors(errors)));
 
         } else {
@@ -35,6 +35,8 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         <div>
             <Errors errors={backendErrors}
                     onClose={() => setBackendErrors(null)}/>
+            <Success dorsal={dorsal}
+                    onClose={() => setDorsal((null))}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
                     <FormattedMessage id="project.registrations.dorsalForm.title"/>
@@ -80,6 +82,11 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                                 </button>
                             </div>
                         </div>
+                        {dorsal &&
+                        <div>
+                            <br/>
+                            <FormattedMessage id={dorsal}/>
+                        </div>}
                     </form>
                 </div>
             </div>
