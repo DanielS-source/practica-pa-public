@@ -12,7 +12,7 @@ const FindRegistrations = () => {
     useEffect(() => {
 
         dispatch(actions.findRegistrations({page: 0}));
-        history.push('/registrations/find-registrations');
+        history.push('/registrations/find-registrations-result');
 
     });
 
