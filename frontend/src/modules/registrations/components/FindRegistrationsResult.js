@@ -9,7 +9,7 @@ import Registrations from "./Registrations";
 
 const FindRegistrationsResult = () => {
 
-    const registrationSearch = useSelector(selectors.getRegistrationSearch());
+    const registrationSearch = useSelector(selectors.getRegistrationSearch);
     const dispatch = useDispatch();
 
     if (!registrationSearch) {
