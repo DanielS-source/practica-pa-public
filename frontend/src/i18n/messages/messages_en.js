@@ -60,6 +60,6 @@ export default {
     'project.registrations.regRes.inscriptionId' : 'Inscription id',
     'project.registrations.regRes.inscriptionDorsal' : 'Inscription dorsal',
     'project.registrations.header.registrations' : 'Registrations',
-    'project.global.fields.rate' : "Rate",
-
+    'project.registrations.regRes.dorsalPicked' : 'Dorsal picked?',
+    'project.registrations.regRes.sportTestId' : 'Sport test',
 }

@@ -62,5 +62,7 @@ export default {
     'project.registrations.regRes.inscriptionDorsal' : 'Dorsal de inscripción',
     'project.registrations.header.registrations' : 'Inscripciones',
     'project.global.fields.rate' : "Puntúa",
+    'project.registrations.regRes.dorsalPicked' : 'Dorsal recogido?',
+    'project.registrations.regRes.sportTestId' : 'Prueba deportiva',
 
 }
