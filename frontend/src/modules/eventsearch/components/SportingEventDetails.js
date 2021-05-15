@@ -36,6 +36,14 @@ const SportingEventDetails = () => {
         return null;
     }
 
+    const maxParticipants = () => {
+        return event.participants==event.maxParticipants
+    };
+
+    const onTime = () => {
+        return Date(event.testStart)>Date.now()
+    };
+
     return (
 
         <div>
@@ -81,7 +89,19 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            {loggedIn && userRole==="USER" &&
+            {maxParticipants() && onTime() &&
+            <h6>
+                <FormattedMessage id='project.global.fields.maxParticipants'/>
+            </h6>
+            }
+
+            {!maxParticipants() && !onTime() &&
+            <h6>
+                <FormattedMessage id='project.global.fields.notOnTime'/>
+            </h6>
+            }
+
+            {loggedIn && userRole==="USER" && !maxParticipants() && onTime() &&
                 <div>
                     <br/>
                         <RegistrationForm SportingEventId={event.id}/>
