@@ -10,7 +10,7 @@ export const deliverDorsal = (inscriptionId, sportTestId, creditCard, onSuccess,
 
 export const findRegistrations = ({page}, onSuccess) =>
     appFetch(`/inscriptions/retrieve?page=${page}`,
-        config('GET', {}), onSuccess)
+        config('GET'), onSuccess)
 
 export const scoreSportingEvent = (inscriptionId, score, onSuccess, onErrors) =>
     appFetch(`/inscriptions/${inscriptionId}/score`,

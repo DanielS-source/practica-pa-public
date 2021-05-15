@@ -59,6 +59,7 @@ export default {
     'project.registrations.regForm.title' : 'Formulario de registro',
     'project.registrations.regRes.title' : '¡Registro completado!',
     'project.registrations.regRes.inscriptionId' : 'Id de inscripción',
-    'project.registrations.regRes.inscriptionDorsal' : 'Dorsal de inscripción'
+    'project.registrations.regRes.inscriptionDorsal' : 'Dorsal de inscripción',
+    'project.registrations.header.registrations' : 'Inscripciones',
 
 }

@@ -33,7 +33,7 @@ const Header = () => {
 
                     <li className="nav-item">
                         <Link className="nav-link" to="/registrations/find-registrations">
-                            <FormattedMessage id="project.registrations.header.inscriptions"/>
+                            <FormattedMessage id="project.registrations.header.registrations"/>
                         </Link>
                     </li>
 
