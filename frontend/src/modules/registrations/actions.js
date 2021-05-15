@@ -49,3 +49,7 @@ const findRegistrationsCompleted = registration => ({
     type: actionTypes.FIND_REGISTRATION_COMPLETED,
     registration
 });
+
+export const rateRegistration = (InscriptionId, score, onSuccess, onErrors) => {
+    backend.registrationService.scoreSportingEvent(InscriptionId, score, onSuccess, onErrors)
+}
