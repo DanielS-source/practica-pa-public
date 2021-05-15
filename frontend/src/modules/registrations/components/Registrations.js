@@ -11,7 +11,7 @@ const Registrations = ({registrations}) => (
         <thead>
         <tr>
             <th scope="col">
-                <FormattedMessage id='project.global.fields.purchaseOrder'/>
+                <FormattedMessage id='project.global.fields.inscription'/>
             </th>
             <th scope="col">
                 <FormattedMessage id='project.global.fields.date'/>
@@ -20,12 +20,12 @@ const Registrations = ({registrations}) => (
         </thead>
 
         <tbody>
-        {registrations.map(order =>
-            <tr key={order.id}>
-                <td><RegistrationLink id={order.id}/></td>
-                <td><RateLink id={order.id}/></td>
+        {registrations.map(reg =>
+            <tr key={reg.id}>
+                <td><RegistrationLink id={reg.id}/></td>
+                <td><RateLink id={reg.id}/></td>
                 <td>
-                    <FormattedDate value={new Date(order.date)}/> - <FormattedTime value={new Date(order.date)}/>
+                    <FormattedDate value={new Date(reg.date)}/> - <FormattedTime value={new Date(reg.date)}/>
                 </td>
             </tr>
         )}
