@@ -26,3 +26,26 @@ export const deliverDorsal = (inscriptionId, sportingEventId, creditCard, onSucc
             onSuccess();
         },
         onErrors);
+
+const clearRegistrationSearch = () => ({
+    type: actionTypes.CLEAR_REGISTRATION_SEARCH
+});
+
+export const findRegistrations = criteria => dispatch => {
+
+    dispatch(clearRegistrationSearch());
+    backend.registrationService.findRegistrations(criteria,
+        result => dispatch(findRegistrationsCompleted({criteria, result})));
+
+}
+
+export const previousFindRegistrationsResultPage = criteria =>
+    findRegistrations({page: criteria.page-1});
+
+export const nextFindRegistrationsResultPage = criteria =>
+    findRegistrations({page: criteria.page+1});
+
+const findRegistrationsCompleted = registration => ({
+    type: actionTypes.FIND_REGISTRATION_COMPLETED,
+    registration
+});

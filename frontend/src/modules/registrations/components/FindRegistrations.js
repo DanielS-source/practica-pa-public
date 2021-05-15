@@ -1,0 +1,23 @@
+import {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+
+import * as actions from '../actions';
+
+const FindRegistrations = () => {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+
+        dispatch(actions.findRegistrations({page: 0}));
+        history.push('/registrations/find-registrations');
+
+    });
+
+    return null;
+
+}
+
+export default FindRegistrations;

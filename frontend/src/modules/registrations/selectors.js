@@ -5,3 +5,6 @@ export const getInscription = state =>
 
 export const getDorsal = state =>
     getModuleState(state).dorsal;
+
+export const getRegistrationSearch = state =>
+    getModuleState(state).registrationSearch;
