@@ -9,7 +9,6 @@ import * as selectors from '../selectors';
 const DeliverDorsalForm = ({SportingEventId}) => {
 
     const dispatch = useDispatch();
-    const dorsal = useSelector(selectors.getDorsal);
     const [creditCard, setCreditCard] = useState('');
     const [inscriptionId, setInscriptionId] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
@@ -22,7 +21,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         if (form.checkValidity()) {
 
             dispatch(actions.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
-                () => showDorsal(),
+                (dorsal) => Success({message: "Your dosal is: " + dorsal, onClose: null}),
                 errors => setBackendErrors(errors)));
 
         } else {
@@ -31,13 +30,6 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         }
     }
 
-
-    function showDorsal(){
-        alert(dorsal);
-        /*
-        Success({message: "Your dosal is: " + dorsal, onClose: null})
-         */
-    }
 
     return (
         <div>
@@ -88,12 +80,6 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                                 </button>
                             </div>
                         </div>
-                        {dorsal &&
-                        <div>
-                            <br/>
-                            <FormattedMessage id={dorsal}/>
-                        </div>
-                        }
                     </form>
                 </div>
             </div>
