@@ -54,6 +54,9 @@ export default {
     'project.registrations.dorsalForm.title':'Get Sport Test number',
     'project.exceptions.InvalidDataException':'Invalid Data',
     'project.exceptions.TooSoonToDeliverException':"It's too soon to deliver",
+    'project.registrations.rate.title':"Rate the Sport Test",
+    'project.global.fields.rating':'Rating',
+    'project.global.buttons.ratingButton':'Submit Rating',
 
     'project.registrations.regForm.title' : 'Registration form',
     'project.registrations.regRes.title' : 'Registration complete!',

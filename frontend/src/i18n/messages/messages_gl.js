@@ -56,6 +56,9 @@ export default {
     'project.registrations.dorsalForm.title':'Obter Dorsal da Proba Deportiva',
     'project.exceptions.InvalidDataException':'Datos Inválidos',
     'project.exceptions.TooSoonToDeliverException':'Demasiado pronto para entregar Dorsales',
+    'project.registrations.rate.title':"Puntúa a proba deportiva",
+    'project.global.fields.rating':'Puntuación',
+    'project.global.buttons.ratingButton':'Puntuar',
 
     'project.registrations.regForm.title' : 'Formulario de rexistro',
     'project.registrations.regRes.title' : '¡Rexistro completado!',
