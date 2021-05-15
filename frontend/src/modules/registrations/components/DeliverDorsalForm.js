@@ -20,9 +20,9 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
         if (form.checkValidity()) {
 
-            dispatch(backend.registrationService.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
+            backend.registrationService.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
                 dorsal => setDorsal(dorsal),
-                errors => setBackendErrors(errors)));
+                errors => setBackendErrors(errors));
 
         } else {
             setBackendErrors(null);
@@ -35,7 +35,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         <div>
             <Errors errors={backendErrors}
                     onClose={() => setBackendErrors(null)}/>
-            <Success dorsal={dorsal}
+            <Success message={dorsal}
                     onClose={() => setDorsal((null))}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
@@ -82,11 +82,6 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                                 </button>
                             </div>
                         </div>
-                        {dorsal &&
-                        <div>
-                            <br/>
-                            <FormattedMessage id={dorsal}/>
-                        </div>}
                     </form>
                 </div>
             </div>
