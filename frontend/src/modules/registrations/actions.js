@@ -14,12 +14,6 @@ export const inscribe = (sportingEventId, creditCard, onSuccess,
     },
     onErrors);
 
-export const deliverDorsal = (inscriptionId, sportingEventId, creditCard, onSuccess,
-                         onErrors) => dispatch =>
-    backend.registrationService.deliverDorsal(inscriptionId, sportingEventId, creditCard, ({dorsal}) => {
-            onSuccess(dorsal);
-        },
-        onErrors);
 
 const clearRegistrationSearch = () => ({
     type: actionTypes.CLEAR_REGISTRATION_SEARCH

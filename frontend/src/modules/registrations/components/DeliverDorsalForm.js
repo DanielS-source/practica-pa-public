@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import {Errors, Success} from '../../common';
-import * as actions from '../actions';
+import backend from '../../../backend';
 
 const DeliverDorsalForm = ({SportingEventId}) => {
 
@@ -20,7 +20,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
+            dispatch(backend.registrationService.deliverDorsal(inscriptionId.trim(), SportingEventId, creditCard.trim(),
                 dorsal => setDorsal(dorsal),
                 errors => setBackendErrors(errors)));
 
