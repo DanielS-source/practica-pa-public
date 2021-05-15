@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import * as actions from "../actions";
 import {useDispatch, useSelector} from "react-redux";
+import {Errors} from "../../common";
 
 const RateRegistrationForm = ({id}) => {
 
@@ -25,7 +26,15 @@ const RateRegistrationForm = ({id}) => {
         }
     }
 
-    return null;
+    return (
+
+        <div>
+            <Errors errors={backendErrors}
+                    onClose={() => setBackendErrors(null)}/>
+
+        </div>
+
+    );
 }
 
 export default RateRegistrationForm;
