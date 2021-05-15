@@ -19,7 +19,7 @@ const FindRegistrationResult = () => {
     if (registrationSearch.result.items.length === 0) {
         return (
             <div className="alert alert-info" role="alert">
-                <FormattedMessage id='project.shopping.FindOrdersResult.noOrders'/>
+                <FormattedMessage id='project.registrations.noInscriptions'/>
             </div>
         );
     }
