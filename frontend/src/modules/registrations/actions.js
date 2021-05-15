@@ -23,7 +23,7 @@ export const deliverDorsal = (inscriptionId, sportingEventId, creditCard, onSucc
                          onErrors) => dispatch =>
     backend.registrationService.deliverDorsal(inscriptionId, sportingEventId, creditCard, ({dorsal}) => {
             dispatch(dorsalDelivered(dorsal));
-            onSuccess();
+            onSuccess(dorsal);
         },
         onErrors);
 

@@ -30,7 +30,13 @@ const Header = () => {
                 {userName ? 
 
                 <ul className="navbar-nav">
-                
+
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/registrations/find-registrations">
+                            <FormattedMessage id="project.registrations.header.orders"/>
+                        </Link>
+                    </li>
+
                     <li className="nav-item dropdown">
 
                         <a className="dropdown-toggle nav-link" href="/"
