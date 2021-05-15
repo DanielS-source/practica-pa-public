@@ -13,13 +13,14 @@ public class InscriptionDto {
     private int score;
 
     public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
-                          Long sportTestId, Long userId) {
+                          Long sportTestId, Long userId, int score) {
         this.id = id;
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
         this.dorsalPicked = dorsalPicked;
         this.sportTestId = sportTestId;
         this.userId = userId;
+        this.score = score;
     }
 
     public Long getId() { return id; }
