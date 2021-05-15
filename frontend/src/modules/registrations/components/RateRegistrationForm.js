@@ -2,11 +2,9 @@ import React, {useState} from 'react';
 import * as actions from "../actions";
 import {Errors} from "../../common";
 import {FormattedMessage} from "react-intl";
-import {useHistory} from "react-router-dom";
 
 const RateRegistrationForm = ({id}) => {
 
-    const history = useHistory();
     const [score, setScore] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
