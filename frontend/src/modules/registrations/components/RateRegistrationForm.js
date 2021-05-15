@@ -6,7 +6,6 @@ const RateRegistrationForm = ({id}) => {
 
     const dispatch = useDispatch();
     const [score, setScore] = useState('');
-    const [inscriptionId, setInscriptionId] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
 
@@ -16,7 +15,7 @@ const RateRegistrationForm = ({id}) => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.rateRegistration(inscriptionId.trim(), score,
+            dispatch(actions.rateRegistration(id, score,
                 () => null,
                 errors => setBackendErrors(errors)));
 
