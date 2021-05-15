@@ -20,7 +20,6 @@ const RateRegistrationForm = ({id}) => {
             actions.rateRegistration(id, score,
                 score => setScore(score),
                 errors => setBackendErrors(errors));
-            history.push("/registrations/find-registrations")
 
         } else {
             setBackendErrors(null);
