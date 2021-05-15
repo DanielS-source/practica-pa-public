@@ -16,7 +16,7 @@ const SportingEventDetails = () => {
     const event = useSelector(selectors.getSportingEvent);
     const types = useSelector(selectors.getSportingEventTypes);
     const provinces = useSelector(selectors.getProvinces);
-    const userRole = useSelector(users.selectors.getUserRole);
+    const isEmployee = useSelector(users.selectors.isEmployee);
     const dispatch = useDispatch();
     const {id} = useParams();
 
@@ -101,14 +101,14 @@ const SportingEventDetails = () => {
             </h6>
             }
 
-            {loggedIn && userRole==="USER" && !maxParticipants() && onTime() &&
+            {loggedIn && !isEmployee && !maxParticipants() && onTime() &&
                 <div>
                     <br/>
                         <RegistrationForm SportingEventId={event.id}/>
                 </div>
             }
 
-            {loggedIn && userRole==="EMPLOYEE" &&
+            {loggedIn && isEmployee &&
                 <div>
                     <br/>
                         <DeliverDorsalForm SportingEventId={event.id}/>

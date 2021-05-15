@@ -12,5 +12,8 @@ export const getUserName = state =>
 export const getUserRole = state =>
     isLoggedIn(state) ? getUser(state).role : null;
 
+export const isEmployee = state =>
+    getUserRole(state) === "EMPLOYEE";
+
 
 
