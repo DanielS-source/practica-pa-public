@@ -25,6 +25,11 @@ const clearRegistrationSearch = () => ({
     type: actionTypes.CLEAR_REGISTRATION_SEARCH
 });
 
+const findRegistrationsCompleted = registrationSearch => ({
+    type: actionTypes.FIND_REGISTRATION_COMPLETED,
+    registrationSearch
+});
+
 export const findRegistrations = criteria => dispatch => {
 
     dispatch(clearRegistrationSearch());
@@ -38,11 +43,6 @@ export const previousFindRegistrationsResultPage = criteria =>
 
 export const nextFindRegistrationsResultPage = criteria =>
     findRegistrations({page: criteria.page+1});
-
-const findRegistrationsCompleted = registration => ({
-    type: actionTypes.FIND_REGISTRATION_COMPLETED,
-    registration
-});
 
 export const rateRegistration = (InscriptionId, score, onSuccess, onErrors) => {
     backend.registrationService.scoreSportingEvent(InscriptionId, score, onSuccess, onErrors)
