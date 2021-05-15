@@ -17,9 +17,9 @@ const RateRegistrationForm = ({id}) => {
 
         if (form.checkValidity()) {
 
-            dispatch(actions.rateRegistration(id, score,
+            actions.rateRegistration(id, score,
                 score => setScore(score),
-                errors => setBackendErrors(errors)));
+                errors => setBackendErrors(errors));
 
         } else {
             setBackendErrors(null);
