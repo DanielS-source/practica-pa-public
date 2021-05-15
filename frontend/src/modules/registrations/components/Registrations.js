@@ -39,7 +39,7 @@ const Registrations = ({registrations}) => (
                 <td> {reg.dorsal} </td>
                 <td> {reg.dorsalPicked.toString()} </td>
                 <td> {reg.sportTestId} </td>
-                <td> {reg.score == 0 && <RateLink id={reg.id}/> || reg.score} </td>
+                <td> {reg.score == 0 ? <RateLink id={reg.id}/> : reg.score} </td>
             </tr>
         )}
         </tbody>
