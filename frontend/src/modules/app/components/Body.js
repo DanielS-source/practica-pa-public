@@ -9,6 +9,7 @@ import {Login, SignUp, UpdateProfile, ChangePassword, Logout} from '../../users'
 import users from '../../users';
 import {FindRegistrations, RegistrationResult} from "../../registrations";
 import FindRegistrationResult from "../../registrations/components/FindRegistrationsResult";
+import RateRegistration from "../../registrations/components/RateRegistration";
 
 const Body = () => {
 
@@ -26,6 +27,7 @@ const Body = () => {
                 {loggedIn && <Route exact path="/registrations/inscription-completed"><RegistrationResult/></Route>}
                 {loggedIn && <Route exact path="/registrations/find-registrations"><FindRegistrations/></Route>}
                 {loggedIn && <Route exact path="/registrations/find-registrations-result"><FindRegistrationResult/></Route>}
+                {loggedIn && <Route exact path="/registrations/rate-registrations"><RateRegistration/></Route>}
                 {loggedIn && <Route exact path="/users/update-profile"><UpdateProfile/></Route>}
                 {loggedIn && <Route exact path="/users/change-password"><ChangePassword/></Route>}
                 {loggedIn && <Route exact path="/users/logout"><Logout/></Route>}

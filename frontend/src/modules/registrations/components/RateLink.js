@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const RateLink = ({id}) => {
 
     return (
-        <Link to={`/shopping/order-details/${id}`}>
+        <Link to={`/registrations/rate-registrations/${id}`}>
             {id}
         </Link>
     );
