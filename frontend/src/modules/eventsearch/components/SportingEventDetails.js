@@ -41,7 +41,9 @@ const SportingEventDetails = () => {
     };
 
     const onTime = () => {
-        return Date(event.testStart)>Date.now()
+        let date = event.testStart;
+        date.setHours(date.getHours()-24);
+        return date > Date.now()
     };
 
     return (
