@@ -62,4 +62,5 @@ export default {
     'project.registrations.header.registrations' : 'Registrations',
     'project.registrations.regRes.dorsalPicked' : 'Dorsal picked?',
     'project.registrations.regRes.sportTestId' : 'Sport test',
+    'project.registrations.regRes.score' : 'Score',
 }

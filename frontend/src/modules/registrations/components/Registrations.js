@@ -26,7 +26,7 @@ const Registrations = ({registrations}) => (
                 <FormattedMessage id='project.registrations.regRes.sportTestId'/>
             </th>
             <th scope="col">
-                <FormattedMessage id='project.global.fields.averageRating'/>
+                <FormattedMessage id='project.registrations.regRes.score'/>
             </th>
         </tr>
         </thead>
@@ -39,7 +39,7 @@ const Registrations = ({registrations}) => (
                 <td> {reg.dorsal} </td>
                 <td> {reg.dorsalPicked.toString()} </td>
                 <td> {reg.sportTestId} </td>
-                <td><RateLink id={reg.id}/></td>
+                <td> {reg.score == 0 ? <RateLink id={reg.id}/> : reg.score} </td>
             </tr>
         )}
         </tbody>

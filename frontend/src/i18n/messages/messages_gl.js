@@ -65,5 +65,6 @@ export default {
     'project.global.fields.rate' : "Puntúa",
     'project.registrations.regRes.dorsalPicked' : 'Dorsal recollido?',
     'project.registrations.regRes.sportTestId' : 'Proba deportiva',
+    'project.registrations.regRes.score' : 'Puntuación',
 
 }
