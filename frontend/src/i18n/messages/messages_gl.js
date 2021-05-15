@@ -62,5 +62,7 @@ export default {
     'project.registrations.regRes.inscriptionId' : 'Id de inscripción',
     'project.registrations.regRes.inscriptionDorsal' : 'Dorsal de inscripción',
     'project.registrations.header.registrations' : 'Inscripcions',
+    'project.registrations.regRes.dorsalPicked' : 'Dorsal recollido?',
+    'project.registrations.regRes.sportTestId' : 'Proba deportiva',
 
 }
