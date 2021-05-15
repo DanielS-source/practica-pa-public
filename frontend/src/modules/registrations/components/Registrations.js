@@ -2,6 +2,7 @@ import React from 'react';
 import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
 import PropTypes from 'prop-types';
 import RegistrationLink from "./RegistrationLink";
+import RateLink from "./RateLink";
 
 const Registrations = ({registrations}) => (
 
@@ -22,6 +23,7 @@ const Registrations = ({registrations}) => (
         {registrations.map(order =>
             <tr key={order.id}>
                 <td><RegistrationLink id={order.id}/></td>
+                <td><RateLink id={order.id}/></td>
                 <td>
                     <FormattedDate value={new Date(order.date)}/> - <FormattedTime value={new Date(order.date)}/>
                 </td>
