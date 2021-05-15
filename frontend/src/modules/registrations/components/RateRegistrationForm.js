@@ -3,10 +3,12 @@ import * as actions from "../actions";
 import {useDispatch, useSelector} from "react-redux";
 import {Errors} from "../../common";
 import {FormattedMessage} from "react-intl";
+import {useHistory} from "react-router-dom";
 
 const RateRegistrationForm = ({id}) => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [score, setScore] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
@@ -20,6 +22,7 @@ const RateRegistrationForm = ({id}) => {
             actions.rateRegistration(id, score,
                 score => setScore(score),
                 errors => setBackendErrors(errors));
+            history.push("/registrations/find-registrations")
 
         } else {
             setBackendErrors(null);
