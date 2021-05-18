@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 
 import {Errors, Success} from '../../common';
 import backend from '../../../backend';
+import SuccessNotification from "../../common/components/SuccessNotification";
 
 const DeliverDorsalForm = ({SportingEventId}) => {
 
@@ -33,8 +34,8 @@ const DeliverDorsalForm = ({SportingEventId}) => {
         <div>
             <Errors errors={backendErrors}
                     onClose={() => setBackendErrors(null)}/>
-            <Success message={dorsal}
-                    onClose={() => setDorsal((null))}/>
+            <SuccessNotification message={dorsal}
+                    onClose={() => setDorsal(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
                     <FormattedMessage id="project.registrations.dorsalForm.title"/>
