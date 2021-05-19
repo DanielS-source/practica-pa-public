@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import * as actions from "../actions";
 import {Errors} from "../../common";
 import {FormattedMessage} from "react-intl";
+import ScoreSelector from "./ScoreSelector";
+import ProvinceSelector from "../../eventsearch/components/ProvinceSelector";
 
 const RateRegistrationForm = ({id}) => {
 
@@ -42,11 +44,8 @@ const RateRegistrationForm = ({id}) => {
                                 <FormattedMessage id="project.global.fields.rating"/>
                             </label>
                             <div className="col-md-4">
-                                <input type="text" id="punctuation" className="form-control"
-                                       value={score}
-                                       onChange={e => setScore(e.target.value)}
-                                       autoFocus
-                                       required/>
+                                <ScoreSelector id="scoreForm" className="custom-select my-1 mr-sm-2"
+                                               value={score} onChange={e => setScore(e.target.value)}/>
                                 <div className="invalid-feedback">
                                     <FormattedMessage id='project.global.validator.required'/>
                                 </div>
