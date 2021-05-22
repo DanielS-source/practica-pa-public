@@ -70,6 +70,7 @@ export default {
     'project.registrations.regForm': 'Registration form',
     'project.registrations.regComplete': 'Registration complete!',
     'project.registrations.header': 'Registrations',
+    'project.registration.successNotification' : 'Successfully rated',
 
     'project.global.fields.notOnTime':'Inscription not avalible right now',
     'project.global.fields.NotRated':'Not Rated',

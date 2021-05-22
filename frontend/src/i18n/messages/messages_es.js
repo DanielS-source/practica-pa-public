@@ -71,6 +71,7 @@ export default {
     'project.registrations.regForm': 'Formulario de registro',
     'project.registrations.regComplete': '¡Registro completado!',
     'project.registrations.header': 'Inscripciones',
+    'project.registration.successNotification' : 'Puntuación existosa',
 
     'project.global.fields.notOnTime':'No es posible inscribirse en estos momentos',
     'project.global.fields.NotRated':'No puntuado',

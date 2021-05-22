@@ -50,7 +50,7 @@ const RateRegistrationForm = ({id}) => {
                 if (Number(id) === Number(reg.id)) {
                     reg.score = score
                     dispatch(actions.rateRegistration(reg));
-                    const message = intl.formatMessage({id: 'project.inscription.successNotification'});
+                    const message = intl.formatMessage({id: 'project.registration.successNotification'});
                     setSuccess(message);
                     break
                 }
