@@ -46,12 +46,11 @@ const RateRegistrationForm = ({id}) => {
 
             let reg;
             let registrations = registrationSearch.result.items;
+            const message = intl.formatMessage({id: 'project.registration.successNotification'});
             for (reg of registrations) {
                 if (Number(id) === Number(reg.id)) {
                     reg.score = score
-                    dispatch(actions.rateRegistration(reg));
-                    const message = intl.formatMessage({id: 'project.registration.successNotification'});
-                    setSuccess(message);
+                    dispatch(actions.rateRegistration(reg, () => setSuccess(message), errors => setBackendErrors(errors)));
                     break
                 }
             }
