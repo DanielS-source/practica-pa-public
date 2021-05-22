@@ -29,7 +29,7 @@ const RateRegistrationForm = ({id}) => {
         let reg;
         let registrations = registrationSearch.result.items;
         for (reg of registrations) {
-            if (id == reg.id) {
+            if (Number(id) === Number(reg.id)) {
                 return reg.sportTestName;
             }
         }
@@ -45,7 +45,7 @@ const RateRegistrationForm = ({id}) => {
             let reg;
             let registrations = registrationSearch.result.items;
             for (reg of registrations) {
-                if (id == reg.id) {
+                if (Number(id) === Number(reg.id)) {
                     reg.score = score
                     dispatch(actions.rateRegistration(reg));
                     break
