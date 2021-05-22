@@ -1,21 +1,41 @@
 import React, {useState} from 'react';
 import * as actions from "../actions";
-import * as selectors from "../selectors";
 import {Errors, Success} from "../../common";
 import {FormattedMessage} from "react-intl";
 import ScoreSelector from "./ScoreSelector";
-import ProvinceSelector from "../../eventsearch/components/ProvinceSelector";
 import {useSelector, useDispatch} from "react-redux";
+import * as selectors from '../selectors';
 
 const RateRegistrationForm = ({id}) => {
 
+    const registrationSearch = useSelector(selectors.getRegistrationSearch);
     const dispatch = useDispatch();
     const [score, setScore] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
-    const search = useSelector(selectors.getRegistrationSearch);
+    let registration;
 
-    const GetInscName = search => {
+    if (!registrationSearch) {
+        return null;
+    }
+
+    if (registrationSearch.result.items.length === 0) {
+        return (
+            <div className="alert alert-info" role="alert">
+                <FormattedMessage id='project.registrations.noInscriptions'/>
+            </div>
+        );
+    }
+
+    const GetInscName = registrationSearch => {
+        let reg;
+        for (reg of registrationSearch.result.items) {
+            if (reg.id === id) {
+                registration = reg
+                return reg.sportTestName;
+            }
+        }
+
 
     }
 
@@ -55,7 +75,7 @@ const RateRegistrationForm = ({id}) => {
                                 <FormattedMessage id="project.global.fields.sportTestId"/>
                             </label>
                             <div className="col-md-4">
-                                search.map(null)
+                                {GetInscName(registrationSearch)}
                             </div>
                         </div>
                         <div className="form-group row">
