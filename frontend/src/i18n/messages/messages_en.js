@@ -43,6 +43,8 @@ export default {
     'project.global.fields.averageRating': 'Average Rating',
     'project.global.fields.rating': 'Rating',
     'project.global.fields.rate': 'Rate',
+    'project.global.fields.affirmation' : 'Yes',
+    'project.global.fields.negation' : 'No',
 
     'project.global.validator.email': 'Provide a correct e-mail address',
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
