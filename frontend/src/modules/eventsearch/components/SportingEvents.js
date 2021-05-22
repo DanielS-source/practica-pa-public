@@ -36,7 +36,7 @@ const SportingEvents = ({sportingEvents, sportingEventTypes, provinces}) => (
                     <td>{selectors.getSportingEventTypeName(sportingEventTypes, sportingEvent.sportTestTypeId)}</td>
                     <td>{selectors.getProvinceName(provinces,sportingEvent.provinceId)}</td>
                     <td><FormattedDate value={new Date(sportingEvent.testStart)}/></td>
-                    <td><FormattedNumber value={sportingEvent.averageRating}/></td>
+                    <td>{sportingEvent.isRated === true ? <FormattedNumber value={sportingEvent.averageRating}/> : <FormattedMessage id='project.global.fields.NotRated'/>}</td>
                 </tr>
             )}
         </tbody>
