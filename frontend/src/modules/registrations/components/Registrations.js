@@ -37,7 +37,7 @@ const Registrations = ({registrations}) => (
                 <td> {reg.creditCardNumber} </td>
                 <td> {reg.dorsal} </td>
                 <td> {reg.dorsalPicked.toString()} </td>
-                <td> {reg.sportTestId} </td>
+                <td> {reg.sportTestName} </td>
                 <td> {reg.score === 0 ? <RateLink id={reg.id}/> : reg.score} </td>
             </tr>
         )}

@@ -20,6 +20,7 @@ public class InscriptionDto {
         this.dorsal = dorsal;
         this.dorsalPicked = dorsalPicked;
         this.sportTestId = sportTestId;
+        this.sportTestName = sportTestName;
         this.userId = userId;
         this.score = score;
     }
@@ -42,6 +43,11 @@ public class InscriptionDto {
     public Long getSportTestId() { return sportTestId; }
 
     public void setSportTestId(Long sportTestId) { this.sportTestId = sportTestId; }
+
+    @NotNull
+    public String getSportTestName() { return sportTestName; }
+
+    public void setSportTestName(String sportTestName) { this.sportTestName = sportTestName; }
 
     @NotNull
     public Long getUserId() { return userId; }
