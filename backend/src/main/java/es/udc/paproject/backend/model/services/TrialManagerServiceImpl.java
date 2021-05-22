@@ -33,7 +33,7 @@ public class TrialManagerServiceImpl implements TrialManagerService {
 
         Optional<Inscription> foundInscription = inscriptionDao.findByUserIdAndSportTestId(userId, sportTestId);
         if(foundInscription.isPresent()) throw new DuplicateInscriptionException("project.entities.inscription",
-                foundInscription.get().getSportTest().getName());
+                foundInscription.get().getId());
 
         Optional<User> user = userDao.findById(userId);
         if(!user.isPresent()) throw new InstanceNotFoundException("project.entities.user", userId);
