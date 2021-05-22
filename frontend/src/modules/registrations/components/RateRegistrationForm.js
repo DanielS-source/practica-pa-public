@@ -33,7 +33,7 @@ const RateRegistrationForm = ({id}) => {
                     onClose={() => setBackendErrors(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
-                    <FormattedMessage id="project.registrations.rate.title"/>
+                    <FormattedMessage id="project.registrations.rateForm"/>
                 </h5>
                 <div className="card-body">
                     <form ref={node => form = node}

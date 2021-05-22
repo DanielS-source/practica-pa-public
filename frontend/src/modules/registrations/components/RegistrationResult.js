@@ -16,14 +16,14 @@ const RegistrationResult = () => {
         <div>
             <div className="card text-center">
                 <h5 className="card-header">
-                    <FormattedMessage id="project.registrations.regRes.title"/>
+                    <FormattedMessage id="project.registrations.regComplete"/>
                 </h5>
                 <p className="card-text">
-                    <FormattedMessage id='project.registrations.regRes.inscriptionId'/>
+                    <FormattedMessage id='project.global.fields.inscriptionId'/>
                     : {inscription.id}
                 </p>
                 <p className="card-text">
-                    <FormattedMessage id='project.registrations.regRes.inscriptionDorsal'/>
+                    <FormattedMessage id='project.global.fields.inscriptionDorsal'/>
                     : {inscription.dorsal}
                 </p>
             </div>

@@ -36,7 +36,7 @@ const RegistrationForm = ({SportingEventId}) => {
                 onClose={() => setBackendErrors(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
-                    <FormattedMessage id="project.registrations.regForm.title"/>
+                    <FormattedMessage id="project.registrations.regForm"/>
                 </h5>
                 <div className="card-body">
                     <form ref={node => form = node}

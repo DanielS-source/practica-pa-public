@@ -10,22 +10,22 @@ const Registrations = ({registrations}) => (
         <thead>
         <tr>
             <th scope="col">
-                <FormattedMessage id='project.registrations.regRes.inscriptionId'/>
+                <FormattedMessage id='project.global.fields.inscriptionId'/>
             </th>
             <th scope="col">
                 <FormattedMessage id='project.global.fields.creditCard'/>
             </th>
             <th scope="col">
-                <FormattedMessage id='project.registrations.regRes.inscriptionDorsal'/>
+                <FormattedMessage id='project.global.fields.inscriptionDorsal'/>
             </th>
             <th scope="col">
-                <FormattedMessage id='project.registrations.regRes.dorsalPicked'/>
+                <FormattedMessage id='project.global.fields.dorsalPicked'/>
             </th>
             <th scope="col">
-                <FormattedMessage id='project.registrations.regRes.sportTestId'/>
+                <FormattedMessage id='project.global.fields.sportTestId'/>
             </th>
             <th scope="col">
-                <FormattedMessage id='project.registrations.regRes.score'/>
+                <FormattedMessage id='project.global.fields.rating'/>
             </th>
         </tr>
         </thead>

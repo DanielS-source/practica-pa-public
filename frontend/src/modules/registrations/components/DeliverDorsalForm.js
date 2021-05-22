@@ -38,7 +38,7 @@ const DeliverDorsalForm = ({SportingEventId}) => {
                     onClose={() => setDorsal(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
-                    <FormattedMessage id="project.registrations.dorsalForm.title"/>
+                    <FormattedMessage id="project.registrations.dorsalForm"/>
                 </h5>
                 <div className="card-body">
                     <form ref={node => form = node}
