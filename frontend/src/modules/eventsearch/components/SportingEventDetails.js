@@ -40,9 +40,15 @@ const SportingEventDetails = () => {
         return event.participants===event.maxParticipants
     };
 
-    const onTime = () => {
-        let date = event.testStart;
-        //date.setHours(date.getHours()-24);
+    const onTime24 = () => {
+        var date = new Date(event.testStart)
+        date.setHours(date.getHours() + 24)
+        return date > Date.now()
+    };
+
+    const onTime12 = () => {
+        var date = new Date(event.testStart)
+        date.setHours(date.getHours() + 12)
         return date > Date.now()
     };
 
@@ -91,26 +97,32 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            {maxParticipants() && onTime() &&
+            {maxParticipants() && onTime24() &&
             <h6>
                 <FormattedMessage id='project.global.fields.maxParticipants'/>
             </h6>
             }
 
-            {!maxParticipants() && !onTime() &&
+            {!maxParticipants() && !onTime24() &&
             <h6>
                 <FormattedMessage id='project.global.fields.notOnTime'/>
             </h6>
             }
 
-            {loggedIn && !isEmployee && !maxParticipants() && onTime() &&
+            {!onTime12() &&
+            <h6>
+                <FormattedMessage id='project.global.fields.notOnTime12'/>
+            </h6>
+            }
+
+            {loggedIn && !isEmployee && !maxParticipants() && onTime24() &&
                 <div>
                     <br/>
                         <RegistrationForm SportingEventId={event.id}/>
                 </div>
             }
 
-            {loggedIn && isEmployee &&
+            {loggedIn && isEmployee && onTime12() &&
                 <div>
                     <br/>
                         <DeliverDorsalForm SportingEventId={event.id}/>
