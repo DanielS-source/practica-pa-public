@@ -69,4 +69,6 @@ export default {
     'project.registrations.regComplete': 'Registration complete!',
     'project.registrations.header': 'Registrations',
 
+    'project.global.fields.notOnTime':'Inscription not avalible right now',
+
 }
