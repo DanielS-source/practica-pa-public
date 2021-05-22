@@ -72,7 +72,7 @@ const SportingEventDetails = () => {
                     <p className="card-text">{event.description}</p>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.testStart'/>
-                        : <FormattedDate value={new Date(event.testStart)}/>
+                        : <FormattedDate day={'2-digit'} month={"2-digit"} year={'numeric'} hour={"2-digit"} minute={"2-digit"} value={new Date(event.testStart)}/>
                     </p>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.location'/>

@@ -35,7 +35,7 @@ const SportingEvents = ({sportingEvents, sportingEventTypes, provinces}) => (
                     <td><SportingEventLink id={sportingEvent.id} name={sportingEvent.name} /></td>
                     <td>{selectors.getSportingEventTypeName(sportingEventTypes, sportingEvent.sportTestTypeId)}</td>
                     <td>{selectors.getProvinceName(provinces,sportingEvent.provinceId)}</td>
-                    <td><FormattedDate value={new Date(sportingEvent.testStart)}/></td>
+                    <td><FormattedDate day={'2-digit'} month={"2-digit"} year={'numeric'} hour={"2-digit"} minute={"2-digit"} value={new Date(sportingEvent.testStart)}/></td>
                     <td>{sportingEvent.isRated === true ? <FormattedNumber value={sportingEvent.averageRating}/> : <FormattedMessage id='project.global.fields.NotRated'/>}</td>
                 </tr>
             )}
