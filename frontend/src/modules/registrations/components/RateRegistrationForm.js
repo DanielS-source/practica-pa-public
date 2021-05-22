@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import * as actions from "../actions";
+import * as selectors from "../selectors";
 import {Errors, Success} from "../../common";
 import {FormattedMessage} from "react-intl";
 import ScoreSelector from "./ScoreSelector";
 import ProvinceSelector from "../../eventsearch/components/ProvinceSelector";
-import {useDispatch} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 const RateRegistrationForm = ({id}) => {
 
@@ -12,6 +13,11 @@ const RateRegistrationForm = ({id}) => {
     const [score, setScore] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
+    const search = useSelector(selectors.getRegistrationSearch);
+
+    const GetInscName = search => {
+
+    }
 
     const handleSubmit = event => {
 
@@ -43,6 +49,14 @@ const RateRegistrationForm = ({id}) => {
                     <form ref={node => form = node}
                           className="needs-validation" noValidate
                           onSubmit={(e) => handleSubmit(e)}>
+                        <div className="form-group row">
+                            <label htmlFor="punctuation" className="col-md-3 col-form-label">
+                                <FormattedMessage id="project.global.fields.sportTestId"/>
+                            </label>
+                            <div className="col-md-4">
+                                search.map(null)
+                            </div>
+                        </div>
                         <div className="form-group row">
                             <label htmlFor="punctuation" className="col-md-3 col-form-label">
                                 <FormattedMessage id="project.global.fields.rating"/>
