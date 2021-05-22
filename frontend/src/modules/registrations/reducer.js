@@ -30,7 +30,9 @@ const registrationSearch = (state = initialState.registrationSearch, action) => 
 
         case actionTypes.RATE_REGISTRATION_COMPLETED:
             return {
+                //Página
                 criteria: state.criteria,
+                //BlockDto
                 result: {
                     items: state.result.items.map(registration => {
                         return registration.id === Number(action.registration.id) ?

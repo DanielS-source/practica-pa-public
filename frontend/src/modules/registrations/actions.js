@@ -38,13 +38,12 @@ export const previousFindRegistrationsResultPage = criteria =>
 export const nextFindRegistrationsResultPage = criteria =>
     findRegistrations({page: criteria.page+1});
 
-export const rateRegistration = (InscriptionId, score, onSuccess, onErrors) => dispatch => {
-    backend.registrationService.scoreSportingEvent(InscriptionId, score, onSuccess, onErrors);
-    dispatch(rateRegistrationCompleted(InscriptionId, score))
+export const rateRegistration = (registration, onSuccess, onErrors) => dispatch => {
+    backend.registrationService.scoreSportingEvent(registration.id, registration.score, onSuccess, onErrors);
+    dispatch(rateRegistrationCompleted(registration))
 }
 
-export const rateRegistrationCompleted = (id, score) => ({
+export const rateRegistrationCompleted = (registration) => ({
     type: actionTypes.RATE_REGISTRATION_COMPLETED,
-    id,
-    score
+    registration
 })
