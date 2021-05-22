@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import * as actions from "../actions";
 import {Errors, Success} from "../../common";
-import {FormattedMessage} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 import {useSelector, useDispatch} from "react-redux";
 import * as selectors from '../selectors';
 
 const RateRegistrationForm = ({id}) => {
 
+    const intl = useIntl();
     const registrationSearch = useSelector(selectors.getRegistrationSearch);
     const dispatch = useDispatch();
     const [score, setScore] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
+    const [success, setSuccess] = useState(null);
     let form;
 
     if (!registrationSearch) {
@@ -48,6 +50,8 @@ const RateRegistrationForm = ({id}) => {
                 if (Number(id) === Number(reg.id)) {
                     reg.score = score
                     dispatch(actions.rateRegistration(reg));
+                    const message = intl.formatMessage({id: 'project.inscription.successNotification'});
+                    setSuccess(message);
                     break
                 }
             }
@@ -62,7 +66,7 @@ const RateRegistrationForm = ({id}) => {
         <div>
             <Errors errors={backendErrors}
                     onClose={() => setBackendErrors(null)}/>
-            <Success message={score}
+            <Success message={success}
                      onClose={() => setScore(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
