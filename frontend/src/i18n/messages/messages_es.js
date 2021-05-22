@@ -72,6 +72,9 @@ export default {
     'project.registrations.regComplete': '¡Registro completado!',
     'project.registrations.header': 'Inscripciones',
     'project.registration.successNotification' : 'Puntuación existosa',
+    'project.registrations.notRated': 'Sin puntuar',
+    'project.registrations.lateRate': 'Tarde',
+    'project.global.fields.rateLink': 'Link para votar',
 
     'project.global.fields.notOnTime':'No es posible inscribirse en estos momentos',
     'project.global.fields.NotRated':'No puntuado',
