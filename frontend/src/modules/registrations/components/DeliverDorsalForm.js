@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import {Errors, Success} from '../../common';
+import {Errors} from '../../common';
 import backend from '../../../backend';
 import SuccessNotification from "../../common/components/SuccessNotification";
 

@@ -2,11 +2,8 @@ import React, {useState} from 'react';
 import * as actions from "../actions";
 import {Errors, Success} from "../../common";
 import {FormattedMessage} from "react-intl";
-import ScoreSelector from "./ScoreSelector";
 import {useSelector, useDispatch} from "react-redux";
 import * as selectors from '../selectors';
-import Registrations from "./Registrations";
-import RateLink from "./RateLink";
 
 const RateRegistrationForm = ({id}) => {
 
@@ -32,7 +29,7 @@ const RateRegistrationForm = ({id}) => {
         let reg;
         let registrations = registrationSearch.result.items;
         for (reg of registrations) {
-            if (reg.id == id) {
+            if (id == reg.id) {
                 return reg.sportTestName;
             }
         }
@@ -48,7 +45,7 @@ const RateRegistrationForm = ({id}) => {
             let reg;
             let registrations = registrationSearch.result.items;
             for (reg of registrations) {
-                if (reg.id == id) {
+                if (id == reg.id) {
                     reg.score = score
                     dispatch(actions.rateRegistration(reg));
                     break
@@ -88,8 +85,19 @@ const RateRegistrationForm = ({id}) => {
                                 <FormattedMessage id="project.global.fields.rating"/>
                             </label>
                             <div className="col-md-4">
-                                <ScoreSelector id="scoreForm" className="custom-select my-1 mr-sm-2"
-                                               value={score} onChange={e => setScore(e.target.value)}/>
+                                <select className="custom-select my-1 mr-sm-2"
+                                        value={score}
+                                        onChange={e => setScore(e.target.value)}
+                                        required>
+                                    <FormattedMessage id='project.catalog.ScoreSelector.NotScore'>
+                                        {message => (<option value="">{message}</option>)}
+                                    </FormattedMessage>
+                                    <option key={1} value={1}>1</option>
+                                    <option key={2} value={2}>2</option>
+                                    <option key={3} value={3}>3</option>
+                                    <option key={4} value={4}>4</option>
+                                    <option key={5} value={5}>5</option>
+                                </select>
                                 <div className="invalid-feedback">
                                     <FormattedMessage id='project.global.validator.required'/>
                                 </div>
