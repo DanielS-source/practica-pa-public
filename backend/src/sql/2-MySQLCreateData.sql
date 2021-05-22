@@ -3,7 +3,7 @@
 -- in the "pa-project" database.
 -------------------------------------------------------------------------------
 
-INSERT INTO Province (name) VALUES ('A CORUÑA');
+INSERT INTO Province (name) VALUES ('A Coruña');
 INSERT INTO Province (name) VALUES ('Pontevedra');
 
 INSERT INTO SportTestType (name) VALUES ('Running');
@@ -13,10 +13,10 @@ INSERT INTO SportTest (name, description, testStart, price, maxParticipants, loc
     VALUES ('Prueba 1', 'DescripcionP1', '2020-07-01 16:00:00', 6.99, 500, 'Micasa', 1, 1, 0, 0, 0, 1);
 
 INSERT INTO SportTest (name, description, testStart, price, maxParticipants, location, provinceId, sportTestTypeId, participants, timesRated, averageRating, version)
-    VALUES ('Prueba 2', 'DescripcionP2', '2022-01-01 16:00:00', 6.99, 100, 'Micasa', 2, 1, 0, 0, 0, 1);
+    VALUES ('Prueba 2', 'DescripcionP2', '2022-01-01 16:00:00', 6.99, 100, 'Micasa', 1, 2, 0, 0, 0, 1);
 
 INSERT INTO SportTest (name, description, testStart, price, maxParticipants, location, provinceId, sportTestTypeId, participants, timesRated, averageRating, version)
-    VALUES ('Prueba 3', 'DescripcionP3', '2022-02-01 16:00:00', 6.99, 300, 'Micasa', 1, 2, 0, 0, 0, 1);
+    VALUES ('Prueba 3', 'DescripcionP3', '2022-02-01 16:00:00', 6.99, 300, 'Micasa', 2, 1, 0, 0, 0, 1);
 
 INSERT INTO SportTest (name, description, testStart, price, maxParticipants, location, provinceId, sportTestTypeId, participants, timesRated, averageRating, version)
     VALUES ('Prueba 4', 'DescripcionP4', '2022-03-01 16:00:00', 6.99, 2,   'Micasa', 2, 2, 0, 0, 0, 1);
