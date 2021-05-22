@@ -13,7 +13,8 @@ public class InscriptionConversor {
 
     public static InscriptionDto toInscriptionDto(Inscription inscription) {
         return new InscriptionDto(inscription.getId(), inscription.getCreditCardNumber(), inscription.getDorsal(),
-                inscription.isDorsalPicked(), inscription.getSportTest().getId(), inscription.getUser().getId(), inscription.getScore());
+                inscription.isDorsalPicked(), inscription.getSportTest().getId(), inscription.getSportTest().getName(),
+                inscription.getUser().getId(), inscription.getScore());
     }
 
     public final static List<InscriptionDto> toInscriptionDtos(List<Inscription> inscriptions) {

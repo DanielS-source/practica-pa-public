@@ -9,11 +9,12 @@ public class InscriptionDto {
     private int dorsal;
     private boolean dorsalPicked;
     private Long sportTestId;
+    private String sportTestName;
     private Long userId;
     private int score;
 
     public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
-                          Long sportTestId, Long userId, int score) {
+                          Long sportTestId, String sportTestName, Long userId, int score) {
         this.id = id;
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
