@@ -43,9 +43,6 @@ const Registrations = ({registrations}) => (
                 <td> {reg.dorsalPicked.toString() === 'false' ?
                     <FormattedMessage id='project.global.fields.negation'/> : <FormattedMessage id='project.global.fields.affirmation'/>} </td>
                 <td><SportingEventLink id={reg.sportTestId} name={reg.sportTestName} /></td>
-                <td> {reg.score === 0 ? <RateLink id={reg.id}/> : reg.score} </td>
-                <td> {reg.dorsalPicked.toString()} </td>
-                <td> {reg.sportTestName} </td>
                 <td> {reg.score === 0 ? <FormattedMessage id='project.global.fields.notRated'/> : reg.score} </td>
                 <td> {new Date(reg.sportTestStart).setDate(reg.sportTestStart + 15) > Date.now() ? <RateLink id={reg.id}/> : <FormattedMessage id='project.global.fields.lateRate'/>} </td>
             </tr>
