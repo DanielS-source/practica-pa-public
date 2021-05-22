@@ -70,4 +70,5 @@ export default {
     'project.registrations.regComplete': '¡Rexistro completado!',
     'project.registrations.header': 'Inscripcións',
 
+    'project.global.fields.notOnTime':'Non é posible inscribirse en estos momentos',
 }
