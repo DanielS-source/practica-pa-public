@@ -4,9 +4,11 @@ import {Errors} from "../../common";
 import {FormattedMessage} from "react-intl";
 import ScoreSelector from "./ScoreSelector";
 import ProvinceSelector from "../../eventsearch/components/ProvinceSelector";
+import {useDispatch} from "react-redux";
 
 const RateRegistrationForm = ({id}) => {
 
+    const dispatch = useDispatch();
     const [score, setScore] = useState('');
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
@@ -17,9 +19,9 @@ const RateRegistrationForm = ({id}) => {
 
         if (form.checkValidity()) {
 
-            actions.rateRegistration(id, score,
+            dispatch(actions.rateRegistration(id, score,
                 score => setScore(score),
-                errors => setBackendErrors(errors));
+                errors => setBackendErrors(errors)));
 
         } else {
             setBackendErrors(null);
