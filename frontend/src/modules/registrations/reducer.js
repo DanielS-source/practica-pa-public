@@ -29,9 +29,15 @@ const registrationSearch = (state = initialState.registrationSearch, action) => 
             return action.registrationSearch;
 
         case actionTypes.RATE_REGISTRATION_COMPLETED:
-            return {registrations : action.registrationSearch.map(registration => {
-                console.log(registration);
-                return registration.id === action.id ? registration.score = action.score : registration})};
+            return {
+                criteria: state.criteria,
+                result: {
+                    items: state.result.items.map(registration => {
+                        return registration.id === Number(action.registration.id) ?
+                            {...registration, score: action.registration.score} : registration}),
+                    existsMoreItems: state.result.existsMoreItems
+                    }
+                }
 
         case actionTypes.CLEAR_REGISTRATION_SEARCH:
             return initialState.registrationSearch;

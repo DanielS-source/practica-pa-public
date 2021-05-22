@@ -23,6 +23,7 @@ const RateRegistrationForm = ({id}) => {
                 score => setScore(score),
                 errors => setBackendErrors(errors)));
 
+
         } else {
             setBackendErrors(null);
             form.classList.add('was-validated');
