@@ -2,6 +2,7 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 import RateLink from "./RateLink";
+import SportingEventLink from "../../common/components/SportingEventLink";
 
 const Registrations = ({registrations}) => (
 
@@ -36,8 +37,9 @@ const Registrations = ({registrations}) => (
                 <td> {reg.id} </td>
                 <td> {reg.creditCardNumber} </td>
                 <td> {reg.dorsal} </td>
-                <td> {reg.dorsalPicked.toString()} </td>
-                <td> {reg.sportTestName} </td>
+                <td> {reg.dorsalPicked.toString() === 'false' ?
+                    <FormattedMessage id='project.global.fields.negation'/> : <FormattedMessage id='project.global.fields.affirmation'/>} </td>
+                <td><SportingEventLink id={reg.sportTestId} name={reg.sportTestName} /></td>
                 <td> {reg.score === 0 ? <RateLink id={reg.id}/> : reg.score} </td>
             </tr>
         )}

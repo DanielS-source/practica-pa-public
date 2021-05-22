@@ -44,6 +44,8 @@ export default {
     'project.global.fields.averageRating': 'Puntuación Media',
     'project.global.fields.rating': 'Puntuación',
     'project.global.fields.rate': 'Puntúa',
+    'project.global.fields.affirmation' : 'Sí',
+    'project.global.fields.negation' : 'Non',
 
     'project.global.validator.email': 'Introduzca unha dirección de correo electrónico correcta',
     'project.global.validator.passwordsDoNotMatch': 'As contrasinais non coinciden',
