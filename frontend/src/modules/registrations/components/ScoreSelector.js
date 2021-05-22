@@ -9,7 +9,7 @@ const ScoreSelector = (selectProps) => {
         <select {...selectProps}>
 
             <FormattedMessage id='project.catalog.ScoreSelector.NotScore'>
-                {message => (<option value="">{message}</option>)}
+                {message => (<option value=" ">{message}</option>)}
             </FormattedMessage>
 
             <option key={1} value={1}>{1}</option>

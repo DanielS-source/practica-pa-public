@@ -5,6 +5,8 @@ import {FormattedMessage} from "react-intl";
 import ScoreSelector from "./ScoreSelector";
 import {useSelector, useDispatch} from "react-redux";
 import * as selectors from '../selectors';
+import Registrations from "./Registrations";
+import RateLink from "./RateLink";
 
 const RateRegistrationForm = ({id}) => {
 
@@ -13,7 +15,6 @@ const RateRegistrationForm = ({id}) => {
     const [score, setScore] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
-    let registration;
 
     if (!registrationSearch) {
         return null;
@@ -29,13 +30,12 @@ const RateRegistrationForm = ({id}) => {
 
     const GetInscName = registrationSearch => {
         let reg;
-        for (reg of registrationSearch.result.items) {
-            if (reg.id === id) {
-                registration = reg
+        let registrations = registrationSearch.result.items;
+        for (reg of registrations) {
+            if (reg.id == id) {
                 return reg.sportTestName;
             }
         }
-
 
     }
 
@@ -44,8 +44,16 @@ const RateRegistrationForm = ({id}) => {
         event.preventDefault();
 
         if (form.checkValidity()) {
-            registration.score = score
-            dispatch(actions.rateRegistration(registration));
+
+            let reg;
+            let registrations = registrationSearch.result.items;
+            for (reg of registrations) {
+                if (reg.id == id) {
+                    reg.score = score
+                    dispatch(actions.rateRegistration(reg));
+                    break
+                }
+            }
 
         } else {
             setBackendErrors(null);
