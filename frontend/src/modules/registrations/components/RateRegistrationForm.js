@@ -44,11 +44,8 @@ const RateRegistrationForm = ({id}) => {
         event.preventDefault();
 
         if (form.checkValidity()) {
-
-            dispatch(actions.rateRegistration(id, score,
-                score => setScore(score),
-                errors => setBackendErrors(errors)));
-
+            registration.score = score
+            dispatch(actions.rateRegistration(registration));
 
         } else {
             setBackendErrors(null);
