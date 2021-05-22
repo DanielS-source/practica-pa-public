@@ -46,6 +46,8 @@ export default {
     'project.global.fields.rate': 'Puntúa',
     'project.global.fields.affirmation' : 'Sí',
     'project.global.fields.negation' : 'No',
+    'project.global.fields.notOnTime12' : 'Fuera de plazo',
+    'project.global.fields.notOnTime24' : 'Fuera de plazo',
 
     'project.global.validator.email': 'Introduzca una dirección de correo electrónico correcta',
     'project.global.validator.passwordsDoNotMatch': 'Las contraseñas no coinciden',
