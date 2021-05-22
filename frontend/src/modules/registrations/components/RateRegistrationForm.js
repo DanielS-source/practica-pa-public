@@ -13,6 +13,18 @@ const RateRegistrationForm = ({id}) => {
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
 
+    if (!registrationSearch) {
+        return null;
+    }
+
+    if (registrationSearch.result.items.length === 0) {
+        return (
+            <div className="alert alert-info" role="alert">
+                <FormattedMessage id='project.registrations.noInscriptions'/>
+            </div>
+        );
+    }
+
     const GetInscName = registrationSearch => {
         let reg;
         let registrations = registrationSearch.result.items;
