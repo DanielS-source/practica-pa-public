@@ -75,12 +75,13 @@ public class TrialManagerController {
     }
 
     @ExceptionHandler(DuplicateInscriptionException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ErrorsDto handleDuplicateInscriptionException(DuplicateInscriptionException exception, Locale locale) {
 
+        String nameMessage = messageSource.getMessage(exception.getName(), null, exception.getName(), locale);
         String errorMessage = messageSource.getMessage(DUPLICATE_INSCRIPTION_EXCEPTION_CODE,
-                null, DUPLICATE_INSCRIPTION_EXCEPTION_CODE, locale);
+                new Object[] {nameMessage, exception.getKey().toString()}, DUPLICATE_INSCRIPTION_EXCEPTION_CODE, locale);
 
         return new ErrorsDto(errorMessage);
 

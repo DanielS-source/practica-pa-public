@@ -21,7 +21,7 @@ import es.udc.paproject.backend.model.exceptions.PermissionException;
 public class CommonControllerAdvice {
 	
 	private final static String INSTANCE_NOT_FOUND_EXCEPTION_CODE = "project.exceptions.InstanceNotFoundException";
-	private final static String DUPLICATE_INSTANCE_EXCEPTION_CODE = "project.exceptions.DuplicateInstanceException";
+	private final static String DUPLICATE_INSCRIPTION_EXCEPTION_CODE = "project.exceptions.DuplicateInscriptionException";
 	private final static String PERMISSION_EXCEPTION_CODE = "project.exceptions.PermissionException";
 	
 	@Autowired
@@ -55,11 +55,11 @@ public class CommonControllerAdvice {
 	@ExceptionHandler(DuplicateInscriptionException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
-	public ErrorsDto handleDuplicateInstanceException(DuplicateInscriptionException exception, Locale locale) {
+	public ErrorsDto handleDuplicateInscriptionException(DuplicateInscriptionException exception, Locale locale) {
 		
 		String nameMessage = messageSource.getMessage(exception.getName(), null, exception.getName(), locale);
-		String errorMessage = messageSource.getMessage(DUPLICATE_INSTANCE_EXCEPTION_CODE, 
-				new Object[] {nameMessage, exception.getKey().toString()}, DUPLICATE_INSTANCE_EXCEPTION_CODE, locale);
+		String errorMessage = messageSource.getMessage(DUPLICATE_INSCRIPTION_EXCEPTION_CODE,
+				new Object[] {nameMessage, exception.getKey().toString()}, DUPLICATE_INSCRIPTION_EXCEPTION_CODE, locale);
 
 		return new ErrorsDto(errorMessage);
 		
