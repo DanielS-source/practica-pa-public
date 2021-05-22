@@ -66,5 +66,6 @@ export default {
     'project.registrations.regRes.dorsalPicked' : 'Dorsal recogido?',
     'project.registrations.regRes.sportTestId' : 'Prueba deportiva',
     'project.registrations.regRes.score' : 'Puntuación',
+    'project.catalog.ScoreSelector.NotScore':'Sin puntuar',
 
 }
