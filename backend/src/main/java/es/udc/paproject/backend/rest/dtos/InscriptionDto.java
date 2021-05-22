@@ -10,17 +10,19 @@ public class InscriptionDto {
     private boolean dorsalPicked;
     private Long sportTestId;
     private String sportTestName;
+    private long sportTestStart;
     private Long userId;
     private int score;
 
     public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
-                          Long sportTestId, String sportTestName, Long userId, int score) {
+                          Long sportTestId, String sportTestName, Long SportTestStart, Long userId, int score) {
         this.id = id;
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
         this.dorsalPicked = dorsalPicked;
         this.sportTestId = sportTestId;
         this.sportTestName = sportTestName;
+        this.sportTestStart = sportTestStart;
         this.userId = userId;
         this.score = score;
     }
@@ -63,4 +65,13 @@ public class InscriptionDto {
     public int getScore() { return score; }
 
     public void setScore(int score) { this.score = score; }
+
+    @NotNull
+    public long getSportTestStart() {
+        return sportTestStart;
+    }
+
+    public void setSportTestStart(long sportTestStart) {
+        this.sportTestStart = sportTestStart;
+    }
 }
