@@ -70,5 +70,6 @@ export default {
     'project.registrations.header': 'Registrations',
 
     'project.global.fields.notOnTime':'Inscription not avalible right now',
+    'project.global.fields.NotRated':'Not Rated',
 
 }

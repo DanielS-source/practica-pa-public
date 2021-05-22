@@ -40,7 +40,8 @@ public class SportTestConversor {
                 sportTest.getProvince().getId(),
                 sportTest.getSportTestType().getId(),
                 sportTest.getParticipants(),
-                sportTest.getAverageRating());
+                sportTest.getAverageRating(),
+                sportTest.getTimesRated());
     }
 
     private final static long toMillis(LocalDateTime date) {

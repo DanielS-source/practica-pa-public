@@ -92,7 +92,7 @@ const SportingEventDetails = () => {
                     </p>
                     <p className="card-text">
                         <FormattedMessage id='project.global.fields.averageRating'/>
-                        : {event.averageRating}
+                        : {event.isRated === true ? <FormattedNumber value={event.averageRating}/> : <FormattedMessage id='project.global.fields.NotRated'/>}
                     </p>
                 </div>
             </div>
