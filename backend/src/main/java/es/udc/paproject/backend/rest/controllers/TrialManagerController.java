@@ -21,7 +21,7 @@ public class TrialManagerController {
 
     private final static String ALREADY_SCORED_TEST_EXCEPTION_CODE = "project.exceptions.AlreadyScoredTestException";
     private final static String TOO_LATE_TO_SCORE_EXCEPTION_CODE = "project.exceptions.TooLateToScoreException";
-    private final static String TEST_NOT_STARTED_EXCEPTION_CODE = "project.exceptions.AlreadyScoredTestException";
+    private final static String TEST_NOT_STARTED_EXCEPTION_CODE = "project.exceptions.TestNotStartedException";
     private final static String DUPLICATE_INSCRIPTION_EXCEPTION_CODE = "project.exceptions.DuplicateInscriptionException";
     private final static String SPORTTEST_FULL_EXCEPTION_CODE = "project.exceptions.SportTestFullException";
     private final static String INSCRIPTION_PERIOD_CLOSED_EXCEPTION_CODE =
