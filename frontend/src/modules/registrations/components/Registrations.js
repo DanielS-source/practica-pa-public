@@ -27,6 +27,9 @@ const Registrations = ({registrations}) => (
             <th scope="col">
                 <FormattedMessage id='project.global.fields.rating'/>
             </th>
+            <th scope="col">
+                <FormattedMessage id='project.global.fields.rateLink'/>
+            </th>
         </tr>
         </thead>
 
@@ -38,7 +41,8 @@ const Registrations = ({registrations}) => (
                 <td> {reg.dorsal} </td>
                 <td> {reg.dorsalPicked.toString()} </td>
                 <td> {reg.sportTestName} </td>
-                <td> {reg.score === 0 ? <RateLink id={reg.id}/> : reg.score} </td>
+                <td> {reg.score === 0 ? <FormattedMessage id='project.global.fields.notRated'/> : reg.score} </td>
+                <td> {new Date(reg.sportTestStart).setDate(reg.sportTestStart + 15) > Date.now() ? <RateLink id={reg.id}/> : <FormattedMessage id='project.global.fields.lateRate'/>} </td>
             </tr>
         )}
         </tbody>
