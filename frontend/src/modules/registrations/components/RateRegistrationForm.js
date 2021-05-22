@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import * as actions from "../actions";
-import {Errors} from "../../common";
+import {Errors, Success} from "../../common";
 import {FormattedMessage} from "react-intl";
 import ScoreSelector from "./ScoreSelector";
 import ProvinceSelector from "../../eventsearch/components/ProvinceSelector";
@@ -9,7 +9,7 @@ import {useDispatch} from "react-redux";
 const RateRegistrationForm = ({id}) => {
 
     const dispatch = useDispatch();
-    const [score, setScore] = useState('');
+    const [score, setScore] = useState(null);
     const [backendErrors, setBackendErrors] = useState(null);
     let form;
 
@@ -33,6 +33,8 @@ const RateRegistrationForm = ({id}) => {
         <div>
             <Errors errors={backendErrors}
                     onClose={() => setBackendErrors(null)}/>
+            <Success message={score}
+                     onClose={() => setScore(null)}/>
             <div className="card bg-light border-dark">
                 <h5 className="card-header">
                     <FormattedMessage id="project.registrations.rateForm"/>
