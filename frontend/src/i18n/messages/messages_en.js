@@ -44,7 +44,7 @@ export default {
     'project.global.fields.rating': 'Rating',
     'project.global.fields.rate': 'Rate',
     'project.global.fields.affirmation' : 'Yes',
-    'project.global.fields.negation' : 'No','
+    'project.global.fields.negation' : 'No',
     'project.global.fields.notOnTime12' : 'Out of time',
     'project.global.fields.notOnTime24' : 'Out of time',
 
