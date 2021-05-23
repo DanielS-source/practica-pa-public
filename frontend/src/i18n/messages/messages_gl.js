@@ -75,9 +75,10 @@ export default {
     'project.registrations.header': 'Inscripcións',
     'project.registration.successNotification' : 'Puntuación existosa',
     'project.registrations.notRated': 'Sin puntuar',
-    'project.registrations.lateRate': 'Tarde',
+    'project.registrations.lateRate': 'Tarde para votar',
     'project.global.fields.rateLink': 'Link para votar',
 
     'project.global.fields.notOnTime':'Non é posible inscribirse en estos momentos',
     'project.global.fields.NotRated':'Non puntuado',
+    'project.global.fields.SuccessNotification':'Dorsal número : ',
 }
