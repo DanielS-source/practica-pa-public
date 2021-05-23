@@ -49,7 +49,13 @@ const SportingEventDetails = () => {
     const onTime12 = () => {
         var date = new Date(event.testStart)
         date.setHours(date.getHours() + 12)
-        return date > Date.now()
+
+        console.log(date)
+        console.log(new Date())
+
+        console.log(date > new Date())
+
+        return date > new Date()
     };
 
     return (
@@ -97,19 +103,19 @@ const SportingEventDetails = () => {
                 </div>
             </div>
 
-            {maxParticipants() && onTime24() &&
+            {maxParticipants() && onTime24() && !isEmployee &&
             <h6>
                 <FormattedMessage id='project.global.fields.maxParticipants'/>
             </h6>
             }
 
-            {!maxParticipants() && !onTime24() &&
+            {!maxParticipants() && !onTime24() && !isEmployee &&
             <h6>
                 <FormattedMessage id='project.global.fields.notOnTime'/>
             </h6>
             }
 
-            {!onTime12() &&
+            {!onTime12() && isEmployee &&
             <h6>
                 <FormattedMessage id='project.global.fields.notOnTime12'/>
             </h6>
