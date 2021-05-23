@@ -42,20 +42,16 @@ const SportingEventDetails = () => {
 
     const onTime24 = () => {
         var date = new Date(event.testStart)
-        date.setHours(date.getHours() + 24)
+        date.setHours(date.getHours() - 24)
         return date > Date.now()
     };
 
     const onTime12 = () => {
+        var date2 = new Date(event.testStart)
         var date = new Date(event.testStart)
-        date.setHours(date.getHours() + 12)
+        date.setHours(date.getHours() - 12)
 
-        console.log(date)
-        console.log(new Date())
-
-        console.log(date > new Date())
-
-        return date > new Date()
+        return date < new Date() && new Date() < date2
     };
 
     return (
