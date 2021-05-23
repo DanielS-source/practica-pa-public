@@ -44,7 +44,8 @@ const Registrations = ({registrations}) => (
                     <FormattedMessage id='project.global.fields.negation'/> : <FormattedMessage id='project.global.fields.affirmation'/>} </td>
                 <td><SportingEventLink id={reg.sportTestId} name={reg.sportTestName} /></td>
                 <td> {reg.score === 0 ? <FormattedMessage id='project.registrations.notRated'/> : reg.score} </td>
-                <td> {new Date(reg.sportTestStart).setDate(reg.sportTestStart + 15) > Date.now() ? <RateLink id={reg.id}/> : <FormattedMessage id='project.registrations.lateRate'/>} </td>
+                <td> {(reg.sportTestStart+(15*24*60*60*1000)) > new Date().getTime() ? <RateLink id={reg.id}/> : <FormattedMessage id='project.registrations.lateRate'/>} </td>
+
             </tr>
         )}
         </tbody>

@@ -10,12 +10,12 @@ public class InscriptionDto {
     private boolean dorsalPicked;
     private Long sportTestId;
     private String sportTestName;
-    private long sportTestStart;
+    private Long sportTestStart;
     private Long userId;
     private int score;
 
     public InscriptionDto(Long id, String creditCardNumber, int dorsal, boolean dorsalPicked,
-                          Long sportTestId, String sportTestName, Long SportTestStart, Long userId, int score) {
+                          Long sportTestId, String sportTestName, Long sportTestStart, Long userId, int score) {
         this.id = id;
         this.creditCardNumber = creditCardNumber;
         this.dorsal = dorsal;
