@@ -133,6 +133,14 @@ public class SportTestDto {
         this.participants = participants;
     }
 
+    public boolean isRated() {
+        return isRated;
+    }
+
+    public void setRated(boolean rated) {
+        isRated = rated;
+    }
+
     public Long getAverageRating() {
         return averageRating;
     }
