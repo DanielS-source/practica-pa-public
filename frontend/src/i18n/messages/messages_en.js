@@ -74,7 +74,7 @@ export default {
     'project.registrations.header': 'Registrations',
     'project.registration.successNotification' : 'Successfully rated',
     'project.registrations.notRated': 'Not rated',
-    'project.registrations.lateRate': 'Too Late to vote',
+    'project.registrations.lateRate': 'Cant vote',
     'project.global.fields.rateLink': 'Link to vote',
 
     'project.global.fields.notOnTime':'Inscription not avalible right now',
