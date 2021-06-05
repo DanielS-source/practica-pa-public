@@ -1,7 +1,7 @@
 import backend from '../../backend';
 import * as actionTypes from './actionTypes';
 
-const inscriptionCompleted = (inscription) => ({
+export const inscriptionCompleted = (inscription) => ({
     type: actionTypes.INSCRIPTION_COMPLETED,
     inscription
 });
