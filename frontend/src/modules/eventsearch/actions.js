@@ -6,7 +6,7 @@ import backend from '../../backend';
 
 
 
-const findSportingEventsCompleted = sportingEventSearch => ({
+export const findSportingEventsCompleted = sportingEventSearch => ({
     type: actionTypes.FIND_SPORTING_EVENTS_COMPLETED,
     sportingEventSearch
 });

@@ -52,7 +52,7 @@ export default {
     'project.global.validator.passwordsDoNotMatch': 'Passwords do not match',
     'project.global.validator.required': 'Required field',
 
-    'project.catalog.SportingEventTypeSelector.allTypes': 'ALl Sporting Event Types',
+    'project.catalog.SportingEventTypeSelector.allTypes': 'All Sporting Event Types',
     'project.catalog.ProvinceSelector.allProvinces': 'All Provinces',
     'project.catalog.FindSportingEventsResult.noSportingEventsFound': 'No Sporting Events Found',
     'project.catalog.ScoreSelector.NotScore': 'No Score',
