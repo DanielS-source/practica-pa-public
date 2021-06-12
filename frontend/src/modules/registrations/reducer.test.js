@@ -9,3 +9,11 @@ test('INSCRIPTION_COMPLETED', () => {
     expect(state.inscription).toEqual(registrationId);
 })
 
+test('RATE_REGISTRATION_COMPLETED', () => {
+    const registrationId = 1;
+    const initialState = {inscription: null}
+
+    const state = reducer(initialState, actions.inscriptionCompleted(registrationId));
+    expect(state.inscription).toEqual(registrationId);
+})
+

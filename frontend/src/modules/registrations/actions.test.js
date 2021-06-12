@@ -7,7 +7,6 @@ import backend from '../../backend';
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares);
 
-afterEach(() => backend.registrationService.createRegistration.mockRestore());
 
 test('registration - success', () => {
     const registrationId = 1;
@@ -29,6 +28,7 @@ test('registration - success', () => {
     expect(store.getActions()).toEqual(expectedActions);
     expect(onSuccess).toHaveBeenCalled();
     expect(onErrors).not.toHaveBeenCalled();
+    backend.registrationService.createRegistration.mockRestore();
 });
 
 test('registration - backend errors', () => {
@@ -50,4 +50,25 @@ test('registration - backend errors', () => {
     expect(onSuccess).not.toHaveBeenCalled();
     expect(onErrors).toHaveBeenCalled();
     expect(onErrors.mock.calls[0][0]).toEqual(backendErrors);
+    backend.registrationService.createRegistration.mockRestore();
 })
+
+test('rating - success', () => {
+    const backendRegistrationSpy = jest.spyOn(backend.registrationService, 'scoreSportingEvent').mockImplementation(
+        (_registrationId, _score, onSuccess, _onErrors) =>
+            onSuccess({id: registrationId}));
+    const registrationId = 1;
+    const score = 3;
+    const onSuccess = jest.fn();
+    const onErrors = jest.fn();
+    const action = actions.rateRegistration(registrationId,score,onSuccess,onErrors);
+    const expectedActions = [actions.rateRegistrationCompleted(registrationId)];
+    const store = mockStore({});
+
+    store.dispatch(action);
+
+    expect(store.getActions()).toEqual(expectedActions);
+    expect(onErrors).not.toHaveBeenCalled();
+    backend.registrationService.scoreSportingEvent.mockRestore();
+
+});
