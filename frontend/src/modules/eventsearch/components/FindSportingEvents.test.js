@@ -3,10 +3,10 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {render, fireEvent} from '@testing-library/react';
 import {createMemoryHistory} from 'history'
-import {IntlProvider} from "react-intl";
 
+import {IntlProvider} from 'react-intl';
 import messages from '../../../i18n/messages';
-import {Router} from "react-router-dom";
+import {Router} from 'react-router-dom';
 import * as actions from '../actions';
 import FindSportingEvents from "./FindSportingEvents";
 
@@ -33,24 +33,32 @@ test('findSportingEvents - success', () => {
 
     const initialState = {eventSearch: {sportingEventSearch: null}}
 
+    const criteria = {provinceId: null, sportTestTypeId: null, startDate: null, endDate: null, page: null};
+
     const findSpy = jest.spyOn(actions, 'findSportingEvents').mockImplementation(
-        ({_provinceId, _sportTestTypeId, _startDate, _endDate, _page})
+        _criteria => null
     )
 
-    const {getByLabelText, getByRole, getByPlaceholderText, getByTestId, history} = renderComponent(<FindSportingEvents/>,
+    const {getByTestId, getByRole} = renderComponent(<FindSportingEvents/>,
         initialState);
 
-    const provinceIdInput = getByPlaceholderText('All Provinces');
-    const sportTestTypeIdInput = getByPlaceholderText('All Sporting Event Types');
-    const startDateInput = getByLabelText('');
-    const endDateInput = getByLabelText('');
+    const provinceIdInput = getByTestId('provinces');
+    const sportTestTypeIdInput = getByTestId('sportingType');
+    const startDateInput = getByTestId('startDate');
+    const endDateInput = getByTestId('endDate');
 
     const searchButton = getByRole('button')
 
-    const provinceId = 1;
-    const sportTestTypeId = 1;
+    const provinceId = null;
+    const sportTestTypeId = null;
     const startDate = '2020-05-12';
-    const endDate = '2020-05-12';
+    const endDate = '2023-05-12';
+
+    criteria.provinceId = provinceId;
+    criteria.sportTestTypeId = sportTestTypeId;
+    criteria.startDate = startDate;
+    criteria.endDate = endDate;
+    criteria.page = 0;
 
     fireEvent.change(provinceIdInput, {target: {value: provinceId}});
     fireEvent.change(sportTestTypeIdInput, {target: {value: sportTestTypeId}});
@@ -59,13 +67,7 @@ test('findSportingEvents - success', () => {
 
     fireEvent.click(searchButton);
 
-    expect(findSpy.mock.calls[0][0]).toEqual(provinceId);
-    expect(findSpy.mock.calls[0][1]).toEqual(sportTestTypeId);
-    expect(findSpy.mock.calls[0][2]).toEqual(startDate);
-    expect(findSpy.mock.calls[0][3]).toEqual(endDate);
-    expect(findSpy.mock.calls[0][4]).toEqual(page);
+    console.log(findSpy.mock.calls[0][0]);
 
-    expect(history.length).toEqual(2);
-    expect(history.location.pathname).toEqual('/shopping/purchase-completed');
-
+    expect(findSpy.mock.calls[0][0]).toEqual(criteria);
 })
