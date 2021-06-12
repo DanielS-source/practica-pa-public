@@ -67,7 +67,5 @@ test('findSportingEvents - success', () => {
 
     fireEvent.click(searchButton);
 
-    console.log(findSpy.mock.calls[0][0]);
-
     expect(findSpy.mock.calls[0][0]).toEqual(criteria);
 })

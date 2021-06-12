@@ -19,7 +19,7 @@ export const findSportingEvents = criteria => dispatch => {
 
 }
 
-const clearSportingEventSearch = () => ({
+export const clearSportingEventSearch = () => ({
     type: actionTypes.CLEAR_SPORTING_EVENTS_SEARCH
 });
 

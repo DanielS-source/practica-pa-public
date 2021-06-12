@@ -3,13 +3,25 @@ import * as actions from './actions';
 
 test('FIND_SPORTING_EVENTS_COMPLETED', () => {
 
-    const sportingEventSearch = null;
-    const initialState = null;
+    const criteria = {
+        provinceId: 1,
+        sportTestTypeId: 1,
+        startDate: '2020-05-12',
+        endDate: '2023-05-12',
+        page: 0};
 
-    const state = reducer(initialState, actions.findSportingEventsCompleted(sportingEventSearch));
+    const result = {
+        items: [],
+        existsMoreItems: false,
+    }
+
+
+    const initialState = {sportingEventSearch: null};
+
+    const state = reducer(initialState, actions.findSportingEventsCompleted({criteria, result}));
 
     expect(state.sportingEventSearch).toEqual(
-        {criteria: null, result: null}
+        {criteria: criteria, result: result}
     )
 
 })
