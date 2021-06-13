@@ -13,7 +13,7 @@ test('RATE_REGISTRATION_COMPLETED', () => {
     const registrationId = 1;
 
     const reg = {id: 1, score: 0}
-    const initialState = {inscription: 1, registrationSearch: {criteria: 1, result: {items: [reg]}}}
+    const initialState = {inscription: 1, registrationSearch: {criteria: {}, result: {items: [reg]}}}
 
     const res = {id: registrationId, score: 3}
     const state = reducer(initialState, actions.rateRegistrationCompleted({id: registrationId, score: 3}));

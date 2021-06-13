@@ -88,7 +88,7 @@ const RateRegistrationForm = ({id}) => {
                                 <FormattedMessage id="project.global.fields.rating"/>
                             </label>
                             <div className="col-md-4">
-                                <select className="custom-select my-1 mr-sm-2"
+                                <select data-testid="score" className="custom-select my-1 mr-sm-2"
                                         value={score}
                                         onChange={e => setScore(e.target.value)}
                                         required>
