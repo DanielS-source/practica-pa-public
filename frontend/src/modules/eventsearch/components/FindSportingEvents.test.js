@@ -31,15 +31,17 @@ afterEach(() => actions.findSportingEvents.mockRestore());
 
 test('findSportingEvents - success', () => {
 
-    const initialState = {eventSearch: {sportingEventSearch: null}}
-
-    const criteria = {provinceId: null, sportTestTypeId: null, startDate: null, endDate: null, page: null};
+    const initialState = {
+        eventSearch: {
+            sportingEventSearch: null
+        }
+    }
 
     const findSpy = jest.spyOn(actions, 'findSportingEvents').mockImplementation(
-        _criteria => null
+        () => null
     )
 
-    const {getByTestId, getByRole} = renderComponent(<FindSportingEvents/>,
+    const {getByTestId, getByRole, history} = renderComponent(<FindSportingEvents/>,
         initialState);
 
     const provinceIdInput = getByTestId('provinces');
@@ -54,12 +56,6 @@ test('findSportingEvents - success', () => {
     const startDate = '2020-05-12';
     const endDate = '2023-05-12';
 
-    criteria.provinceId = provinceId;
-    criteria.sportTestTypeId = sportTestTypeId;
-    criteria.startDate = startDate;
-    criteria.endDate = endDate;
-    criteria.page = 0;
-
     fireEvent.change(provinceIdInput, {target: {value: provinceId}});
     fireEvent.change(sportTestTypeIdInput, {target: {value: sportTestTypeId}});
     fireEvent.change(startDateInput, {target: {value: startDate}});
@@ -67,5 +63,15 @@ test('findSportingEvents - success', () => {
 
     fireEvent.click(searchButton);
 
-    expect(findSpy.mock.calls[0][0]).toEqual(criteria);
+    const expectedCriteria = {
+        provinceId: provinceId,
+        sportTestTypeId: sportTestTypeId,
+        startDate: startDate,
+        endDate: endDate,
+        page: 0
+    };
+
+    expect(findSpy.mock.calls[0][0]).toEqual(expectedCriteria);
+    expect(history.length).toEqual(1);
+    expect(history.location.pathname).toEqual('/');
 })

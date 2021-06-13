@@ -12,44 +12,34 @@ afterEach(() => backend.searchService.findSportingEvents.mockRestore());
 test('findSportingEvents - success', () => {
 
     const criteria = {
-        provinceId: null,
-        sportTestTypeId: null,
-        startDate: null,
-        endDate: null,
-        page: null};
+        provinceId: 1,
+        sportTestTypeId: 1,
+        startDate: '2020-05-12',
+        endDate: '2023-05-12',
+        page: 0};
+
+    const result = {
+        items: [],
+        existsMoreItems: false,
+    };
+
+    const sportingEventSearch = {criteria, result};
 
     const backendFindSpy = jest.spyOn(backend.searchService, 'findSportingEvents').mockImplementation(
-        (_criteria, _onSuccess) => null
-    )
-
-    const sportingEventSearch = null;
-
-    criteria.provinceId = 1;
-    criteria.sportTestTypeId = 1;
-    criteria.startDate = '2020-05-12';
-    criteria.endDate = '2023-05-12';
-    criteria.page = 0;
+        (_criteria, onSuccess) => onSuccess(result)
+    );
 
     const action = actions.findSportingEvents(criteria);
-    const expectedActions2 = [
-        sportingEventSearch,
-        actions.clearSportingEventSearch()];
+
     const expectedActions = [
-        actions.clearSportingEventSearch()
+        actions.clearSportingEventSearch(),
+        actions.findSportingEventsCompleted(sportingEventSearch)
     ];
 
     const store = mockStore({});
 
     store.dispatch(action)
 
-    //console.log(backendFindSpy.mock.calls[0][0])
-    //console.log(expectedActions)
-
-    //console.log(JSON.stringify(store.getActions()))
-
     expect(backendFindSpy.mock.calls[0][0]).toEqual(criteria);
-
     expect(store.getActions()).toEqual(expectedActions);
-
-
 })
