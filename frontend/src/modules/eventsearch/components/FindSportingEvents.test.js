@@ -31,14 +31,38 @@ afterEach(() => actions.findSportingEvents.mockRestore());
 
 test('findSportingEvents - success', () => {
 
+    const sportingEventTypes = [
+        {
+            id: 2,
+            name: 'Ciclismo'
+        },
+        {
+            id: 1,
+            name: 'Running'
+        }
+    ];
+
+    const provinces = [
+        {
+            id: 1,
+            name: 'A Coruña'
+        },
+        {
+            id: 2,
+            name: 'Pontevedra'
+        }
+    ];
+
     const initialState = {
         eventSearch: {
-            sportingEventSearch: null
-        }
+            sportingEventSearch: null,
+            provinces: provinces,
+            sportingEventTypes: sportingEventTypes
+        },
     }
 
     const findSpy = jest.spyOn(actions, 'findSportingEvents').mockImplementation(
-        () => null
+        _criteria => {}
     )
 
     const {getByTestId, getByRole, history} = renderComponent(<FindSportingEvents/>,
@@ -51,8 +75,8 @@ test('findSportingEvents - success', () => {
 
     const searchButton = getByRole('button')
 
-    const provinceId = null;
-    const sportTestTypeId = null;
+    const provinceId = 1;
+    const sportTestTypeId = 1;
     const startDate = '2020-05-12';
     const endDate = '2023-05-12';
 
